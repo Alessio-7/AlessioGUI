@@ -17,7 +17,6 @@ public class ScrollPane extends JScrollPane {
 
 	public ScrollPane( PreferenzeGUI gui, JPanel view ) {
 		this( view, gui.colori.sfondo(), gui.colori.interagibile(), gui.colori.bordoGenerico(), gui.colori.bordoGenerico() );
-//ciao
 	}
 
 	public ScrollPane( JPanel view, Color sfondo, Color bottone, Color thumb, Color coloreFreccia ) {
