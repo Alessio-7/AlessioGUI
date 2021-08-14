@@ -1,48 +1,79 @@
 package gui;
 
-import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.BorderFactory;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.border.Border;
 
 import preferenze.Bordi;
 import preferenze.Colori;
 import preferenze.Fonts;
+import preferenze.PreferenzeGUI;
 import utility.WrongValueException;
 
-public class MenuBar {
+public class MenuBar extends JMenuBar {
 
-	public static JMenuBar creaMenuBarDaHashMap( Colori colori, Fonts fonts, Bordi bordi, HashMap<String, ?> menufgkj ) throws WrongValueException {
-		JMenuBar ritorno = new JMenuBar();
-		ritorno.setBackground( colori.sfondo() );
-		ritorno.setBorder( bordi.bordoGenerico() );
+	private static final long serialVersionUID = 1L;
 
-		ActionListener f = new ActionListener() {
+	public MenuBar( PreferenzeGUI gui ) {
+		this( gui, null );
+	}
 
-			@Override
-			public void actionPerformed( ActionEvent e ) {
+	public MenuBar( PreferenzeGUI gui, Component[] componenti ) {
+		this( gui.colori, gui.bordi, componenti );
+	}
+
+	public MenuBar( Colori colori, Bordi bordi ) {
+		this( colori.sfondo(), bordi.bordoGenerico(), null );
+	}
+
+	public MenuBar( Colori colori, Bordi bordi, Component[] componenti ) {
+		this( colori.sfondo(), bordi.bordoGenerico(), componenti );
+	}
+
+	public MenuBar( Color coloreSfondo, Border bordo ) {
+		this( coloreSfondo, bordo, null );
+	}
+
+	public MenuBar( Color coloreSfondo, Border bordo, Component[] componenti ) {
+		super();
+		setBackground( coloreSfondo );
+		setBorder( bordo );
+		if ( componenti != null && componenti.length != 0 ) {
+			for ( Component c : componenti ) {
+				add( c );
 			}
-		};
+		}
+	}
 
-		HashMap<String, Object> menu = new HashMap<String, Object>();
-		menu.put( "Menu", f );
-		menu.put( "Menu", f );
+	public static MenuBar creaMenuBarDaHashMap( PreferenzeGUI gui, HashMap<String, Object> menu ) throws WrongValueException {
+		return creaMenuBarDaHashMap( gui.colori.sfondo(), gui.colori.testo(), gui.fonts.fontGenerico( Fonts.PLAIN ),
+			BorderFactory.createMatteBorder( 0, 0, 1, 0, gui.colori.bordoGenerico() ), menu );
+	}
+
+	public static MenuBar creaMenuBarDaHashMap( Colori colori, Fonts fonts, Bordi bordi, HashMap<String, Object> menu ) throws WrongValueException {
+		return creaMenuBarDaHashMap( colori.sfondo(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), bordi.bordoGenerico(), menu );
+	}
+
+	public static MenuBar creaMenuBarDaHashMap( Color coloreSfondo, Color coloreTesto, Font font, Border bordo, HashMap<String, Object> menu )
+		throws WrongValueException {
+		MenuBar ritorno = new MenuBar( coloreSfondo, bordo );
 
 		for ( Map.Entry<String, Object> entry : menu.entrySet() ) {
-			Object item = creaItem( colori, fonts, entry.getKey(), entry.getValue() );
-
-			// TODO errore: non si vede l'item
+			Object item = creaItem( coloreSfondo, coloreTesto, font, entry.getKey(), entry.getValue() );
 
 			if ( item instanceof JMenu ) {
 				ritorno.add( (JMenu) item );
-				System.out.println( "hai sxxxxxxxxxxxxxxxxxxxxxbagliato qualcosa\t" );
 			} else if ( item instanceof MenuItem ) {
 				ritorno.add( (MenuItem) item );
-				System.out.println( item );
 			} else {
 				System.out.println( "hai sbagliato qualcosa\t" );
 			}
@@ -50,18 +81,18 @@ public class MenuBar {
 		return ritorno;
 	}
 
-	private static Object creaItem( Colori colori, Fonts fonts, String key, Object value ) throws WrongValueException {
+	private static Object creaItem( Color coloreSfondo, Color coloreTesto, Font font, String key, Object value ) throws WrongValueException {
 		Object ritorno = null;
 
 		if ( value instanceof ActionListener ) {
-			MenuItem item = new MenuItem( colori, fonts, key, (ActionListener) value );
+			MenuItem item = new MenuItem( coloreSfondo, coloreTesto, font, key, (ActionListener) value );
 			ritorno = item;
 		} else if ( value instanceof HashMap ) {
 			JMenu menu = new JMenu( key );
 			for ( Map.Entry<String, Object> entry : ( (HashMap<String, Object>) value ).entrySet() ) {
 				String keyA = entry.getKey();
 				Object valueA = entry.getValue();
-				menu.add( (JMenuItem) creaItem( colori, fonts, keyA, valueA ) );
+				menu.add( (JMenuItem) creaItem( coloreSfondo, coloreTesto, font, keyA, valueA ) );
 			}
 			ritorno = menu;
 
@@ -71,5 +102,4 @@ public class MenuBar {
 
 		return ritorno;
 	}
-
 }

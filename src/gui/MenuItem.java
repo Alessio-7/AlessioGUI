@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 
 import javax.swing.Icon;
@@ -12,8 +14,6 @@ import preferenze.PreferenzeGUI;
 public class MenuItem extends JMenuItem {
 
 	private static final long serialVersionUID = 1L;
-
-	// TODO aggiungere più costruttori come in bottone
 
 	public MenuItem( PreferenzeGUI gui, String testo, ActionListener listener ) {
 		this( gui.colori, gui.fonts, testo, listener, null );
@@ -28,10 +28,18 @@ public class MenuItem extends JMenuItem {
 	}
 
 	public MenuItem( Colori colori, Fonts fonts, String testo, ActionListener listener, Icon icona ) {
+		this( colori.sfondo(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), testo, listener, icona );
+	}
+
+	public MenuItem( Color coloreSfondo, Color coloreTesto, Font font, String testo, ActionListener listener ) {
+		this( coloreSfondo, coloreTesto, font, testo, listener, null );
+	}
+
+	public MenuItem( Color coloreSfondo, Color coloreTesto, Font font, String testo, ActionListener listener, Icon icona ) {
 		super( testo );
-		setBackground( colori.sfondo() );
-		setForeground( colori.testo() );
-		setFont( fonts.fontGenerico( Fonts.PLAIN ) );
+		setBackground( coloreSfondo );
+		setForeground( coloreTesto );
+		setFont( font );
 		setFocusPainted( false );
 		if ( listener != null ) {
 			addActionListener( listener );
@@ -40,5 +48,4 @@ public class MenuItem extends JMenuItem {
 			setIcon( icona );
 		}
 	}
-
 }

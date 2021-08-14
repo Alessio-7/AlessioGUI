@@ -1,19 +1,22 @@
 package preferenze;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
 import javax.swing.JPanel;
 
 import gui.Bottone;
 import gui.ComboBox;
 import gui.Finestra;
 import gui.Label;
+import gui.Menu;
 import gui.MenuBar;
+import gui.MenuItem;
 import gui.ScrollPane;
-import utility.WrongValueException;
 
 public class PreferenzeGUI {
 
@@ -23,6 +26,10 @@ public class PreferenzeGUI {
 	public Colori colori;
 	public Fonts fonts;
 	public Bordi bordi;
+
+	private void cambiaUiManager() {
+
+	}
 
 	public PreferenzeGUI() {
 		this( coloriPredefiniti(), fontsPredefiniti(), bordiPredefiniti() );
@@ -36,6 +43,7 @@ public class PreferenzeGUI {
 		this.colori = colori;
 		this.fonts = fonts;
 		this.bordi = bordi;
+		cambiaUiManager();
 	}
 
 	public static Colori coloriPredefiniti() {
@@ -76,24 +84,56 @@ public class PreferenzeGUI {
 		return new ScrollPane( this, view );
 	}
 
-	public Finestra creaFinestra( String titolo, int larghezza, int altezza, JPanel child, boolean visible ) {
-		Finestra ritorno = new Finestra( titolo, larghezza, altezza, Finestra.NORMAL );
+	public Finestra creaFinestra( String titolo, JPanel child, boolean visibile ) {
+		return creaFinestra( titolo, child, null, visibile );
+	}
+
+	public Finestra creaFinestra( String titolo, JPanel child, MenuBar menuBar, boolean visibile ) {
+		Finestra ritorno = new Finestra( titolo, Finestra.schermo.width / 2, Finestra.schermo.height / 2, Finestra.MAXIMIZED_BOTH );
 		ritorno.add( creaScrollPane( child ), BorderLayout.CENTER );
-		ritorno.setVisible( visible );
-		try {
-			ritorno.setJMenuBar( MenuBar.creaMenuBarDaHashMap( colori, fonts, bordi, null ) );
-		} catch ( WrongValueException e ) {
-			e.printStackTrace();
+		ritorno.setVisible( visibile );
+		if ( menuBar != null ) {
+			ritorno.setJMenuBar( menuBar );
 		}
 		return ritorno;
 	}
 
-	// TODO aggiungere jmenubar
+	public Finestra creaFinestra( String titolo, int larghezza, int altezza, JPanel child, boolean visibile ) {
+		return creaFinestra( titolo, larghezza, altezza, child, null, visibile );
+	}
 
-	public Finestra creaFinestra( String titolo, JPanel child, boolean visible ) {
-		Finestra ritorno = new Finestra( titolo, Finestra.schermo.width / 2, Finestra.schermo.height / 2, Finestra.MAXIMIZED_BOTH );
+	public Finestra creaFinestra( String titolo, int larghezza, int altezza, JPanel child, MenuBar menuBar, boolean visibile ) {
+		Finestra ritorno = new Finestra( titolo, larghezza, altezza, Finestra.NORMAL );
 		ritorno.add( creaScrollPane( child ), BorderLayout.CENTER );
-		ritorno.setVisible( visible );
+		ritorno.setVisible( visibile );
+		if ( menuBar != null ) {
+			ritorno.setJMenuBar( menuBar );
+		}
 		return ritorno;
 	}
+
+	public MenuItem creaMenuItem( String testo, ActionListener listener ) {
+		return new MenuItem( this, testo, listener );
+	}
+
+	public MenuItem creaMenuItemConIcona( String testo, ActionListener listener, Icon icona ) {
+		return new MenuItem( this, testo, listener, icona );
+	}
+
+	public Menu creaMenu( String testo, Component[] componenti ) {
+		return new Menu( this, testo, componenti );
+	}
+
+	public Menu creaMenuConIcona( String testo, Component[] componenti, Icon icona ) {
+		return new Menu( this, testo, componenti, icona );
+	}
+
+	public MenuBar creaMenuBar( Component[] componenti ) {
+		return new MenuBar( this, componenti );
+	}
+
+	public MenuBar creaMenuBar() {
+		return new MenuBar( this );
+	}
+
 }

@@ -15,7 +15,6 @@ public class ScrollPane extends JScrollPane {
 
 	private static final long serialVersionUID = 1L;
 
-//ciao
 	public ScrollPane( PreferenzeGUI gui, JPanel view ) {
 		this( view, gui.colori.sfondo(), gui.colori.interagibile(), gui.colori.bordoGenerico(), gui.colori.bordoGenerico() );
 	}
