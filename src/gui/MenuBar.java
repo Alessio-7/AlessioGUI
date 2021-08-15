@@ -5,7 +5,6 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.JMenuBar;
@@ -15,6 +14,7 @@ import preferenze.Bordi;
 import preferenze.Colori;
 import preferenze.Fonts;
 import preferenze.PreferenzeGUI;
+import utility.ListaOggettiMenu;
 import utility.WrongValueException;
 
 public class MenuBar extends JMenuBar {
@@ -52,19 +52,20 @@ public class MenuBar extends JMenuBar {
 		}
 	}
 
-	public static MenuBar creaMenuBarDaHashMap( PreferenzeGUI gui, HashMap<String, Object> menu ) throws WrongValueException {
+	public static MenuBar creaMenuBarDaHashMap( PreferenzeGUI gui, ListaOggettiMenu menu ) throws WrongValueException {
 		return creaMenuBarDaHashMap( gui.colori, gui.fonts, gui.bordi, menu );
 	}
 
-	public static MenuBar creaMenuBarDaHashMap( Colori colori, Fonts fonts, Bordi bordi, HashMap<String, Object> menu ) throws WrongValueException {
-		return creaMenuBarDaHashMap( colori.sfondo(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), bordi.bordoMenuBar(), menu );
+	public static MenuBar creaMenuBarDaHashMap( Colori colori, Fonts fonts, Bordi bordi, ListaOggettiMenu menu ) throws WrongValueException {
+		return creaMenuBarDaHashMap( colori.suSfondo(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), bordi.bordoMenuBar(), menu );
 	}
 
-	public static MenuBar creaMenuBarDaHashMap( Color coloreSfondo, Color coloreTesto, Font font, Border bordo, HashMap<String, Object> menu )
+	public static MenuBar creaMenuBarDaHashMap( Color coloreSfondo, Color coloreTesto, Font font, Border bordo, ListaOggettiMenu menu )
 		throws WrongValueException {
 		MenuBar ritorno = new MenuBar( coloreSfondo, bordo );
 
-		for ( Map.Entry<String, Object> entry : menu.entrySet() ) {
+		for ( int i = 0; i < menu.getSize(); i++ ) {
+			Map.Entry<String, Object> entry = menu.getOggetto( i );
 			Object item = creaItem( coloreSfondo, coloreTesto, font, bordo, entry.getKey(), entry.getValue() );
 
 			if ( item instanceof Menu ) {
@@ -85,9 +86,11 @@ public class MenuBar extends JMenuBar {
 		if ( value instanceof ActionListener ) {
 			MenuItem item = new MenuItem( coloreSfondo, coloreTesto, font, key, (ActionListener) value );
 			ritorno = item;
-		} else if ( value instanceof HashMap ) {
+		} else if ( value instanceof ListaOggettiMenu ) {
 			ArrayList<Component> componenti = new ArrayList<Component>();
-			for ( Map.Entry<String, Object> entry : ( (HashMap<String, Object>) value ).entrySet() ) {
+			ListaOggettiMenu listaMenu = (ListaOggettiMenu) value;
+			for ( int j = 0; j < listaMenu.getSize(); j++ ) {
+				Map.Entry<String, Object> entry = listaMenu.getOggetto( j );
 				String keyA = entry.getKey();
 				Object valueA = entry.getValue();
 				componenti.add( (Component) creaItem( coloreSfondo, coloreTesto, font, bordo, keyA, valueA ) );
@@ -101,7 +104,7 @@ public class MenuBar extends JMenuBar {
 		}
 
 		else {
-			throw new WrongValueException( "Valore HashMap sbagliato\n Valori accettabili: ActionListener, HashMap<String, Object>, Separatore" );
+			throw new WrongValueException( "Valore ListaOggettiMenu sbagliato\n Valori accettabili: ActionListener, ListaOggettiMenu, Separatore" );
 		}
 
 		return ritorno;

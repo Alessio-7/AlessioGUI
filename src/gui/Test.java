@@ -4,11 +4,11 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 
 import javax.swing.JPanel;
 
 import preferenze.PreferenzeGUI;
+import utility.ListaOggettiMenu;
 import utility.WrongValueException;
 
 public class Test {
@@ -19,7 +19,7 @@ public class Test {
 
 	private Test() {
 
-		PreferenzeGUI gui = new PreferenzeGUI( PreferenzeGUI.TEMA_SCURO );
+		PreferenzeGUI gui = new PreferenzeGUI( PreferenzeGUI.TEMA_CHIARO );
 
 		JPanel grid = gui.creaGridBagLayout();
 
@@ -35,14 +35,14 @@ public class Test {
 			}
 		};
 
-		HashMap<String, Object> menu = new HashMap<String, Object>();
-		HashMap<String, Object> submenu = new HashMap<String, Object>();
-		HashMap<String, Object> subsubmenu = new HashMap<String, Object>();
-		subsubmenu.put( "c", f );
-		submenu.put( "a", f );
-		submenu.put( "", gui.creaSeparatore() );
-		submenu.put( "b", subsubmenu );
-		menu.put( "Menu", submenu );
+		ListaOggettiMenu menu = new ListaOggettiMenu();
+		ListaOggettiMenu submenu = new ListaOggettiMenu();
+		ListaOggettiMenu subsubmenu = new ListaOggettiMenu();
+		subsubmenu.add( "c", f );
+		submenu.add( "a", f );
+		submenu.add( "", gui.creaSeparatore() );
+		submenu.add( "b", subsubmenu );
+		menu.add( "Menu", submenu );
 		MenuBar bar = null;
 		try {
 			bar = MenuBar.creaMenuBarDaHashMap( gui, menu );
