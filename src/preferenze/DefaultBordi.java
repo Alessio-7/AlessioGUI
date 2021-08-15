@@ -8,9 +8,9 @@ import javax.swing.border.Border;
 
 public class DefaultBordi implements Bordi {
 
-	Colori colori;
-	int grandezzaDefault;
-	Insets spazioDefault;
+	private Colori colori;
+	private int grandezzaDefault;
+	private Insets spazioDefault;
 
 	public DefaultBordi( Colori colori ) {
 		this( colori, 2, new Insets( 5, 5, 5, 5 ) );
@@ -28,6 +28,11 @@ public class DefaultBordi implements Bordi {
 
 	public Insets getSpazioDefault() {
 		return spazioDefault;
+	}
+
+	@Override
+	public Border bordoVuotoGenerico() {
+		return BorderFactory.createEmptyBorder( spazioDefault.top, spazioDefault.left, spazioDefault.bottom, spazioDefault.right );
 	}
 
 	@Override
@@ -61,6 +66,12 @@ public class DefaultBordi implements Bordi {
 	}
 
 	@Override
+	public Border bordoMenuBar() {
+		return BorderFactory.createCompoundBorder( BorderFactory.createMatteBorder( 0, 0, 1, 0, colori.bordoGenerico() ),
+			BorderFactory.createEmptyBorder( 2, 0, 0, 0 ) );
+	}
+
+	@Override
 	public Border bordoGenerico( int grandezza, Insets spazio ) {
 		return bordoGenericoFocus( grandezza, spazio, colori.bordoGenerico() );
 	}
@@ -68,7 +79,7 @@ public class DefaultBordi implements Bordi {
 	@Override
 	public Border bordoGenericoFocus( int grandezza, Insets spazio, Color colore ) {
 		return BorderFactory.createCompoundBorder( BorderFactory.createLineBorder( colore, grandezza ),
-				BorderFactory.createEmptyBorder( spazio.top, spazio.left, spazio.bottom, spazio.right ) );
+			BorderFactory.createEmptyBorder( spazio.top, spazio.left, spazio.bottom, spazio.right ) );
 	}
 
 	@Override

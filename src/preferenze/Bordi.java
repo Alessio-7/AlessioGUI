@@ -7,6 +7,8 @@ import javax.swing.border.Border;
 
 public interface Bordi {
 
+	public Border bordoVuotoGenerico();
+
 	public Border bordoGenerico();
 
 	public Border bordoGenericoFocus();
@@ -18,6 +20,8 @@ public interface Bordi {
 	public Border bordoSecondario();
 
 	public Border bordoSecondarioFocus();
+
+	public Border bordoMenuBar();
 
 	public Border bordoGenerico( int grandezza, Insets spazio );
 

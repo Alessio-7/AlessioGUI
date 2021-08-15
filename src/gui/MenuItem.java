@@ -41,6 +41,8 @@ public class MenuItem extends JMenuItem {
 		setForeground( coloreTesto );
 		setFont( font );
 		setFocusPainted( false );
+		setOpaque( true );
+		setBorderPainted( false );
 		if ( listener != null ) {
 			addActionListener( listener );
 		}

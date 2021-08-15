@@ -17,6 +17,7 @@ import gui.Menu;
 import gui.MenuBar;
 import gui.MenuItem;
 import gui.ScrollPane;
+import gui.Separatore;
 
 public class PreferenzeGUI {
 
@@ -128,6 +129,10 @@ public class PreferenzeGUI {
 		return new Menu( this, testo, componenti, icona );
 	}
 
+	public Separatore creaSeparatore() {
+		return new Separatore( this );
+	}
+
 	public MenuBar creaMenuBar( Component[] componenti ) {
 		return new MenuBar( this, componenti );
 	}
@@ -135,5 +140,4 @@ public class PreferenzeGUI {
 	public MenuBar creaMenuBar() {
 		return new MenuBar( this );
 	}
-
 }

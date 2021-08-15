@@ -40,6 +40,7 @@ public class Test {
 		HashMap<String, Object> subsubmenu = new HashMap<String, Object>();
 		subsubmenu.put( "c", f );
 		submenu.put( "a", f );
+		submenu.put( "", gui.creaSeparatore() );
 		submenu.put( "b", subsubmenu );
 		menu.put( "Menu", submenu );
 		MenuBar bar = null;
