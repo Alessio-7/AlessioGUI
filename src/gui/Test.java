@@ -21,9 +21,7 @@ public class Test {
 
 		JPanel grid = gui.creaGridBagLayout();
 
-		// grid.add( new RadioButton( gui.creaLabel( "ciao"
-		// ), null, false ) );
-		grid.add( new CheckBox( gui.creaLabel( "ciao" ), null, false ) );
+		grid.add( gui.creaPasswordField( 10 ) );
 
 		ActionListener f = new ActionListener() {
 			@Override
@@ -48,5 +46,6 @@ public class Test {
 		}
 
 		gui.creaFinestra( "Test", 500, 500, grid, bar, true );
+
 	}
 }

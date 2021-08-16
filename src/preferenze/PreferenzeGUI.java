@@ -18,6 +18,7 @@ import gui.Label;
 import gui.Menu;
 import gui.MenuBar;
 import gui.MenuItem;
+import gui.PasswordField;
 import gui.RadioButton;
 import gui.ScrollPane;
 import gui.Separatore;
@@ -96,8 +97,16 @@ public class PreferenzeGUI {
 		return new TextField( this, colonne );
 	}
 
-	public TextField creaTextField( int colonne, String testoDefault ) {
-		return new TextField( this, colonne, testoDefault );
+	public PasswordField creaTextField( int colonne, String testoDefault ) {
+		return new PasswordField( this, colonne, testoDefault );
+	}
+
+	public PasswordField creaPasswordField( int colonne ) {
+		return new PasswordField( this, colonne );
+	}
+
+	public PasswordField creaPasswordField( int colonne, String testoDefault ) {
+		return new PasswordField( this, colonne, testoDefault );
 	}
 
 	public TextField creaTextField( String testoDefault ) {

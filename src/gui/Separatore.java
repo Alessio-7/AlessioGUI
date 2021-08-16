@@ -16,7 +16,7 @@ public class Separatore extends JSeparator {
 	}
 
 	public Separatore( Colori colori ) {
-		this( colori.sfondo(), colori.testo() );
+		this( colori.sfondo(), colori.bordoGenerico() );
 	}
 
 	public Separatore( Color coloreSfondo, Color coloreLinea ) {
