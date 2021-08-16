@@ -4,20 +4,24 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.Icon;
 import javax.swing.JPanel;
 
 import gui.Bottone;
+import gui.CheckBox;
 import gui.ComboBox;
 import gui.Finestra;
 import gui.Label;
 import gui.Menu;
 import gui.MenuBar;
 import gui.MenuItem;
+import gui.RadioButton;
 import gui.ScrollPane;
 import gui.Separatore;
+import gui.TextArea;
 import gui.TextField;
 
 public class PreferenzeGUI {
@@ -64,6 +68,22 @@ public class PreferenzeGUI {
 		return new Bottone( this, testo, actionListener );
 	}
 
+	public CheckBox creaCheckBox( Label label, Icon icona, boolean selezionato ) {
+		return new CheckBox( label, icona, selezionato );
+	}
+
+	public CheckBox creaCheckBox( Label label, boolean selezionato ) {
+		return new CheckBox( label, null, selezionato );
+	}
+
+	public RadioButton creaRadioButton( Label label, Icon icona, boolean selezionato ) {
+		return new RadioButton( label, icona, selezionato );
+	}
+
+	public RadioButton creaRadioButton( Label label, boolean selezionato ) {
+		return new RadioButton( label, null, selezionato );
+	}
+
 	public Label creaLabel( String testo, Font font ) {
 		return new Label( this, testo, font );
 	}
@@ -84,8 +104,35 @@ public class PreferenzeGUI {
 		return new TextField( this, testoDefault.length(), testoDefault );
 	}
 
+	public TextArea creaTextArea( String testo, int righe, int colonne, boolean editabile ) {
+		return new TextArea( this, testo, righe, colonne, editabile );
+	}
+
+	public TextArea creaTextArea( String testo, boolean editabile ) {
+		return new TextArea( this, testo, 2, testo.length(), editabile );
+	}
+
+	public TextArea creaTextArea( int righe, int colonne ) {
+		return new TextArea( this, "", righe, colonne, true );
+	}
+
 	public ComboBox creaComboBox( Object[] lista ) {
 		return new ComboBox( this, lista );
+	}
+
+	public JPanel creaGridLayout( int righe, int colonne, Component[] componenti ) {
+		JPanel grid = new JPanel( new GridLayout( righe, colonne ) );
+		grid.setBackground( colori.sfondo() );
+		if ( componenti != null ) {
+			for ( Component c : componenti ) {
+				grid.add( c );
+			}
+		}
+		return grid;
+	}
+
+	public JPanel creaGridLayout( int righe, int colonne ) {
+		return creaGridLayout( righe, colonne, null );
 	}
 
 	public JPanel creaGridBagLayout() {
@@ -152,5 +199,11 @@ public class PreferenzeGUI {
 
 	public MenuBar creaMenuBar() {
 		return new MenuBar( this );
+	}
+
+	public JPanel creaGruppo( Label label, ComboBox comboBox ) {
+		return creaGridLayout( 2, 1, new Component[] {
+			label,
+			comboBox } );
 	}
 }

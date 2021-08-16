@@ -17,16 +17,15 @@ public class Test {
 
 	private Test() {
 
-		PreferenzeGUI gui = new PreferenzeGUI( PreferenzeGUI.TEMA_CHIARO );
+		PreferenzeGUI gui = new PreferenzeGUI( PreferenzeGUI.TEMA_SCURO );
 
 		JPanel grid = gui.creaGridBagLayout();
 
-		grid.add( gui.creaComboBox( new String[] {
-			"ciao",
-			"ciao2" } ) );
+		// grid.add( new RadioButton( gui.creaLabel( "ciao"
+		// ), null, false ) );
+		grid.add( new CheckBox( gui.creaLabel( "ciao" ), null, false ) );
 
 		ActionListener f = new ActionListener() {
-
 			@Override
 			public void actionPerformed( ActionEvent e ) {
 			}
@@ -40,6 +39,7 @@ public class Test {
 		submenu.add( "", gui.creaSeparatore() );
 		submenu.add( "b", subsubmenu );
 		menu.add( "Menu", submenu );
+		menu.add( "Menu2", submenu );
 		MenuBar bar = null;
 		try {
 			bar = MenuBar.creaMenuBarDaListaOggettiMenu( gui, menu );
