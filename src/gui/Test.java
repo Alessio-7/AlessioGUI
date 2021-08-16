@@ -17,11 +17,13 @@ public class Test {
 
 	private Test() {
 
-		PreferenzeGUI gui = new PreferenzeGUI( PreferenzeGUI.TEMA_SCURO );
+		PreferenzeGUI gui = new PreferenzeGUI( PreferenzeGUI.TEMA_CHIARO );
 
 		JPanel grid = gui.creaGridBagLayout();
 
-		grid.add( gui.creaTextField( 10, "ciao" ) );
+		grid.add( gui.creaComboBox( new String[] {
+			"ciao",
+			"ciao2" } ) );
 
 		ActionListener f = new ActionListener() {
 

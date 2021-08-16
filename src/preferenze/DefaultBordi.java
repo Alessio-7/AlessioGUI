@@ -8,9 +8,9 @@ import javax.swing.border.Border;
 
 public class DefaultBordi implements Bordi {
 
-	private Colori colori;
-	private int grandezzaDefault;
-	private Insets spazioDefault;
+	public Colori colori;
+	public int grandezzaDefault;
+	public Insets spazioDefault;
 
 	public DefaultBordi( Colori colori ) {
 		this( colori, 2, new Insets( 5, 5, 5, 5 ) );
