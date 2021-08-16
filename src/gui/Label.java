@@ -35,4 +35,8 @@ public class Label extends JLabel {
 		setBorder( bordo );
 	}
 
+	public Label() {
+		super();
+	}
+
 }

@@ -52,22 +52,23 @@ public class MenuBar extends JMenuBar {
 		}
 	}
 
-	public static MenuBar creaMenuBarDaHashMap( PreferenzeGUI gui, ListaOggettiMenu menu ) throws WrongValueException {
-		return creaMenuBarDaHashMap( gui.colori, gui.fonts, gui.bordi, menu );
+	public static MenuBar creaMenuBarDaListaOggettiMenu( PreferenzeGUI gui, ListaOggettiMenu menu ) throws WrongValueException {
+		return creaMenuBarDaListaOggettiMenu( gui.colori, gui.fonts, gui.bordi, menu );
 	}
 
-	public static MenuBar creaMenuBarDaHashMap( Colori colori, Fonts fonts, Bordi bordi, ListaOggettiMenu menu ) throws WrongValueException {
-		return creaMenuBarDaHashMap( colori.suSfondo(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), bordi.bordoMenuBar(), menu );
+	public static MenuBar creaMenuBarDaListaOggettiMenu( Colori colori, Fonts fonts, Bordi bordi, ListaOggettiMenu menu ) throws WrongValueException {
+		return creaMenuBarDaListaOggettiMenu( colori.sfondo(), colori.suSfondo(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ),
+			bordi.bordoMenuBar(), menu );
 	}
 
-	public static MenuBar creaMenuBarDaHashMap( Color coloreSfondo, Color coloreTesto, Font font, Border bordo, ListaOggettiMenu menu )
-		throws WrongValueException {
+	public static MenuBar creaMenuBarDaListaOggettiMenu( Color coloreSfondo, Color coloreSfondoMenu, Color coloreTesto, Font font, Border bordo,
+		ListaOggettiMenu menu ) throws WrongValueException {
 		MenuBar ritorno = new MenuBar( coloreSfondo, bordo );
 
 		for ( int i = 0; i < menu.getSize(); i++ ) {
 			Map.Entry<String, Object> entry = menu.getOggetto( i );
-			Object item = creaItem( coloreSfondo, coloreTesto, font, bordo, entry.getKey(), entry.getValue() );
-
+			Object item = creaItem( coloreSfondoMenu, coloreTesto, font, bordo, entry.getKey(), entry.getValue() );
+			( (Component) item ).setBackground( coloreSfondo );
 			if ( item instanceof Menu ) {
 				ritorno.add( (Menu) item );
 			} else if ( item instanceof MenuItem ) {
@@ -99,7 +100,6 @@ public class MenuBar extends JMenuBar {
 			ritorno = menu;
 
 		} else if ( value instanceof Separatore ) {
-			System.out.println( "a" );
 			ritorno = value;
 		}
 

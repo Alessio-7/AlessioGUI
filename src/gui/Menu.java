@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JMenu;
 
@@ -12,8 +13,6 @@ import preferenze.Fonts;
 import preferenze.PreferenzeGUI;
 
 public class Menu extends JMenu {
-
-	// TODO risolvere errore: sepratore si aggiunge sempre all'inizio del popmenu
 
 	private static final long serialVersionUID = 1L;
 
@@ -37,8 +36,8 @@ public class Menu extends JMenu {
 		setOpaque( true );
 		getPopupMenu().setBackground( coloreSfondo );
 		getPopupMenu().setBorderPainted( false );
+		getPopupMenu().setBorder( BorderFactory.createEmptyBorder( 2, 2, 2, 2 ) );
 		setBorderPainted( false );
-		;
 		if ( icona != null ) {
 			setIcon( icona );
 		}

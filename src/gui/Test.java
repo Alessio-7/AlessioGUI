@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,14 +17,13 @@ public class Test {
 
 	private Test() {
 
-		PreferenzeGUI gui = new PreferenzeGUI( PreferenzeGUI.TEMA_CHIARO );
+		PreferenzeGUI gui = new PreferenzeGUI( PreferenzeGUI.TEMA_SCURO );
 
 		JPanel grid = gui.creaGridBagLayout();
 
-		for ( int i = 0; i < 100; i++ ) {
-			grid.add( gui.creaLabel( "BANANA" ), new GridBagConstraints( 0, i, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.NONE,
-				new Insets( 25, 25, 25, 25 ), 0, 0 ) );
-		}
+		grid.add( gui.creaComboBox( new String[] {
+			"ciao",
+			"ciao2" } ) );
 
 		ActionListener f = new ActionListener() {
 
@@ -45,7 +42,7 @@ public class Test {
 		menu.add( "Menu", submenu );
 		MenuBar bar = null;
 		try {
-			bar = MenuBar.creaMenuBarDaHashMap( gui, menu );
+			bar = MenuBar.creaMenuBarDaListaOggettiMenu( gui, menu );
 		} catch ( WrongValueException e ) {
 			e.printStackTrace();
 		}

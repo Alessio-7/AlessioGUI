@@ -1,15 +1,12 @@
 package gui;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JList;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.plaf.basic.BasicComboBoxUI;
@@ -29,8 +26,8 @@ public class ComboBox extends JComboBox<Object> {
 	private Border bordo;
 
 	public ComboBox( PreferenzeGUI gui, Object[] lista ) {
-		this( lista, gui.colori.suSfondo(), gui.colori.testo(), gui.colori.interagibile(), gui.colori.primario(), gui.bordi.bordoInteragibile(),
-				gui.bordi.bordoInteragibileFocus() );
+		this( lista, gui.colori.suSfondo(), gui.colori.testo(), gui.colori.interagibile(), gui.colori.testo(), gui.bordi.bordoInteragibile(),
+			gui.bordi.bordoInteragibileFocus() );
 	}
 
 	public ComboBox( Object[] lista, Color sfondo, Color testo, Color bottone, Color coloreFreccia, Border bordo, Border bordoFocus ) {
@@ -42,9 +39,8 @@ public class ComboBox extends JComboBox<Object> {
 		this.coloreFreccia = coloreFreccia;
 		setUI( new ComboBoxUI() );
 		setForeground( testo );
-		setRenderer( new Renderer() );
 		setBorder( bordo );
-		setFocusable( false );
+		// setRenderer( new MyComboBoxRenderer() );
 		addMouseListener( new MouseListener() {
 
 			@Override
@@ -69,27 +65,6 @@ public class ComboBox extends JComboBox<Object> {
 			public void mouseReleased( MouseEvent e ) {
 			}
 		} );
-	}
-
-	/*
-	 * @Override public void paint( Graphics g ) { super.paint( g ); g.setColor(
-	 * sfondo ); g.fillRect( 0, 0, getWidth() - getComponent( 0 ).getWidth(),
-	 * getHeight() ); this.getBorder().paintBorder( this, g, 0, 0, WIDTH, HEIGHT );
-	 * }
-	 */
-
-	private class Renderer extends DefaultListCellRenderer {
-		private static final long serialVersionUID = 1L;
-
-		@Override
-		public Component getListCellRendererComponent( JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus ) {
-			setOpaque( true );
-			setText( value.toString() );
-			setForeground( testo );
-			setBackground( sfondo );
-			setBorder( bordo );
-			return this;
-		}
 	}
 
 	private class ComboBoxUI extends BasicComboBoxUI {
