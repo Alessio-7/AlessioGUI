@@ -18,6 +18,7 @@ import gui.MenuBar;
 import gui.MenuItem;
 import gui.ScrollPane;
 import gui.Separatore;
+import gui.TextField;
 
 public class PreferenzeGUI {
 
@@ -69,6 +70,14 @@ public class PreferenzeGUI {
 
 	public Label creaLabel( String testo ) {
 		return new Label( this, testo, Label.FONT_GENERICO );
+	}
+
+	public TextField creaTextField() {
+		return new TextField( this );
+	}
+
+	public TextField creaTextFieldConTestoDefault( String testoDefault ) {
+		return new TextField( this, testoDefault );
 	}
 
 	public ComboBox creaComboBox( Object[] lista ) {
