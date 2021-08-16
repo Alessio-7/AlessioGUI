@@ -21,9 +21,7 @@ public class Test {
 
 		JPanel grid = gui.creaGridBagLayout();
 
-		grid.add( gui.creaComboBox( new String[] {
-			"ciao",
-			"ciao2" } ) );
+		grid.add( gui.creaTextField( 10, "ciao" ) );
 
 		ActionListener f = new ActionListener() {
 

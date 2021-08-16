@@ -15,33 +15,38 @@ import preferenze.PreferenzeGUI;
 
 public class TextField extends JTextField {
 
-	public TextField( PreferenzeGUI gui ) {
-		this( gui.colori, gui.fonts, gui.bordi );
+	private static final long serialVersionUID = 1L;
+
+	public TextField( PreferenzeGUI gui, int colonne ) {
+		this( gui.colori, gui.fonts, gui.bordi, colonne );
 	}
 
-	public TextField( PreferenzeGUI gui, String testoDefault ) {
-		this( gui.colori, gui.fonts, gui.bordi, testoDefault );
+	public TextField( PreferenzeGUI gui, int colonne, String testoDefault ) {
+		this( gui.colori, gui.fonts, gui.bordi, colonne, testoDefault );
 	}
 
-	public TextField( Colori colori, Fonts fonts, Bordi bordi ) {
-		this( colori.sfondo(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), bordi.bordoInteragibile(), bordi.bordoInteragibileFocus(), null );
+	public TextField( Colori colori, Fonts fonts, Bordi bordi, int colonne ) {
+		this( colori.sfondo(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), bordi.bordoInteragibile(), bordi.bordoInteragibileFocus(), colonne,
+			null );
 	}
 
-	public TextField( Colori colori, Fonts fonts, Bordi bordi, String testoDefault ) {
-		this( colori.sfondo(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), bordi.bordoInteragibile(), bordi.bordoInteragibileFocus(),
+	public TextField( Colori colori, Fonts fonts, Bordi bordi, int colonne, String testoDefault ) {
+		this( colori.sfondo(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), bordi.bordoInteragibile(), bordi.bordoInteragibileFocus(), colonne,
 			testoDefault );
 	}
 
-	public TextField( Color coloreSfondo, Color coloreTesto, Font font, Border bordo, Border bordoFocus ) {
-		this( coloreSfondo, coloreTesto, font, bordo, bordoFocus, null );
+	public TextField( Color coloreSfondo, Color coloreTesto, Font font, Border bordo, Border bordoFocus, int colonne ) {
+		this( coloreSfondo, coloreTesto, font, bordo, bordoFocus, colonne, null );
 	}
 
-	public TextField( Color coloreSfondo, Color coloreTesto, Font font, Border bordo, Border bordoFocus, String testoDefault ) {
+	public TextField( Color coloreSfondo, Color coloreTesto, Font font, Border bordo, Border bordoFocus, int colonne, String testoDefault ) {
 		super();
 		setBackground( coloreSfondo );
 		setForeground( coloreTesto );
 		setFont( font );
 		setBorder( bordo );
+		setCaretColor( coloreTesto );
+		setColumns( colonne );
 		if ( testoDefault != null ) {
 			setText( testoDefault );
 		}

@@ -72,12 +72,16 @@ public class PreferenzeGUI {
 		return new Label( this, testo, Label.FONT_GENERICO );
 	}
 
-	public TextField creaTextField() {
-		return new TextField( this );
+	public TextField creaTextField( int colonne ) {
+		return new TextField( this, colonne );
 	}
 
-	public TextField creaTextFieldConTestoDefault( String testoDefault ) {
-		return new TextField( this, testoDefault );
+	public TextField creaTextField( int colonne, String testoDefault ) {
+		return new TextField( this, colonne, testoDefault );
+	}
+
+	public TextField creaTextField( String testoDefault ) {
+		return new TextField( this, testoDefault.length(), testoDefault );
 	}
 
 	public ComboBox creaComboBox( Object[] lista ) {
@@ -126,7 +130,7 @@ public class PreferenzeGUI {
 		return new MenuItem( this, testo, listener );
 	}
 
-	public MenuItem creaMenuItemConIcona( String testo, ActionListener listener, Icon icona ) {
+	public MenuItem creaMenuItem( String testo, ActionListener listener, Icon icona ) {
 		return new MenuItem( this, testo, listener, icona );
 	}
 
@@ -134,7 +138,7 @@ public class PreferenzeGUI {
 		return new Menu( this, testo, componenti );
 	}
 
-	public Menu creaMenuConIcona( String testo, Component[] componenti, Icon icona ) {
+	public Menu creaMenu( String testo, Component[] componenti, Icon icona ) {
 		return new Menu( this, testo, componenti, icona );
 	}
 
