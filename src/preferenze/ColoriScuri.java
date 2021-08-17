@@ -10,7 +10,7 @@ public class ColoriScuri implements Colori {
 
 	@Override
 	public Color suSfondo() {
-		return new Color( 18, 18, 18 );
+		return new Color( 15, 15, 15 );
 	}
 
 	@Override

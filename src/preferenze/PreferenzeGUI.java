@@ -32,6 +32,19 @@ import utility.Dialog;
 
 public class PreferenzeGUI {
 
+	/**
+	 * Provides the classes necessary to create an applet and the classes an applet
+	 * uses to communicate with its applet context.
+	 * <p>
+	 * The applet framework involves two entities: the applet and the applet
+	 * context. An applet is an embeddable window (see the {@link java.awt.Panel}
+	 * class) with a few extra methods that the applet context can use to
+	 * initialize, start, and stop the applet.
+	 *
+	 * @since 1.0
+	 * @see java.awt
+	 */
+
 	public static final Colori TEMA_CHIARO = new ColoriChiari();
 	public static final Colori TEMA_SCURO = new ColoriScuri();
 
@@ -215,7 +228,7 @@ public class PreferenzeGUI {
 		return new MenuBar( this );
 	}
 
-	public JPanel creaGruppo( Label label, ComboBox comboBox ) {
+	public JPanel creaLabelComboBox( Label label, ComboBox comboBox ) {
 		return creaGridLayout( 2, 1, new Component[] {
 			label,
 			comboBox } );
@@ -230,13 +243,15 @@ public class PreferenzeGUI {
 				mostra = !mostra;
 				if ( mostra ) {
 					pswField.setEchoChar( (char) 0 );
+					( (Bottone) arg0.getSource() ).setText( "❌" );
 				} else {
 					pswField.setEchoChar( '•' );
+					( (Bottone) arg0.getSource() ).setText( "👁" );
 				}
 			}
 
 		} );
-		sh.setFont( new Font( "Arial Unicode MS", Font.PLAIN, 11 ) );
+		sh.setFont( new Font( "Segoe UI Emoji", Font.PLAIN, 11 ) );
 		JPanel grid = creaGridBagLayout();
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.VERTICAL;
@@ -267,7 +282,7 @@ public class PreferenzeGUI {
 		JPanel grid2 = creaGridBagLayout();
 		grid2.setBackground( colori.suSfondo() );
 		grid2.add( grid,
-			new GridBagConstraints( 0, 0, 1, 1, 1, 1, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets( 10, 0, 10, 10 ), 0, 0 ) );
+			new GridBagConstraints( 0, 0, 1, 1, 1, 1, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets( 5, 0, 5, 10 ), 0, 0 ) );
 
 		return grid2;
 	}
