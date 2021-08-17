@@ -28,14 +28,14 @@ public class Bottone extends JButton {
 	}
 
 	public Bottone( PreferenzeGUI preferenze, String testo, int stileFont, int grandezzaBordi, Insets spazio, ActionListener actionListener,
-			Color coloreFocus ) {
+		Color coloreFocus ) {
 		this( preferenze.colori, preferenze.fonts, preferenze.bordi, testo, stileFont, grandezzaBordi, spazio, actionListener, coloreFocus );
 	}
 
 	public Bottone( Colori colori, Fonts fonts, Bordi bordi, String testo, int stileFont, int grandezzaBordi, Insets spazio,
-			ActionListener actionListener, Color coloreFocus ) {
-		this( testo, colori.sfondo(), colori.testo(), fonts.fontInteragibile( stileFont ), bordi.bordoInteragibile( grandezzaBordi, spazio ),
-				bordi.bordoInteragibileFocus( grandezzaBordi, spazio, coloreFocus ), actionListener );
+		ActionListener actionListener, Color coloreFocus ) {
+		this( testo, colori.interagibile(), colori.testo(), fonts.fontInteragibile( stileFont ), bordi.bordoInteragibile( grandezzaBordi, spazio ),
+			bordi.bordoInteragibileFocus( grandezzaBordi, spazio, coloreFocus ), actionListener );
 	}
 
 	public Bottone( String testo, Color coloreSfondo, Color coloreTesto, Font font, Border bordo, Border bordoFocus, ActionListener actionListener ) {

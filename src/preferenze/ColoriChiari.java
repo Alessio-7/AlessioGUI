@@ -16,7 +16,7 @@ public class ColoriChiari implements Colori {
 
 	@Override
 	public Color interagibile() {
-		return new Color( 225, 225, 225 );
+		return new Color( 219, 219, 219 );
 	}
 
 	@Override

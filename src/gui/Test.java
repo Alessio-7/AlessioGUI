@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 import preferenze.PreferenzeGUI;
+import utility.Dialog;
 import utility.ListaOggettiMenu;
 import utility.WrongValueException;
 
@@ -47,6 +48,9 @@ public class Test {
 
 		Finestra fin = gui.creaFinestra( "Test", 500, 500, grid, bar, true );
 
-		gui.creaDialog( fin, "ciao", false, 0, 0, grid, grid, false );
+		JPanel grid2 = gui.creaGridBagLayout();
+		grid2.add( gui.creaBottone( "ciao", f ) );
+
+		Dialog.mostraDialogMessaggio( gui, Dialog.Messaggio.ERRORE, fin, "Info", "scemo chi legge" );
 	}
 }
