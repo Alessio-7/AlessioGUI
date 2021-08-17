@@ -3,8 +3,11 @@ package preferenze;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.Frame;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Icon;
@@ -24,6 +27,7 @@ import gui.ScrollPane;
 import gui.Separatore;
 import gui.TextArea;
 import gui.TextField;
+import utility.Dialog;
 
 public class PreferenzeGUI {
 
@@ -214,5 +218,51 @@ public class PreferenzeGUI {
 		return creaGridLayout( 2, 1, new Component[] {
 			label,
 			comboBox } );
+	}
+
+	public JPanel creaPasswordFieldSH( PasswordField pswField ) {
+		Bottone sh = new Bottone( this, "👁", new ActionListener() {
+			boolean mostra = false;
+
+			@Override
+			public void actionPerformed( ActionEvent arg0 ) {
+				mostra = !mostra;
+				if ( mostra ) {
+					pswField.setEchoChar( (char) 0 );
+				} else {
+					pswField.setEchoChar( '•' );
+				}
+			}
+
+		} );
+		sh.setFont( new Font( "Arial Unicode MS", Font.PLAIN, 11 ) );
+		JPanel grid = creaGridBagLayout();
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.fill = GridBagConstraints.VERTICAL;
+		grid.add( pswField );
+		grid.add( sh, gbc );
+		return grid;
+	}
+
+	public Dialog creaDialog( Frame finestra, String titolo, boolean modale, int larghezza, int altezza, JPanel child, JPanel panelBottoni,
+		boolean visibile ) {
+		Dialog dialog = new Dialog( finestra, titolo, modale, larghezza, altezza );
+		dialog.add( child, BorderLayout.CENTER );
+		dialog.add( panelBottoni, BorderLayout.SOUTH );
+		dialog.setVisible( visibile );
+		return dialog;
+	}
+
+	public JPanel creaPanelBottoni( String[] testoBottoni, ActionListener[] listeners ) {
+
+		JPanel grid = creaGridBagLayout();
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.anchor = GridBagConstraints.CENTER;
+
+		for ( int i = 0; i < testoBottoni.length; i++ ) {
+			grid.add( creaBottone( testoBottoni[i], listeners[i] ), gbc.clone() );
+		}
+
+		return grid;
 	}
 }

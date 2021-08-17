@@ -17,11 +17,11 @@ public class Test {
 
 	private Test() {
 
-		PreferenzeGUI gui = new PreferenzeGUI( PreferenzeGUI.TEMA_SCURO );
+		PreferenzeGUI gui = new PreferenzeGUI( PreferenzeGUI.TEMA_CHIARO );
 
 		JPanel grid = gui.creaGridBagLayout();
 
-		grid.add( gui.creaPasswordField( 10 ) );
+		grid.add( gui.creaPasswordFieldSH( gui.creaPasswordField( 10 ) ) );
 
 		ActionListener f = new ActionListener() {
 			@Override
@@ -45,7 +45,8 @@ public class Test {
 			e.printStackTrace();
 		}
 
-		gui.creaFinestra( "Test", 500, 500, grid, bar, true );
+		Finestra fin = gui.creaFinestra( "Test", 500, 500, grid, bar, true );
 
+		gui.creaDialog( fin, "ciao", false, 0, 0, grid, grid, false );
 	}
 }
