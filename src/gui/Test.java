@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 import preferenze.PreferenzeGUI;
+import utility.ColorChooser;
 
 public class Test {
 
@@ -38,7 +39,8 @@ public class Test {
 
 		}
 
-		gui.creaFinestra( "Test", 500, 500, grid, true );
-		gui2.creaFinestra( "Test", 500, 500, grid2, true );
+		Finestra finestra = gui.creaFinestra( "Test", 500, 500, grid, true );
+		// gui2.creaFinestra( "Test", 500, 500, grid2, true );
+		System.out.println( ColorChooser.mostraDialogoColore( finestra, "ciao" ) );
 	}
 }

@@ -32,19 +32,6 @@ import utility.Dialog;
 
 public class PreferenzeGUI {
 
-	/**
-	 * Provides the classes necessary to create an applet and the classes an applet
-	 * uses to communicate with its applet context.
-	 * <p>
-	 * The applet framework involves two entities: the applet and the applet
-	 * context. An applet is an embeddable window (see the {@link java.awt.Panel}
-	 * class) with a few extra methods that the applet context can use to
-	 * initialize, start, and stop the applet.
-	 *
-	 * @since 1.0
-	 * @see java.awt
-	 */
-
 	public static final Colori TEMA_CHIARO = new ColoriChiari();
 	public static final Colori TEMA_SCURO = new ColoriScuri();
 
@@ -228,10 +215,10 @@ public class PreferenzeGUI {
 		return new MenuBar( this );
 	}
 
-	public JPanel creaLabelComboBox( Label label, ComboBox comboBox ) {
+	public JPanel creaLabelComponente( Label label, Component componente ) {
 		return creaGridLayout( 2, 1, new Component[] {
 			label,
-			comboBox } );
+			componente } );
 	}
 
 	public JPanel creaPasswordFieldSH( PasswordField pswField ) {
