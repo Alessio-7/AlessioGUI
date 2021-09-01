@@ -298,17 +298,9 @@ public class PreferenzeGUI extends Observable {
 	public Bottone creaBottoneCambiaTemaChiaroScuro( String testoTemaChiaro, String testoTemaScuro, boolean testoEmoji, PreferenzeGUI temaChiaro,
 			PreferenzeGUI temaScuro ) {
 
-		String testoIniziale;
+		Bottone ritorno = creaBottone( testoTemaChiaro, new ActionListener() {
 
-		if ( this == temaScuro ) {
-			testoIniziale = testoTemaChiaro;
-		} else {
-			testoIniziale = testoTemaScuro;
-		}
-
-		Bottone ritorno = creaBottone( testoIniziale, new ActionListener() {
-
-			boolean temaScuroBool = testoIniziale == testoTemaScuro;
+			boolean temaScuroBool = false;
 
 			@Override
 			public void actionPerformed( ActionEvent e ) {
