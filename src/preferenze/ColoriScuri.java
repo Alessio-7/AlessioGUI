@@ -3,6 +3,20 @@ package preferenze;
 import java.awt.Color;
 
 public class ColoriScuri implements Colori {
+
+	Color colorePrimario;
+	Color coloreSecondario;
+
+	public ColoriScuri() {
+		this.colorePrimario = new Color( 247, 99, 12 );
+		this.coloreSecondario = new Color( 195, 1, 1 );
+	}
+
+	public ColoriScuri( Color colorePrimario, Color coloreSecondario ) {
+		this.colorePrimario = colorePrimario;
+		this.coloreSecondario = coloreSecondario;
+	}
+
 	@Override
 	public Color sfondo() {
 		return new Color( 18, 18, 18 );
@@ -25,12 +39,12 @@ public class ColoriScuri implements Colori {
 
 	@Override
 	public Color primario() {
-		return new Color( 247, 99, 12 );
+		return colorePrimario;
 	}
 
 	@Override
 	public Color secondario() {
-		return new Color( 195, 1, 1 );
+		return coloreSecondario;
 	}
 
 	@Override
@@ -46,5 +60,10 @@ public class ColoriScuri implements Colori {
 	@Override
 	public Color bordoSecondario() {
 		return Color.DARK_GRAY;
+	}
+
+	@Override
+	public Color subMenu() {
+		return bordoSecondario();
 	}
 }

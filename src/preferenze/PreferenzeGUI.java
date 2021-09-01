@@ -10,6 +10,7 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
 
 import javax.swing.Icon;
 import javax.swing.JPanel;
@@ -19,6 +20,7 @@ import gui.CheckBox;
 import gui.ComboBox;
 import gui.Finestra;
 import gui.Label;
+import gui.Layout;
 import gui.Menu;
 import gui.MenuBar;
 import gui.MenuItem;
@@ -29,8 +31,10 @@ import gui.Separatore;
 import gui.TextArea;
 import gui.TextField;
 import utility.Dialog;
+import utility.ListaOggettiMenu;
+import utility.WrongValueException;
 
-public class PreferenzeGUI {
+public class PreferenzeGUI extends Observable {
 
 	public static final Colori TEMA_CHIARO = new ColoriChiari();
 	public static final Colori TEMA_SCURO = new ColoriScuri();
@@ -38,10 +42,6 @@ public class PreferenzeGUI {
 	public Colori colori;
 	public Fonts fonts;
 	public Bordi bordi;
-
-	private void cambiaUiManager() {
-
-	}
 
 	public PreferenzeGUI() {
 		this( coloriPredefiniti(), fontsPredefiniti(), bordiPredefiniti() );
@@ -55,7 +55,18 @@ public class PreferenzeGUI {
 		this.colori = colori;
 		this.fonts = fonts;
 		this.bordi = bordi;
-		cambiaUiManager();
+	}
+
+	public void cambiaGUI( PreferenzeGUI nuovaGui ) {
+		cambiaGUI( nuovaGui.colori, nuovaGui.fonts, nuovaGui.bordi );
+	}
+
+	public void cambiaGUI( Colori colori, Fonts fonts, Bordi bordi ) {
+		this.colori = colori;
+		this.fonts = fonts;
+		this.bordi = bordi;
+		setChanged();
+		notifyObservers( this );
 	}
 
 	public static Colori coloriPredefiniti() {
@@ -134,9 +145,8 @@ public class PreferenzeGUI {
 		return new ComboBox( this, lista );
 	}
 
-	public JPanel creaGridLayout( int righe, int colonne, Component[] componenti ) {
-		JPanel grid = new JPanel( new GridLayout( righe, colonne ) );
-		grid.setBackground( colori.sfondo() );
+	public Layout creaGridLayout( int righe, int colonne, Component[] componenti ) {
+		Layout grid = new Layout( this, new GridLayout( righe, colonne ) );
 		if ( componenti != null ) {
 			for ( Component c : componenti ) {
 				grid.add( c );
@@ -145,13 +155,12 @@ public class PreferenzeGUI {
 		return grid;
 	}
 
-	public JPanel creaGridLayout( int righe, int colonne ) {
+	public Layout creaGridLayout( int righe, int colonne ) {
 		return creaGridLayout( righe, colonne, null );
 	}
 
-	public JPanel creaGridBagLayout() {
-		JPanel grid = new JPanel( new GridBagLayout() );
-		grid.setBackground( colori.sfondo() );
+	public Layout creaGridBagLayout() {
+		Layout grid = new Layout( this, new GridBagLayout() );
 		return grid;
 	}
 
@@ -187,20 +196,20 @@ public class PreferenzeGUI {
 		return ritorno;
 	}
 
-	public MenuItem creaMenuItem( String testo, ActionListener listener ) {
-		return new MenuItem( this, testo, listener );
+	public MenuItem creaMenuItem( String testo, ActionListener listener, boolean parteSubMenu ) {
+		return new MenuItem( this, testo, listener, parteSubMenu );
 	}
 
-	public MenuItem creaMenuItem( String testo, ActionListener listener, Icon icona ) {
-		return new MenuItem( this, testo, listener, icona );
+	public MenuItem creaMenuItem( String testo, ActionListener listener, Icon icona, boolean parteSubMenu ) {
+		return new MenuItem( this, testo, listener, icona, parteSubMenu );
 	}
 
-	public Menu creaMenu( String testo, Component[] componenti ) {
-		return new Menu( this, testo, componenti );
+	public Menu creaMenu( String testo, Component[] componenti, boolean parteSubMenu ) {
+		return new Menu( this, testo, componenti, parteSubMenu );
 	}
 
-	public Menu creaMenu( String testo, Component[] componenti, Icon icona ) {
-		return new Menu( this, testo, componenti, icona );
+	public Menu creaMenu( String testo, Component[] componenti, Icon icona, boolean parteSubMenu ) {
+		return new Menu( this, testo, componenti, icona, parteSubMenu );
 	}
 
 	public Separatore creaSeparatore() {
@@ -215,13 +224,21 @@ public class PreferenzeGUI {
 		return new MenuBar( this );
 	}
 
-	public JPanel creaLabelComponente( Label label, Component componente ) {
-		return creaGridLayout( 2, 1, new Component[] {
-			label,
-			componente } );
+	public MenuBar creaMenuBarDaListaOggettiMenu( ListaOggettiMenu menu ) {
+		MenuBar ritorno = null;
+		try {
+			ritorno = MenuBar.creaMenuBarDaListaOggettiMenu( this, menu );
+		} catch ( WrongValueException e ) {
+			e.printStackTrace();
+		}
+		return ritorno;
 	}
 
-	public JPanel creaPasswordFieldSH( PasswordField pswField ) {
+	public Layout creaLabelComponente( Label label, Component componente ) {
+		return creaGridLayout( 2, 1, new Component[] { label, componente } );
+	}
+
+	public Layout creaPasswordFieldSH( PasswordField pswField ) {
 		Bottone sh = new Bottone( this, "👁", new ActionListener() {
 			boolean mostra = false;
 
@@ -229,17 +246,18 @@ public class PreferenzeGUI {
 			public void actionPerformed( ActionEvent arg0 ) {
 				mostra = !mostra;
 				if ( mostra ) {
-					pswField.setEchoChar( (char) 0 );
-					( (Bottone) arg0.getSource() ).setText( "❌" );
+					pswField.setEchoChar( ( char ) 0 );
+					( ( Bottone ) arg0.getSource() ).setText( "❌" );
 				} else {
 					pswField.setEchoChar( '•' );
-					( (Bottone) arg0.getSource() ).setText( "👁" );
+					( ( Bottone ) arg0.getSource() ).setText( "👁" );
 				}
 			}
 
 		} );
 		sh.setFont( new Font( "Segoe UI Emoji", Font.PLAIN, 11 ) );
-		JPanel grid = creaGridBagLayout();
+		sh.setName( "bottone emoji" );
+		Layout grid = creaGridBagLayout();
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.VERTICAL;
 		grid.add( pswField );
@@ -247,8 +265,8 @@ public class PreferenzeGUI {
 		return grid;
 	}
 
-	public Dialog creaDialog( Frame finestra, String titolo, boolean modale, int larghezza, int altezza, JPanel child, JPanel panelBottoni,
-		boolean visibile ) {
+	public Dialog creaDialog( Frame finestra, String titolo, boolean modale, int larghezza, int altezza, Layout child, Layout panelBottoni,
+			boolean visibile ) {
 		Dialog dialog = new Dialog( finestra, titolo, modale, larghezza, altezza );
 		dialog.add( child, BorderLayout.CENTER );
 		dialog.add( panelBottoni, BorderLayout.SOUTH );
@@ -256,21 +274,59 @@ public class PreferenzeGUI {
 		return dialog;
 	}
 
-	public JPanel creaPanelBottoni( String[] testoBottoni, ActionListener[] listeners ) {
+	public Layout creaPanelBottoni( String[] testoBottoni, ActionListener[] listeners ) {
 
-		JPanel grid = creaGridLayout( 1, testoBottoni.length );
+		Layout grid = creaGridLayout( 1, testoBottoni.length );
 		grid.setBackground( colori.suSfondo() );
-		( (GridLayout) grid.getLayout() ).setHgap( 5 );
+		( ( GridLayout ) grid.getLayout() ).setHgap( 5 );
 
 		for ( int i = 0; i < testoBottoni.length; i++ ) {
 			grid.add( creaBottone( testoBottoni[i], listeners[i] ) );
 		}
 
-		JPanel grid2 = creaGridBagLayout();
+		Layout grid2 = creaGridBagLayout();
 		grid2.setBackground( colori.suSfondo() );
-		grid2.add( grid,
-			new GridBagConstraints( 0, 0, 1, 1, 1, 1, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets( 5, 0, 5, 10 ), 0, 0 ) );
+		grid2.add( grid, new GridBagConstraints( 0, 0, 1, 1, 1, 1, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets( 5, 0, 5, 10 ), 0, 0 ) );
 
 		return grid2;
+	}
+
+	public Bottone creaBottoneCambiaTemaChiaroScuro( PreferenzeGUI temaChiaro, PreferenzeGUI temaScuro ) {
+		return creaBottoneCambiaTemaChiaroScuro( "☀", "🌙", true, temaChiaro, temaScuro );
+	}
+
+	public Bottone creaBottoneCambiaTemaChiaroScuro( String testoTemaChiaro, String testoTemaScuro, boolean testoEmoji, PreferenzeGUI temaChiaro,
+			PreferenzeGUI temaScuro ) {
+
+		String testoIniziale;
+
+		if ( this == temaScuro ) {
+			testoIniziale = testoTemaChiaro;
+		} else {
+			testoIniziale = testoTemaScuro;
+		}
+
+		Bottone ritorno = creaBottone( testoIniziale, new ActionListener() {
+
+			boolean temaScuroBool = testoIniziale == testoTemaScuro;
+
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				if ( temaScuroBool ) {
+					cambiaGUI( temaChiaro );
+					( ( Bottone ) e.getSource() ).setText( testoTemaChiaro );
+				} else {
+					cambiaGUI( temaScuro );
+					( ( Bottone ) e.getSource() ).setText( testoTemaScuro );
+				}
+				temaScuroBool = !temaScuroBool;
+			}
+		} );
+		if ( testoEmoji ) {
+			ritorno.setFont( new Font( "Segoe UI Emoji", Font.PLAIN, 11 ) );
+			ritorno.setName( "bottone emoji" );
+		}
+
+		return ritorno;
 	}
 }

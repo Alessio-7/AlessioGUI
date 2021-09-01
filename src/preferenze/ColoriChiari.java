@@ -4,6 +4,19 @@ import java.awt.Color;
 
 public class ColoriChiari implements Colori {
 
+	Color colorePrimario;
+	Color coloreSecondario;
+
+	public ColoriChiari() {
+		this.colorePrimario = new Color( 247, 99, 12 );
+		this.coloreSecondario = new Color( 195, 1, 1 );
+	}
+
+	public ColoriChiari( Color colorePrimario, Color coloreSecondario ) {
+		this.colorePrimario = colorePrimario;
+		this.coloreSecondario = coloreSecondario;
+	}
+
 	@Override
 	public Color sfondo() {
 		return Color.white;
@@ -26,12 +39,12 @@ public class ColoriChiari implements Colori {
 
 	@Override
 	public Color primario() {
-		return new Color( 247, 99, 12 );
+		return colorePrimario;
 	}
 
 	@Override
 	public Color secondario() {
-		return new Color( 195, 1, 1 );
+		return coloreSecondario;
 	}
 
 	@Override
@@ -47,6 +60,11 @@ public class ColoriChiari implements Colori {
 	@Override
 	public Color bordoSecondario() {
 		return new Color( 229, 229, 229 );
+	}
+
+	@Override
+	public Color subMenu() {
+		return bordoSecondario();
 	}
 
 }

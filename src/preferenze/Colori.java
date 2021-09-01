@@ -20,4 +20,6 @@ public interface Colori {
 	public Color bordoInteragibile();
 
 	public Color bordoSecondario();
+
+	public Color subMenu();
 }

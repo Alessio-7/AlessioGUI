@@ -3,9 +3,6 @@ package gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JPanel;
-
-import preferenze.Fonts;
 import preferenze.PreferenzeGUI;
 
 public class Test {
@@ -17,37 +14,22 @@ public class Test {
 	private Test() {
 
 		PreferenzeGUI gui = new PreferenzeGUI( PreferenzeGUI.TEMA_SCURO );
-		PreferenzeGUI gui2 = new PreferenzeGUI( PreferenzeGUI.TEMA_CHIARO );
 
-		// JPanel grid = gui.creaGridBagLayout();
-		JPanel grid = gui.creaGridLayout( 1, 1 );
-		JPanel grid2 = gui2.creaGridBagLayout();
+		Layout grid = gui.creaGridBagLayout();
 
-		ActionListener f = new ActionListener() {
+		ActionListener azionenulla = new ActionListener() {
+
 			@Override
 			public void actionPerformed( ActionEvent e ) {
 			}
 		};
 
-		PreferenzeGUI[] guis = new PreferenzeGUI[] { gui, gui2 };
+		MenuBar menuBar = gui.creaMenuBar();
+		menuBar.add(
+				gui.creaBottoneCambiaTemaChiaroScuro( new PreferenzeGUI( PreferenzeGUI.TEMA_CHIARO ), new PreferenzeGUI( PreferenzeGUI.TEMA_SCURO ) ) );
 
-		JPanel[] grids = new JPanel[] { grid, grid2 };
-		for ( int i = 0; i < 2; i++ ) {
+		grid.add( gui.creaTextArea( 3, 10 ) );
 
-		}
-
-		TabbedPane pane = new TabbedPane( gui.colori.sfondo(), gui.colori.testo(), gui.fonts.fontGenerico( Fonts.PLAIN ), gui.bordi.bordoGenerico(), null,
-				null );
-		pane.add( "ciao", gui.creaBottone( "CIao", f ) );
-		pane.add( "ciao", gui.creaBottone( "Roberto", f ) );
-		pane.add( "ciao", gui.creaBottone( "Roberto", f ) );
-
-		pane.setBackground( null );
-
-		grid.add( pane );
-
-		Finestra finestra = gui.creaFinestra( "Test", 500, 500, grid, true );
-		// gui2.creaFinestra( "Test", 500, 500, grid2, true );
-		// System.out.println( ColorChooser.mostraDialogoColore( finestra, "ciao" ) );
+		Finestra finestra = gui.creaFinestra( "Test", 500, 500, grid, menuBar, true );
 	}
 }
