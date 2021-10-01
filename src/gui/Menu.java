@@ -31,7 +31,7 @@ public class Menu extends JMenu implements Observer {
 	}
 
 	public Menu( Colori colori, Fonts fonts, String testo, Component[] componenti, Icon icona, boolean parteSubMenu ) {
-		this( parteSubMenu ? colori.bordoSecondario() : colori.sfondo(), colori.bordoSecondario(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), testo,
+		this( parteSubMenu ? colori.subMenu() : colori.sfondo(), colori.bordoSecondario(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), testo,
 				componenti, icona );
 		this.parteSubMenu = parteSubMenu;
 	}
@@ -59,7 +59,7 @@ public class Menu extends JMenu implements Observer {
 	public void update( Observable o, Object arg ) {
 
 		PreferenzeGUI gui = ( PreferenzeGUI ) arg;
-		setBackground( parteSubMenu ? gui.colori.bordoSecondario() : gui.colori.sfondo() );
+		setBackground( parteSubMenu ? gui.colori.subMenu() : gui.colori.sfondo() );
 		setForeground( gui.colori.testo() );
 		setFont( gui.fonts.fontGenerico( Fonts.PLAIN ) );
 		getPopupMenu().setBackground( gui.colori.bordoSecondario() );

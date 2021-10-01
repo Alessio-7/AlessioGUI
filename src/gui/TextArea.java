@@ -23,7 +23,7 @@ public class TextArea extends JTextArea implements Observer {
 	}
 
 	public TextArea( Colori colori, Fonts fonts, Bordi bordi, String testo, int righe, int colonne, boolean editabile ) {
-		this( colori.sfondo(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), bordi.bordoGenerico(), testo, righe, colonne, editabile );
+		this( colori.sfondo(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), bordi.bordoSecondario(), testo, righe, colonne, editabile );
 	}
 
 	public TextArea( Color coloreSfondo, Color coloreTesto, Font font, Border bordo, String testo, int righe, int colonne, boolean editabile ) {
@@ -44,7 +44,7 @@ public class TextArea extends JTextArea implements Observer {
 		setForeground( gui.colori.testo() );
 		setCaretColor( gui.colori.testo() );
 		setFont( gui.fonts.fontGenerico( Fonts.PLAIN ) );
-		setBorder( gui.bordi.bordoGenerico() );
+		setBorder( gui.bordi.bordoSecondario() );
 	}
 
 }

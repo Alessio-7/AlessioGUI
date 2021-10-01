@@ -49,7 +49,7 @@ public class ColoriScuri implements Colori {
 
 	@Override
 	public Color bordoGenerico() {
-		return Color.DARK_GRAY;
+		return new Color( 128, 128, 128 );
 	}
 
 	@Override

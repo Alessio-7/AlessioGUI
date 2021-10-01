@@ -67,8 +67,8 @@ public class DefaultBordi implements Bordi {
 
 	@Override
 	public Border bordoMenuBar() {
-		return BorderFactory.createCompoundBorder( BorderFactory.createMatteBorder( 0, 0, 1, 0, colori.bordoGenerico() ),
-			BorderFactory.createEmptyBorder( 2, 0, 0, 0 ) );
+		return BorderFactory.createCompoundBorder( BorderFactory.createMatteBorder( 0, 0, 1, 0, colori.bordoSecondario() ),
+				BorderFactory.createEmptyBorder( 2, 0, 0, 0 ) );
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class DefaultBordi implements Bordi {
 	@Override
 	public Border bordoGenericoFocus( int grandezza, Insets spazio, Color colore ) {
 		return BorderFactory.createCompoundBorder( BorderFactory.createLineBorder( colore, grandezza ),
-			BorderFactory.createEmptyBorder( spazio.top, spazio.left, spazio.bottom, spazio.right ) );
+				BorderFactory.createEmptyBorder( spazio.top, spazio.left, spazio.bottom, spazio.right ) );
 	}
 
 	@Override

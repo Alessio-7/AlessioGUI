@@ -8,6 +8,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -25,6 +26,7 @@ import gui.Menu;
 import gui.MenuBar;
 import gui.MenuItem;
 import gui.PasswordField;
+import gui.PopupMenu;
 import gui.RadioButton;
 import gui.ScrollPane;
 import gui.Separatore;
@@ -145,6 +147,10 @@ public class PreferenzeGUI extends Observable {
 		return new ComboBox( this, lista );
 	}
 
+	public Layout creaLayout( LayoutManager manager ) {
+		return new Layout( this, manager );
+	}
+
 	public Layout creaGridLayout( int righe, int colonne, Component[] componenti ) {
 		Layout grid = new Layout( this, new GridLayout( righe, colonne ) );
 		if ( componenti != null ) {
@@ -234,6 +240,14 @@ public class PreferenzeGUI extends Observable {
 		return ritorno;
 	}
 
+	public PopupMenu creaPopupMenu() {
+		return new PopupMenu( this );
+	}
+
+	public PopupMenu creaPopupMenuDaListaOggettiMenu( ListaOggettiMenu menu ) {
+		return new PopupMenu( this, menu );
+	}
+
 	public Layout creaLabelComponente( Label label, Component componente ) {
 		return creaGridLayout( 2, 1, new Component[] { label, componente } );
 	}
@@ -265,11 +279,12 @@ public class PreferenzeGUI extends Observable {
 		return grid;
 	}
 
-	public Dialog creaDialog( Frame finestra, String titolo, boolean modale, int larghezza, int altezza, Layout child, Layout panelBottoni,
+	public Dialog creaDialog( Frame finestra, String titolo, boolean modale, int larghezza, int altezza, JPanel child, JPanel panelBottoni,
 			boolean visibile ) {
 		Dialog dialog = new Dialog( finestra, titolo, modale, larghezza, altezza );
 		dialog.add( child, BorderLayout.CENTER );
 		dialog.add( panelBottoni, BorderLayout.SOUTH );
+		dialog.setDefaultCloseOperation( Dialog.DO_NOTHING_ON_CLOSE );
 		dialog.setVisible( visibile );
 		return dialog;
 	}
@@ -289,6 +304,18 @@ public class PreferenzeGUI extends Observable {
 		grid2.add( grid, new GridBagConstraints( 0, 0, 1, 1, 1, 1, GridBagConstraints.EAST, GridBagConstraints.NONE, new Insets( 5, 0, 5, 10 ), 0, 0 ) );
 
 		return grid2;
+	}
+
+	public Layout creaGrigliaBottoni( int righe, int colonne, Bottone[] bottoni, int Hgap, int Vgap ) {
+		Layout gBottoni = creaGridLayout( righe, colonne );
+		( ( GridLayout ) gBottoni.getLayout() ).setHgap( Hgap );
+		( ( GridLayout ) gBottoni.getLayout() ).setVgap( Vgap );
+
+		for ( int i = 0; i < bottoni.length; i++ ) {
+			gBottoni.add( bottoni[i] );
+		}
+
+		return gBottoni;
 	}
 
 	public Bottone creaBottoneCambiaTemaChiaroScuro( PreferenzeGUI temaChiaro, PreferenzeGUI temaScuro ) {

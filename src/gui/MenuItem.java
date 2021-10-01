@@ -30,7 +30,7 @@ public class MenuItem extends JMenuItem implements Observer {
 	}
 
 	public MenuItem( Colori colori, Fonts fonts, String testo, ActionListener listener, Icon icona, boolean parteSubMenu ) {
-		this( parteSubMenu ? colori.bordoSecondario() : colori.sfondo(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), testo, listener, icona );
+		this( parteSubMenu ? colori.subMenu() : colori.sfondo(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), testo, listener, icona );
 		this.parteSubMenu = parteSubMenu;
 	}
 
@@ -58,7 +58,7 @@ public class MenuItem extends JMenuItem implements Observer {
 	public void update( Observable o, Object arg ) {
 
 		PreferenzeGUI gui = ( PreferenzeGUI ) arg;
-		setBackground( parteSubMenu ? gui.colori.bordoSecondario() : gui.colori.sfondo() );
+		setBackground( parteSubMenu ? gui.colori.subMenu() : gui.colori.sfondo() );
 		setForeground( gui.colori.testo() );
 		setFont( gui.fonts.fontGenerico( Fonts.PLAIN ) );
 	}
