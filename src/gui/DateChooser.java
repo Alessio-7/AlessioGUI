@@ -16,6 +16,11 @@ import javax.swing.JPopupMenu;
 
 import preferenze.PreferenzeGUI;
 
+/**
+ * Classe per agevolare la scelta di una data che impiega la classe
+ * <code>PreferenzeGUI</code>
+ *
+ */
 public class DateChooser extends Layout implements Observer {
 
 	private static final long serialVersionUID = 1L;
@@ -42,18 +47,39 @@ public class DateChooser extends Layout implements Observer {
 
 	private Bottone bottoneGiornoCorrente;
 
+	/**
+	 * Ritorna il giorno selezionato
+	 * 
+	 * @return il giorno selezionato
+	 */
 	public int getGiorno() {
 		return giorno;
 	}
 
+	/**
+	 * Ritorna il mese selezionato
+	 * 
+	 * @return il mese selezionato
+	 */
 	public int getMese() {
 		return mese;
 	}
 
+	/**
+	 * Ritorna l'anno selezionato
+	 * 
+	 * @return l'anno selezionato
+	 */
 	public int getAnno() {
 		return anno;
 	}
 
+	/**
+	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
+	 * 
+	 * @param gui la classe <code>PreferenzeGUI</code> su cui si basa la GUI del
+	 *            <code>DateChooser</code>
+	 */
 	public DateChooser( PreferenzeGUI gui ) {
 		super( gui, new GridBagLayout() );
 		gui.addObserver( this );
@@ -140,7 +166,7 @@ public class DateChooser extends Layout implements Observer {
 		popup.add( calendario );
 	}
 
-	public void cambiaMese( int i ) {
+	private void cambiaMese( int i ) {
 
 		cal.set( cal.get( Calendar.YEAR ), cal.get( Calendar.MONTH ) + i, 1 );
 		aggiornaMese();

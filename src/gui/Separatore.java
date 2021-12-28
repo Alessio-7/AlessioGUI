@@ -9,6 +9,11 @@ import javax.swing.JSeparator;
 import preferenze.Colori;
 import preferenze.PreferenzeGUI;
 
+/**
+ * Sottoclasse di <code>JSeparator</code> che può impiegare la classe
+ * <code>PreferenzeGUI</code>
+ *
+ */
 public class Separatore extends JSeparator implements Observer {
 
 	private static final long serialVersionUID = 1L;

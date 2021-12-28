@@ -37,33 +37,93 @@ import utility.Dialog;
 import utility.ListaOggettiMenu;
 import utility.WrongValueException;
 
+/**
+ * Classe con le informazioni per lo sviluppo della GUI
+ *
+ */
 public class PreferenzeGUI extends Observable {
 
+	/**
+	 * Colori predefiniti del tema chiaro
+	 */
 	public static final Colori TEMA_CHIARO = new ColoriChiari();
+
+	/**
+	 * Colori predefiniti del tema scuro
+	 */
 	public static final Colori TEMA_SCURO = new ColoriScuri();
 
+	/**
+	 * Interfaccia <code>Colori</code> utilizzata per i colori della GUI
+	 */
 	public Colori colori;
+
+	/**
+	 * Interfaccia <code>Fonts</code> utilizzata per i fonts della GUI
+	 */
 	public Fonts fonts;
+
+	/**
+	 * Interfaccia <code>Bordi</code> utilizzata per i bordi della GUI
+	 */
 	public Bordi bordi;
 
+	/**
+	 * Costruttore che utilizza i valori predefiniti per i colori, i font e i bordi
+	 */
 	public PreferenzeGUI() {
 		this( coloriPredefiniti(), fontsPredefiniti(), bordiPredefiniti() );
 	}
 
+	/**
+	 * Costruttore che utilizza colori personalizzati e i valori predefiniti per i
+	 * font e i bordi
+	 * 
+	 * @param colori l'interfaccia <code>Colori</code> utilizzata per i colori della
+	 *               GUI
+	 */
 	public PreferenzeGUI( Colori colori ) {
 		this( colori, new DefaultFonts(), new DefaultBordi( colori ) );
 	}
 
+	/**
+	 * Costruttore che utilizza colori, font e bordi personalizzati
+	 * 
+	 * @param colori l'interfaccia <code>Colori</code> utilizzata per i colori della
+	 *               GUI
+	 * @param fonts  l'interfaccia <code>Fonts</code> utilizzata per i font della
+	 *               GUI
+	 * @param bordi  l'interfaccia <code>Bordi</code> utilizzata per i bordi della
+	 *               GUI
+	 */
 	public PreferenzeGUI( Colori colori, Fonts fonts, Bordi bordi ) {
 		this.colori = colori;
 		this.fonts = fonts;
 		this.bordi = bordi;
 	}
 
+	/**
+	 * Imposta i valori delle interfaccie colori, fonts e bordi prendendoli dalla
+	 * classe <code>PreferenzeGUI</code>
+	 * 
+	 * @param nuovaGui classe da cui prendere i valori delle interfaccie colori,
+	 *                 fonts e bordi
+	 */
 	public void cambiaGUI( PreferenzeGUI nuovaGui ) {
 		cambiaGUI( nuovaGui.colori, nuovaGui.fonts, nuovaGui.bordi );
 	}
 
+	/**
+	 * Imposta i valori delle interfaccie colori, fonts e bordi usando interfaccie
+	 * personalizzate
+	 * 
+	 * @param colori l'interfaccia <code>Colori</code> utilizzata per i colori della
+	 *               GUI
+	 * @param fonts  l'interfaccia <code>Fonts</code> utilizzata per i font della
+	 *               GUI
+	 * @param bordi  l'interfaccia <code>Bordi</code> utilizzata per i bordi della
+	 *               GUI
+	 */
 	public void cambiaGUI( Colori colori, Fonts fonts, Bordi bordi ) {
 		this.colori = colori;
 		this.fonts = fonts;
@@ -72,18 +132,42 @@ public class PreferenzeGUI extends Observable {
 		notifyObservers( this );
 	}
 
+	/**
+	 * Ritorna l'interfaccia <code>Colori</code> predefinita
+	 * 
+	 * @return interfaccia <code>Colori</code> predefinita
+	 */
 	public static Colori coloriPredefiniti() {
 		return TEMA_CHIARO;
 	}
 
+	/**
+	 * Ritorna l'interfaccia <code>DefaultFonts</code>
+	 * 
+	 * @return interfaccia <code>DefaultFonts</code>
+	 */
 	public static DefaultFonts fontsPredefiniti() {
 		return new DefaultFonts();
 	}
 
+	/**
+	 * Ritorna l'interfaccia <code>DefaultBordi</code>
+	 * 
+	 * @return interfaccia <code>DefaultBordi</code>
+	 */
 	public static DefaultBordi bordiPredefiniti() {
 		return new DefaultBordi( coloriPredefiniti() );
 	}
 
+	/**
+	 * Crea la classe <code>Bottone</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code>
+	 * 
+	 * @param testo          il testo del <code>Bottone</code>
+	 * @param actionListener actionListener la classe <code>ActionListener</code>
+	 *                       che viene aggiunta al <code>Bottone</code>
+	 * @return la classe <code>Bottone</code> creata
+	 */
 	public Bottone creaBottone( String testo, ActionListener actionListener ) {
 		return new Bottone( this, testo, actionListener );
 	}
@@ -104,58 +188,183 @@ public class PreferenzeGUI extends Observable {
 		return new RadioButton( label, null, selezionato );
 	}
 
+	/**
+	 * Crea la classe <code>Label</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code>
+	 * 
+	 * @param testo il testo della <code>Label</code>
+	 * @param font  il font della <code>Label</code>
+	 * @return la classe <code>Label</code> creata
+	 */
 	public Label creaLabel( String testo, Font font ) {
 		return new Label( this, testo, font );
 	}
 
+	/**
+	 * Crea la classe <code>Label</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code> e utilizzando il font generico della
+	 * <code>Label</code>
+	 * 
+	 * @param testo il testo della <code>Label</code>
+	 * @return la classe <code>Label</code> creata
+	 */
 	public Label creaLabel( String testo ) {
 		return new Label( this, testo, Label.FONT_GENERICO );
 	}
 
+	/**
+	 * Crea la classe <code>TextField</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code>
+	 * 
+	 * @param colonne il numero di colonne del <code>TextField</code>
+	 * @return la classe <code>TextField</code> creata
+	 */
 	public TextField creaTextField( int colonne ) {
 		return new TextField( this, colonne );
 	}
 
-	public PasswordField creaTextField( int colonne, String testoDefault ) {
-		return new PasswordField( this, colonne, testoDefault );
+	/**
+	 * Crea la classe <code>TextField</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code>
+	 * 
+	 * @param colonne      il numero di colonne del <code>TextField</code>
+	 * @param testoDefault il testo scritto di default
+	 * @return la classe <code>TextField</code> creata
+	 */
+	public TextField creaTextField( int colonne, String testoDefault ) {
+		return new TextField( this, colonne, testoDefault );
 	}
 
-	public PasswordField creaPasswordField( int colonne ) {
-		return new PasswordField( this, colonne );
-	}
-
-	public PasswordField creaPasswordField( int colonne, String testoDefault ) {
-		return new PasswordField( this, colonne, testoDefault );
-	}
-
+	/**
+	 * Crea la classe <code>TextField</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code>, utilizzando la lunghezza del testo scritto di
+	 * default come numero di colonne
+	 * 
+	 * @param testoDefault il testo scritto di default
+	 * @return la classe <code>TextField</code> creata
+	 */
 	public TextField creaTextField( String testoDefault ) {
 		return new TextField( this, testoDefault.length(), testoDefault );
 	}
 
+	/**
+	 * Crea la classe <code>PasswordField</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code>
+	 * 
+	 * @param colonne il numero di colonne del <code>PasswordField</code>
+	 * @return la classe <code>PasswordField</code> creata
+	 */
+	public PasswordField creaPasswordField( int colonne ) {
+		return new PasswordField( this, colonne );
+	}
+
+	/**
+	 * Crea la classe <code>PasswordField</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code>
+	 * 
+	 * @param colonne      il numero di colonne del <code>PasswordField</code>
+	 * @param testoDefault il testo scritto di default
+	 * @return la classe <code>PasswordField</code> creata
+	 */
+	public PasswordField creaPasswordField( int colonne, String testoDefault ) {
+		return new PasswordField( this, colonne, testoDefault );
+	}
+
+	/**
+	 * Crea la classe <code>TextArea</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code>
+	 * 
+	 * @param testo     il testo scritto nel <code>TextArea</code>
+	 * @param righe     il numero di righe del <code>TextArea</code>
+	 * @param colonne   il numero di colonne del <code>TextArea</code>
+	 * @param editabile se il <code>TextArea</code> è editabile
+	 * @return la classe <code>TextArea</code> creata
+	 */
 	public TextArea creaTextArea( String testo, int righe, int colonne, boolean editabile ) {
 		return new TextArea( this, testo, righe, colonne, editabile );
 	}
 
+	/**
+	 * Crea la classe <code>TextArea</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code>, mettendo 2 righe e utilizzando la lunghezza del
+	 * testo come numero di colonne
+	 * 
+	 * @param testo     il testo scritto nel <code>TextArea</code>
+	 * @param editabile se il <code>TextArea</code> è editabile
+	 * @return la classe <code>TextArea</code> creata
+	 */
 	public TextArea creaTextArea( String testo, boolean editabile ) {
 		return new TextArea( this, testo, 2, testo.length(), editabile );
 	}
 
+	/**
+	 * Crea la classe <code>TextArea</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code>,scrivendo un testo vuoto e impostando che sia
+	 * editabile
+	 * 
+	 * @param righe   il numero di righe del <code>TextArea</code>
+	 * @param colonne il numero di colonne del <code>TextArea</code>
+	 * @return la classe <code>TextArea</code> creata
+	 */
 	public TextArea creaTextArea( int righe, int colonne ) {
 		return new TextArea( this, "", righe, colonne, true );
 	}
 
+	/**
+	 * Crea la classe <code>ComboBox</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code>
+	 * 
+	 * @param lista la lista di <code>Object</code> che deve contenere la
+	 *              <code>ComboBox</code>
+	 * @return la classe <code>ComboBox</code> creata
+	 */
 	public ComboBox creaComboBox( Object[] lista ) {
 		return new ComboBox( this, lista );
 	}
 
+	/**
+	 * Crea la classe <code>DateChooser</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code>
+	 * 
+	 * @return la classe <code>DateChooser</code> creata
+	 */
 	public DateChooser creaDateChooser() {
 		return new DateChooser( this );
 	}
 
+	/**
+	 * Crea la classe <code>Layout</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code>
+	 * 
+	 * @param manager la classe <code>LayoutManager</code> che viene aggiunta al
+	 *                <code>Layout</code>
+	 * @return la classe <code>Layout</code> creata
+	 */
 	public Layout creaLayout( LayoutManager manager ) {
 		return new Layout( this, manager );
 	}
 
+	/**
+	 * Crea la classe <code>Layout</code> con sfondo trasparente impiegando questa
+	 * classe <code>PreferenzeGUI</code>
+	 * 
+	 * @param manager la classe <code>LayoutManager</code> che viene aggiunta al
+	 *                <code>Layout</code>
+	 * @return la classe <code>Layout</code> creata
+	 */
+	public Layout creaLayoutTrasparente( LayoutManager manager ) {
+		return new Layout( this, manager, true );
+	}
+
+	/**
+	 * Crea la classe <code>Layout</code> con il layout manager
+	 * <code>GridLayout</code>, impiegando questa classe <code>PreferenzeGUI</code>
+	 * 
+	 * @param righe      numero di righe del <code>GridLayout</code>
+	 * @param colonne    numero di colonne del <code>GridLayout</code>
+	 * @param componenti componenti da aggiungere al <code>Layout</code>
+	 * @return la classe <code>Layout</code> creata
+	 */
 	public Layout creaGridLayout( int righe, int colonne, Component[] componenti ) {
 		Layout grid = new Layout( this, new GridLayout( righe, colonne ) );
 		if ( componenti != null ) {
@@ -166,10 +375,26 @@ public class PreferenzeGUI extends Observable {
 		return grid;
 	}
 
+	/**
+	 * Crea la classe <code>Layout</code> con il layout manager
+	 * <code>GridLayout</code> senza componenti, impiegando questa classe
+	 * <code>PreferenzeGUI</code>
+	 * 
+	 * @param righe   numero di righe del <code>GridLayout</code>
+	 * @param colonne numero di colonne del <code>GridLayout</code>
+	 * @return la classe <code>Layout</code> creata
+	 */
 	public Layout creaGridLayout( int righe, int colonne ) {
 		return creaGridLayout( righe, colonne, null );
 	}
 
+	/**
+	 * Crea la classe <code>Layout</code> con il layout manager
+	 * <code>GridBagLayout</code>, impiegando questa classe
+	 * <code>PreferenzeGUI</code>
+	 * 
+	 * @return la classe <code>Layout</code> creata
+	 */
 	public Layout creaGridBagLayout() {
 		Layout grid = new Layout( this, new GridBagLayout() );
 		return grid;

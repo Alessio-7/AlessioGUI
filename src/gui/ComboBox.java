@@ -21,6 +21,11 @@ import preferenze.Colori;
 import preferenze.Fonts;
 import preferenze.PreferenzeGUI;
 
+/**
+ * Sottoclasse di <code>JComboBox</code> che può impiegare la classe
+ * <code>PreferenzeGUI</code>
+ *
+ */
 public class ComboBox extends JComboBox<Object> implements Observer {
 
 	private static final long serialVersionUID = 1L;
@@ -29,16 +34,50 @@ public class ComboBox extends JComboBox<Object> implements Observer {
 	private Color coloreBottone;
 	private Color coloreFreccia;
 
+	/**
+	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
+	 * 
+	 * @param gui   la classe <code>PreferenzeGUI</code> su cui si basa la GUI della
+	 *              <code>ComboBox</code>
+	 * @param lista la lista di <code>Object</code> che deve contenere la
+	 *              <code>ComboBox</code>
+	 */
 	public ComboBox( PreferenzeGUI gui, Object[] lista ) {
 		this( gui.colori, gui.fonts, gui.bordi, lista );
 		gui.addObserver( this );
 	}
 
+	/**
+	 * Costruttore che impiega le interfaccie <code>Colori</code>,
+	 * <code>Fonts</code>, <code>Bordi</code>
+	 * 
+	 * @param colori l'interfaccia <code>Colori</code> su cui si basano i colori
+	 *               della <code>ComboBox</code>
+	 * @param fonts  l'interfaccia <code>Fonts</code> su cui si basano i font della
+	 *               <code>ComboBox</code>
+	 * @param bordi  l'interfaccia <code>Bordi</code> su cui si basano i bordi della
+	 *               <code>ComboBox</code>
+	 * @param lista  la lista di <code>Object</code> che deve contenere la
+	 *               <code>ComboBox</code>
+	 */
 	public ComboBox( Colori colori, Fonts fonts, Bordi bordi, Object[] lista ) {
 		this( colori.suSfondo(), colori.testo(), colori.primario(), fonts.fontGenerico( Fonts.PLAIN ), bordi.bordoInteragibile(),
 				bordi.bordoGenericoFocus(), lista );
 	}
 
+	/**
+	 * Costruttore con parametri specifici
+	 * 
+	 * @param coloreSfondo    il colore dello sfondo dela <code>ComboBox</code>
+	 * @param coloreTesto     il colore del testo della <code>ComboBox</code>
+	 * @param coloreSelezione il colore dell'oggetto selezionato
+	 * @param font            il font della <code>ComboBox</code>
+	 * @param bordo           il bordo della <code>ComboBox</code>
+	 * @param bordoFocus      il bordo della <code>ComboBox</code> quando il mouse
+	 *                        passa sopra
+	 * @param lista           la lista di <code>Object</code> che deve contenere la
+	 *                        <code>ComboBox</code>
+	 */
 	public ComboBox( Color coloreSfondo, Color coloreTesto, Color coloreSelezione, Font font, Border bordo, Border bordoFocus, Object[] lista ) {
 		super( lista );
 		this.coloreBottone = coloreSfondo;
