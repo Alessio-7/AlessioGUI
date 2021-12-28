@@ -40,6 +40,8 @@ public class DateChooser extends Layout implements Observer {
 	private Label testoMese;
 	private Layout meseLayout;
 
+	private Bottone bottoneGiornoCorrente;
+
 	public int getGiorno() {
 		return giorno;
 	}
@@ -64,7 +66,7 @@ public class DateChooser extends Layout implements Observer {
 		meseCorrente = cal.get( Calendar.MONTH );
 		annoCorrente = cal.get( Calendar.YEAR );
 
-		dataLabel = gui.creaLabel( giornoCorrente + "/" + meseCorrente + "/" + annoCorrente );
+		dataLabel = gui.creaLabel( giornoCorrente + "/" + meseCorrente + "/" + annoCorrente + " " );
 
 		cal.set( cal.get( Calendar.YEAR ), cal.get( Calendar.MONTH ), 1 );
 
@@ -82,14 +84,20 @@ public class DateChooser extends Layout implements Observer {
 		add( scegliData );
 
 		popup = gui.creaPopupMenu();
+		popup.setBorderPainted( true );
+		popup.setBorder( gui.bordi.bordoInteragibile() );
 		generaCalendario();
-		popup.setBorder( gui.bordi.bordoVuotoGenerico() );
+		popup.setBackground( calendario.getBackground() );
+
 	}
 
 	@Override
 	public void update( Observable arg0, Object obj ) {
 		PreferenzeGUI gui = ( PreferenzeGUI ) obj;
 		setBackground( gui.colori.sfondo() );
+		popup.setBackground( getBackground() );
+		bottoneGiornoCorrente.setForeground( gui.colori.primario() );
+		popup.setBorder( gui.bordi.bordoInteragibile() );
 		repaint();
 	}
 
@@ -129,7 +137,6 @@ public class DateChooser extends Layout implements Observer {
 		aggiornaMese();
 		calendario.add( meseLayout,
 				new GridBagConstraints( 0, 1, 1, 1, 0.0, 0.0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets( 0, 0, 0, 0 ), 0, 0 ) );
-		calendario.setBorder( gui.bordi.bordoVuotoGenerico() );
 		popup.add( calendario );
 	}
 
@@ -204,13 +211,15 @@ public class DateChooser extends Layout implements Observer {
 					giorno = g;
 					mese = m + 1;
 					anno = a;
-					dataLabel.setText( giorno + "/" + mese + "/" + anno );
+					dataLabel.setText( giorno + "/" + mese + "/" + anno + " " );
+					( ( Bottone ) e.getSource() ).setBorder( gui.bordi.bordoInteragibile() );
 					popup.setVisible( false );
 				}
 
 			} );
 
 			if ( giornataCorrente ) {
+				bottoneGiornoCorrente = this;
 				this.setForeground( gui.colori.primario() );
 			}
 		}

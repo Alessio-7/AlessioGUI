@@ -10,7 +10,10 @@ public class Test {
 		Layout l = gui.creaGridBagLayout();
 
 		Finestra f = gui.creaFinestra( "Ciao", 800, 800, l, false );
+
 		l.add( gui.creaDateChooser() );
+
+		l.add( gui.creaBottoneCambiaTemaChiaroScuro( new PreferenzeGUI( PreferenzeGUI.TEMA_CHIARO ), new PreferenzeGUI( PreferenzeGUI.TEMA_SCURO ) ) );
 		f.setVisible( true );
 	}
 }

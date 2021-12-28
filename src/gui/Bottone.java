@@ -28,17 +28,20 @@ public class Bottone extends JButton implements Observer {
 	}
 
 	public Bottone( Colori colori, Fonts fonts, Bordi bordi, String testo, ActionListener actionListener ) {
-		this( testo, colori.interagibile(), colori.testo(), fonts.fontInteragibile( Fonts.BOLD ), bordi.bordoInteragibile(), bordi.bordoInteragibileFocus(),
-				actionListener );
+		this( testo, colori.interagibile(), colori.primario().brighter(), colori.testo(), fonts.fontInteragibile( Fonts.BOLD ), bordi.bordoInteragibile(),
+				bordi.bordoInteragibileFocus(), actionListener );
 	}
 
-	public Bottone( String testo, Color coloreSfondo, Color coloreTesto, Font font, Border bordo, Border bordoFocus, ActionListener actionListener ) {
+	public Bottone( String testo, Color coloreSfondo, Color coloreSfondoPremuto, Color coloreTesto, Font font, Border bordo, Border bordoFocus,
+			ActionListener actionListener ) {
 		super( testo );
 		setBackground( coloreSfondo );
 		setForeground( coloreTesto );
 		setFont( font );
 		setBorder( bordo );
 		setName( "" );
+		setContentAreaFilled( false );
+		setOpaque( true );
 		setFocusPainted( false );
 		if ( actionListener != null ) {
 			addActionListener( actionListener );
@@ -47,6 +50,7 @@ public class Bottone extends JButton implements Observer {
 
 			@Override
 			public void mouseClicked( MouseEvent arg0 ) {
+
 			}
 
 			@Override
@@ -57,14 +61,17 @@ public class Bottone extends JButton implements Observer {
 			@Override
 			public void mouseExited( MouseEvent e ) {
 				setBorder( bordo );
+				setBackground( coloreSfondo );
 			}
 
 			@Override
 			public void mousePressed( MouseEvent e ) {
+				setBackground( coloreSfondoPremuto );
 			}
 
 			@Override
 			public void mouseReleased( MouseEvent e ) {
+				setBackground( coloreSfondo );
 			}
 		};
 		addMouseListener( cambiaBordo );
@@ -92,14 +99,17 @@ public class Bottone extends JButton implements Observer {
 			@Override
 			public void mouseExited( MouseEvent e ) {
 				setBorder( gui.bordi.bordoInteragibile() );
+				setBackground( gui.colori.interagibile() );
 			}
 
 			@Override
 			public void mousePressed( MouseEvent e ) {
+				setBackground( gui.colori.primario().brighter() );
 			}
 
 			@Override
 			public void mouseReleased( MouseEvent e ) {
+				setBackground( gui.colori.interagibile() );
 			}
 		};
 		addMouseListener( cambiaBordo );
