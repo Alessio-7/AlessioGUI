@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import gui.Bottone;
 import gui.CheckBox;
 import gui.ComboBox;
+import gui.DateChooser;
 import gui.Finestra;
 import gui.Label;
 import gui.Layout;
@@ -147,6 +148,10 @@ public class PreferenzeGUI extends Observable {
 		return new ComboBox( this, lista );
 	}
 
+	public DateChooser creaDateChooser() {
+		return new DateChooser( this );
+	}
+
 	public Layout creaLayout( LayoutManager manager ) {
 		return new Layout( this, manager );
 	}
@@ -248,7 +253,11 @@ public class PreferenzeGUI extends Observable {
 		return new PopupMenu( this, menu );
 	}
 
-	public Layout creaLabelComponente( Label label, Component componente ) {
+	public Layout creaLabelComponenteVerticale( Label label, Component componente ) {
+		return creaGridLayout( 2, 1, new Component[] { label, componente } );
+	}
+
+	public Layout creaLabelComponenteOrizzontale( Label label, Component componente ) {
 		return creaGridLayout( 2, 1, new Component[] { label, componente } );
 	}
 

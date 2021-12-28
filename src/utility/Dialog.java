@@ -52,17 +52,13 @@ public class Dialog extends JDialog {
 
 		Dialog dialog = new Dialog( finestra, titolo, true, 300, 200 );
 		dialog.add( grid2, BorderLayout.CENTER );
-		dialog.add( gui.creaPanelBottoni( new String[] {
-			"   Ok   " },
-			new ActionListener[] {
-				new ActionListener() {
+		dialog.add( gui.creaPanelBottoni( new String[] { "   Ok   " }, new ActionListener[] { new ActionListener() {
 
-					@Override
-					public void actionPerformed( ActionEvent arg0 ) {
-						dialog.dispose();
-					}
-				} } ),
-			BorderLayout.SOUTH );
+			@Override
+			public void actionPerformed( ActionEvent arg0 ) {
+				dialog.dispose();
+			}
+		} } ), BorderLayout.SOUTH );
 		dialog.setVisible( true );
 
 		return dialog;
@@ -79,29 +75,23 @@ public class Dialog extends JDialog {
 
 		JPanel grid = gui.creaGridBagLayout();
 		ComboBox comboBox = gui.creaComboBox( scelte );
-		grid.add( gui.creaLabelComponente( gui.creaLabel( testoScelta ), comboBox ) );
+		grid.add( gui.creaLabelComponenteVerticale( gui.creaLabel( testoScelta ), comboBox ) );
 
 		dialog.add( grid, BorderLayout.CENTER );
-		dialog.add( gui.creaPanelBottoni( new String[] {
-			"Ok",
-			"Cancella" },
-			new ActionListener[] {
-				new ActionListener() {
+		dialog.add( gui.creaPanelBottoni( new String[] { "Ok", "Cancella" }, new ActionListener[] { new ActionListener() {
 
-					@Override
-					public void actionPerformed( ActionEvent arg0 ) {
-						dialog.scelta = true;
-						dialog.dispose();
-					}
-				},
-				new ActionListener() {
+			@Override
+			public void actionPerformed( ActionEvent arg0 ) {
+				dialog.scelta = true;
+				dialog.dispose();
+			}
+		}, new ActionListener() {
 
-					@Override
-					public void actionPerformed( ActionEvent arg0 ) {
-						dialog.dispose();
-					}
-				} } ),
-			BorderLayout.SOUTH );
+			@Override
+			public void actionPerformed( ActionEvent arg0 ) {
+				dialog.dispose();
+			}
+		} } ), BorderLayout.SOUTH );
 		dialog.setVisible( true );
 
 		while ( dialog.isDisplayable() ) {
@@ -125,29 +115,23 @@ public class Dialog extends JDialog {
 
 		JPanel grid = gui.creaGridBagLayout();
 		TextField textField = gui.creaTextField( 10 );
-		grid.add( gui.creaLabelComponente( gui.creaLabel( testoScelta ), textField ) );
+		grid.add( gui.creaLabelComponenteVerticale( gui.creaLabel( testoScelta ), textField ) );
 
 		dialog.add( grid, BorderLayout.CENTER );
-		dialog.add( gui.creaPanelBottoni( new String[] {
-			"Ok",
-			"Cancella" },
-			new ActionListener[] {
-				new ActionListener() {
+		dialog.add( gui.creaPanelBottoni( new String[] { "Ok", "Cancella" }, new ActionListener[] { new ActionListener() {
 
-					@Override
-					public void actionPerformed( ActionEvent arg0 ) {
-						dialog.scelta = true;
-						dialog.dispose();
-					}
-				},
-				new ActionListener() {
+			@Override
+			public void actionPerformed( ActionEvent arg0 ) {
+				dialog.scelta = true;
+				dialog.dispose();
+			}
+		}, new ActionListener() {
 
-					@Override
-					public void actionPerformed( ActionEvent arg0 ) {
-						dialog.dispose();
-					}
-				} } ),
-			BorderLayout.SOUTH );
+			@Override
+			public void actionPerformed( ActionEvent arg0 ) {
+				dialog.dispose();
+			}
+		} } ), BorderLayout.SOUTH );
 		dialog.setVisible( true );
 
 		while ( dialog.isDisplayable() ) {
@@ -174,37 +158,29 @@ public class Dialog extends JDialog {
 		grid.add( label );
 
 		dialog.add( grid, BorderLayout.CENTER );
-		dialog.add( gui.creaPanelBottoni( new String[] {
-			"Sì",
-			"No",
-			"Cancella" },
-			new ActionListener[] {
-				new ActionListener() {
+		dialog.add( gui.creaPanelBottoni( new String[] { "Sì", "No", "Cancella" }, new ActionListener[] { new ActionListener() {
 
-					@Override
-					public void actionPerformed( ActionEvent arg0 ) {
-						dialog.scelta = true;
-						dialog.ritornoSiNo = 1;
-						dialog.dispose();
-					}
-				},
-				new ActionListener() {
+			@Override
+			public void actionPerformed( ActionEvent arg0 ) {
+				dialog.scelta = true;
+				dialog.ritornoSiNo = 1;
+				dialog.dispose();
+			}
+		}, new ActionListener() {
 
-					@Override
-					public void actionPerformed( ActionEvent arg0 ) {
-						dialog.scelta = true;
-						dialog.ritornoSiNo = 0;
-						dialog.dispose();
-					}
-				},
-				new ActionListener() {
+			@Override
+			public void actionPerformed( ActionEvent arg0 ) {
+				dialog.scelta = true;
+				dialog.ritornoSiNo = 0;
+				dialog.dispose();
+			}
+		}, new ActionListener() {
 
-					@Override
-					public void actionPerformed( ActionEvent arg0 ) {
-						dialog.dispose();
-					}
-				} } ),
-			BorderLayout.SOUTH );
+			@Override
+			public void actionPerformed( ActionEvent arg0 ) {
+				dialog.dispose();
+			}
+		} } ), BorderLayout.SOUTH );
 		dialog.setVisible( true );
 
 		while ( dialog.isDisplayable() ) {

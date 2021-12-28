@@ -14,11 +14,11 @@ public class Finestra extends JFrame {
 
 	public Finestra( String titolo, int larghezza, int altezza, int extendedState ) {
 		this( titolo, larghezza, 0, schermo.width, altezza, 0, schermo.height, ( schermo.width - larghezza ) / 2, ( schermo.height - altezza ) / 2,
-			extendedState, Finestra.EXIT_ON_CLOSE );
+				extendedState, Finestra.EXIT_ON_CLOSE );
 	}
 
 	public Finestra( String titolo, int larghezza, int larghezzaMin, int larghezzaMax, int altezza, int altezzaMin, int altezzaMax, int x, int y,
-		int extendedState, int defaultCloseOperation ) {
+			int extendedState, int defaultCloseOperation ) {
 		super( titolo );
 		setSize( larghezza, altezza );
 		setMinimumSize( new Dimension( larghezzaMin, altezzaMin ) );
