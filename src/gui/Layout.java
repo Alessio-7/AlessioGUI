@@ -9,6 +9,12 @@ import javax.swing.JPanel;
 
 import preferenze.PreferenzeGUI;
 
+/**
+ * Sottoclasse di <code>JPanel</code> instanziabile con un
+ * <code>LayoutManager</code> che può impiegare la classe
+ * <code>PreferenzeGUI</code>
+ *
+ */
 public class Layout extends JPanel implements Observer {
 
 	private static final long serialVersionUID = 1L;

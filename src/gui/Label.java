@@ -11,6 +11,11 @@ import javax.swing.border.Border;
 
 import preferenze.PreferenzeGUI;
 
+/**
+ * Sottoclasse di <code>JLabel</code> che può impiegare la classe
+ * <code>PreferenzeGUI</code>
+ *
+ */
 public class Label extends JLabel implements Observer {
 
 	private static final long serialVersionUID = 1L;

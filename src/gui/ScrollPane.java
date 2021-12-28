@@ -13,6 +13,11 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 
 import preferenze.PreferenzeGUI;
 
+/**
+ * Sottoclasse di <code>JScrollPane</code> che può impiegare la classe
+ * <code>PreferenzeGUI</code>
+ *
+ */
 public class ScrollPane extends JScrollPane implements Observer {
 
 	private static final long serialVersionUID = 1L;

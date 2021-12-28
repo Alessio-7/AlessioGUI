@@ -15,6 +15,11 @@ import preferenze.Colori;
 import preferenze.Fonts;
 import preferenze.PreferenzeGUI;
 
+/**
+ * Sottoclasse di <code>JPasswordField</code> che può impiegare la classe
+ * <code>PreferenzeGUI</code>
+ *
+ */
 public class PasswordField extends JPasswordField implements Observer {
 
 	private static final long serialVersionUID = 1L;

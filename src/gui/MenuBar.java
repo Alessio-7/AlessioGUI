@@ -17,6 +17,11 @@ import preferenze.PreferenzeGUI;
 import utility.ListaOggettiMenu;
 import utility.WrongValueException;
 
+/**
+ * Sottoclasse di <code>JMenuBar</code> che può impiegare la classe
+ * <code>PreferenzeGUI</code>
+ *
+ */
 public class MenuBar extends JMenuBar implements Observer {
 
 	private static final long serialVersionUID = 1L;

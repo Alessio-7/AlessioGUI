@@ -16,6 +16,11 @@ import javax.swing.JPopupMenu;
 
 import preferenze.PreferenzeGUI;
 
+/**
+ * Classe per agevolare la scelta di una data che può impiegare la classe
+ * <code>PreferenzeGUI</code>
+ *
+ */
 public class DateChooser extends Layout implements Observer {
 
 	private static final long serialVersionUID = 1L;

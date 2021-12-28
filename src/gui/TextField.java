@@ -15,6 +15,11 @@ import preferenze.Colori;
 import preferenze.Fonts;
 import preferenze.PreferenzeGUI;
 
+/**
+ * Sottoclasse di <code>JTextField</code> che può impiegare la classe
+ * <code>PreferenzeGUI</code>
+ *
+ */
 public class TextField extends JTextField implements Observer {
 
 	private static final long serialVersionUID = 1L;

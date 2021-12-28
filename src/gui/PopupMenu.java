@@ -15,6 +15,11 @@ import preferenze.PreferenzeGUI;
 import utility.ListaOggettiMenu;
 import utility.WrongValueException;
 
+/**
+ * Sottoclasse di <code>JPopupMenu</code> che può impiegare la classe
+ * <code>PreferenzeGUI</code>
+ *
+ */
 public class PopupMenu extends JPopupMenu implements Observer {
 
 	public PopupMenu( PreferenzeGUI gui, ListaOggettiMenu menu ) {

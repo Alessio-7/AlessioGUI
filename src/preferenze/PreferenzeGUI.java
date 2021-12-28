@@ -37,33 +37,93 @@ import utility.Dialog;
 import utility.ListaOggettiMenu;
 import utility.WrongValueException;
 
+/**
+ * Classe con le informazioni per lo sviluppo della GUI
+ *
+ */
 public class PreferenzeGUI extends Observable {
 
+	/**
+	 * Colori predefiniti del tema chiaro
+	 */
 	public static final Colori TEMA_CHIARO = new ColoriChiari();
+
+	/**
+	 * Colori predefiniti del tema scuro
+	 */
 	public static final Colori TEMA_SCURO = new ColoriScuri();
 
+	/**
+	 * Interfaccia <code>Colori</code> utilizzata per i colori della GUI
+	 */
 	public Colori colori;
+
+	/**
+	 * Interfaccia <code>Fonts</code> utilizzata per i fonts della GUI
+	 */
 	public Fonts fonts;
+
+	/**
+	 * Interfaccia <code>Bordi</code> utilizzata per i bordi della GUI
+	 */
 	public Bordi bordi;
 
+	/**
+	 * Costruttore che utilizza i valori predefiniti per i colori, i font e i bordi
+	 */
 	public PreferenzeGUI() {
 		this( coloriPredefiniti(), fontsPredefiniti(), bordiPredefiniti() );
 	}
 
+	/**
+	 * Costruttore che utilizza colori personalizzati e i valori predefiniti per i
+	 * font e i bordi
+	 * 
+	 * @param colori l'interfaccia <code>Colori</code> utilizzata per i colori della
+	 *               GUI
+	 */
 	public PreferenzeGUI( Colori colori ) {
 		this( colori, new DefaultFonts(), new DefaultBordi( colori ) );
 	}
 
+	/**
+	 * Costruttore che utilizza colori, font e bordi personalizzati
+	 * 
+	 * @param colori l'interfaccia <code>Colori</code> utilizzata per i colori della
+	 *               GUI
+	 * @param fonts  l'interfaccia <code>Fonts</code> utilizzata per i font della
+	 *               GUI
+	 * @param bordi  l'interfaccia <code>Bordi</code> utilizzata per i bordi della
+	 *               GUI
+	 */
 	public PreferenzeGUI( Colori colori, Fonts fonts, Bordi bordi ) {
 		this.colori = colori;
 		this.fonts = fonts;
 		this.bordi = bordi;
 	}
 
+	/**
+	 * Imposta i valori delle interfaccie colori, fonts e bordi prendendoli dalla
+	 * classe <code>PreferenzeGUI</code>
+	 * 
+	 * @param nuovaGui classe da cui prendere i valori delle interfaccie colori,
+	 *                 fonts e bordi
+	 */
 	public void cambiaGUI( PreferenzeGUI nuovaGui ) {
 		cambiaGUI( nuovaGui.colori, nuovaGui.fonts, nuovaGui.bordi );
 	}
 
+	/**
+	 * Imposta i valori delle interfaccie colori, fonts e bordi usando interfaccie
+	 * personalizzate
+	 * 
+	 * @param colori l'interfaccia <code>Colori</code> utilizzata per i colori della
+	 *               GUI
+	 * @param fonts  l'interfaccia <code>Fonts</code> utilizzata per i font della
+	 *               GUI
+	 * @param bordi  l'interfaccia <code>Bordi</code> utilizzata per i bordi della
+	 *               GUI
+	 */
 	public void cambiaGUI( Colori colori, Fonts fonts, Bordi bordi ) {
 		this.colori = colori;
 		this.fonts = fonts;
@@ -72,14 +132,29 @@ public class PreferenzeGUI extends Observable {
 		notifyObservers( this );
 	}
 
+	/**
+	 * Ritorna l'interfaccia <code>Colori</code> predefinita
+	 * 
+	 * @return interfaccia <code>Colori</code> predefinita
+	 */
 	public static Colori coloriPredefiniti() {
 		return TEMA_CHIARO;
 	}
 
+	/**
+	 * Ritorna l'interfaccia <code>DefaultFonts</code>
+	 * 
+	 * @return interfaccia <code>DefaultFonts</code>
+	 */
 	public static DefaultFonts fontsPredefiniti() {
 		return new DefaultFonts();
 	}
 
+	/**
+	 * Ritorna l'interfaccia <code>DefaultBordi</code>
+	 * 
+	 * @return interfaccia <code>DefaultBordi</code>
+	 */
 	public static DefaultBordi bordiPredefiniti() {
 		return new DefaultBordi( coloriPredefiniti() );
 	}

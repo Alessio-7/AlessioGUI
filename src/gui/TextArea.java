@@ -13,6 +13,11 @@ import preferenze.Colori;
 import preferenze.Fonts;
 import preferenze.PreferenzeGUI;
 
+/**
+ * Sottoclasse di <code>JTextArea</code> che può impiegare la classe
+ * <code>PreferenzeGUI</code>
+ *
+ */
 public class TextArea extends JTextArea implements Observer {
 
 	private static final long serialVersionUID = 1L;

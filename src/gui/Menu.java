@@ -14,6 +14,11 @@ import preferenze.Colori;
 import preferenze.Fonts;
 import preferenze.PreferenzeGUI;
 
+/**
+ * Sottoclasse di <code>JMenu</code> che può impiegare la classe
+ * <code>PreferenzeGUI</code>
+ *
+ */
 public class Menu extends JMenu implements Observer {
 
 	private static final long serialVersionUID = 1L;
