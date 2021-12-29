@@ -32,10 +32,17 @@ public class Bottone extends JButton implements Observer {
 	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
 	 * 
 	 * @param gui            la classe <code>PreferenzeGUI</code> su cui si basa la
+<<<<<<< HEAD
 	 *                       GUI del <code>Bottone</code>
 	 * @param testo          il testo del <code>Bottone</code>
 	 * @param actionListener la classe <code>ActionListener</code> che viene
 	 *                       aggiunta al <code>Bottone</code>
+=======
+	 *                       GUI del bottone
+	 * @param testo          il testo del bottone
+	 * @param actionListener la classe <code>ActionListener</code> che viene
+	 *                       aggiunta al bottone
+>>>>>>> branch 'main' of git@github.com:Alessio-7/AlessioGUI.git
 	 */
 	public Bottone( PreferenzeGUI gui, String testo, ActionListener actionListener ) {
 		this( gui.colori, gui.fonts, gui.bordi, testo, actionListener );
@@ -47,6 +54,7 @@ public class Bottone extends JButton implements Observer {
 	 * <code>Fonts</code>, <code>Bordi</code>
 	 * 
 	 * @param colori         l'interfaccia <code>Colori</code> su cui si basano i
+<<<<<<< HEAD
 	 *                       colori del <code>Bottone</code>
 	 * @param fonts          l'interfaccia <code>Fonts</code> su cui si basano i
 	 *                       font del <code>Bottone</code>
@@ -55,6 +63,16 @@ public class Bottone extends JButton implements Observer {
 	 * @param testo          il testo del <code>Bottone</code>
 	 * @param actionListener la classe <code>ActionListener</code> che viene
 	 *                       aggiunta al <code>Bottone</code>
+=======
+	 *                       colori del bottone
+	 * @param fonts          l'interfaccia <code>Fonts</code> su cui si basano i
+	 *                       font del bottone
+	 * @param bordi          l'interfaccia <code>Bordi</code> su cui si basano i
+	 *                       bordi del bottone
+	 * @param testo          il testo del bottone
+	 * @param actionListener la classe <code>ActionListener</code> che viene
+	 *                       aggiunta al bottone
+>>>>>>> branch 'main' of git@github.com:Alessio-7/AlessioGUI.git
 	 */
 	public Bottone( Colori colori, Fonts fonts, Bordi bordi, String testo, ActionListener actionListener ) {
 		this( testo, colori.interagibile(), colori.primario().brighter(), colori.testo(), fonts.fontInteragibile( Fonts.BOLD ), bordi.bordoInteragibile(),
@@ -64,6 +82,7 @@ public class Bottone extends JButton implements Observer {
 	/**
 	 * Costruttore con parametri specifici
 	 * 
+<<<<<<< HEAD
 	 * @param testo               il testo del <code>Bottone</code>
 	 * @param coloreSfondo        il colore dello sfondo del <code>Bottone</code>
 	 * @param coloreSfondoPremuto il colore dello sfondo del <code>Bottone</code>
@@ -75,6 +94,18 @@ public class Bottone extends JButton implements Observer {
 	 *                            passa sopra
 	 * @param actionListener      la classe <code>ActionListener</code> che viene
 	 *                            aggiunta al <code>Bottone</code>
+=======
+	 * @param testo               il testo del bottone
+	 * @param coloreSfondo        il colore dello sfondo del bottone
+	 * @param coloreSfondoPremuto il colore dello sfondo del bottone quando è
+	 *                            premuto
+	 * @param coloreTesto         il colore del testo del bottone
+	 * @param font                il font del testo del bottone
+	 * @param bordo               il bordo del bottone
+	 * @param bordoFocus          il bordo del bottone quando il mouse passa sopra
+	 * @param actionListener      la classe <code>ActionListener</code> che viene
+	 *                            aggiunta al bottone
+>>>>>>> branch 'main' of git@github.com:Alessio-7/AlessioGUI.git
 	 */
 	public Bottone( String testo, Color coloreSfondo, Color coloreSfondoPremuto, Color coloreTesto, Font font, Border bordo, Border bordoFocus,
 			ActionListener actionListener ) {

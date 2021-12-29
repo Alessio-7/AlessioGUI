@@ -17,7 +17,11 @@ import javax.swing.JPopupMenu;
 import preferenze.PreferenzeGUI;
 
 /**
+<<<<<<< HEAD
  * Classe per agevolare la scelta di una data che impiega la classe
+=======
+ * Classe per agevolare la scelta di una data che può impiegare la classe
+>>>>>>> branch 'main' of git@github.com:Alessio-7/AlessioGUI.git
  * <code>PreferenzeGUI</code>
  *
  */
