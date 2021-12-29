@@ -523,6 +523,12 @@ public class PreferenzeGUI extends Observable {
 		return dialog;
 	}
 
+	/**
+	 * 
+	 * @param testoBottoni
+	 * @param listeners
+	 * @return
+	 */
 	public Layout creaPanelBottoni( String[] testoBottoni, ActionListener[] listeners ) {
 
 		Layout grid = creaGridLayout( 1, testoBottoni.length );
