@@ -22,36 +22,54 @@ public class ScrollPane extends JScrollPane implements Observer {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
+	 * 
+	 * @param gui  la classe <code>PreferenzeGUI</code> su cui si basa la GUI dello
+	 *             <code>ScrollPane</code>
+	 * @param view componente da mostrare nello <code>ScrollPane</code>
+	 */
 	public ScrollPane( PreferenzeGUI gui, JPanel view ) {
 		this( view, gui.colori.sfondo(), gui.colori.interagibile(), gui.colori.bordoGenerico(), gui.colori.bordoGenerico() );
 		gui.addObserver( this );
 	}
 
-	public ScrollPane( JPanel view, Color sfondo, Color bottone, Color thumb, Color coloreFreccia ) {
+	/**
+	 * Costruttore con parametri specifici
+	 * 
+	 * @param view          componente da mostrare nello <code>ScrollPane</code>
+	 * @param sfondo        colore sfondo dello <code>ScrollPane</code>
+	 * @param bottone       colore dei bottoni delle <code>JScrollBar</code> dello
+	 *                      <code>ScrollPane</code>
+	 * @param thumb         colore del thumb delle <code>JScrollBar</code> dello
+	 *                      <code>ScrollPane</code>
+	 * @param coloreFreccia colore freccia dei bottoni
+	 */
+	public ScrollPane( JPanel view, Color coloreSfondo, Color coloreBottone, Color coloreThumb, Color coloreFreccia ) {
 		super( view );
 		setBorder( BorderFactory.createEmptyBorder() );
-		setBackground( sfondo );
+		setBackground( coloreSfondo );
 		getHorizontalScrollBar().setUnitIncrement( 20 );
 		getHorizontalScrollBar().setUI( new BasicScrollBarUI() {
 			@Override
 			protected void configureScrollBarColors() {
-				this.thumbColor = thumb;
-				this.trackColor = sfondo;
+				this.thumbColor = coloreThumb;
+				this.trackColor = coloreSfondo;
 			}
 
 			@Override
 			protected JButton createDecreaseButton( int orientation ) {
-				JButton button = new BasicArrowButton( orientation, sfondo, bottone, coloreFreccia, bottone );
-				button.setBorder(
-						BorderFactory.createCompoundBorder( BorderFactory.createLineBorder( sfondo ), BorderFactory.createEmptyBorder( 5, 15, 5, 15 ) ) );
+				JButton button = new BasicArrowButton( orientation, coloreSfondo, coloreBottone, coloreFreccia, coloreBottone );
+				button.setBorder( BorderFactory.createCompoundBorder( BorderFactory.createLineBorder( coloreSfondo ),
+						BorderFactory.createEmptyBorder( 5, 15, 5, 15 ) ) );
 				return button;
 			}
 
 			@Override
 			protected JButton createIncreaseButton( int orientation ) {
-				JButton button = new BasicArrowButton( orientation, sfondo, bottone, coloreFreccia, bottone );
-				button.setBorder(
-						BorderFactory.createCompoundBorder( BorderFactory.createLineBorder( sfondo ), BorderFactory.createEmptyBorder( 5, 15, 5, 15 ) ) );
+				JButton button = new BasicArrowButton( orientation, coloreSfondo, coloreBottone, coloreFreccia, coloreBottone );
+				button.setBorder( BorderFactory.createCompoundBorder( BorderFactory.createLineBorder( coloreSfondo ),
+						BorderFactory.createEmptyBorder( 5, 15, 5, 15 ) ) );
 				return button;
 			}
 		} );
@@ -59,23 +77,23 @@ public class ScrollPane extends JScrollPane implements Observer {
 		getVerticalScrollBar().setUI( new BasicScrollBarUI() {
 			@Override
 			protected void configureScrollBarColors() {
-				this.thumbColor = thumb;
-				this.trackColor = sfondo;
+				this.thumbColor = coloreThumb;
+				this.trackColor = coloreSfondo;
 			}
 
 			@Override
 			protected JButton createDecreaseButton( int orientation ) {
-				JButton button = new BasicArrowButton( orientation, sfondo, bottone, coloreFreccia, bottone );
-				button.setBorder(
-						BorderFactory.createCompoundBorder( BorderFactory.createLineBorder( sfondo ), BorderFactory.createEmptyBorder( 5, 15, 5, 15 ) ) );
+				JButton button = new BasicArrowButton( orientation, coloreSfondo, coloreBottone, coloreFreccia, coloreBottone );
+				button.setBorder( BorderFactory.createCompoundBorder( BorderFactory.createLineBorder( coloreSfondo ),
+						BorderFactory.createEmptyBorder( 5, 15, 5, 15 ) ) );
 				return button;
 			}
 
 			@Override
 			protected JButton createIncreaseButton( int orientation ) {
-				JButton button = new BasicArrowButton( orientation, sfondo, bottone, coloreFreccia, bottone );
-				button.setBorder(
-						BorderFactory.createCompoundBorder( BorderFactory.createLineBorder( sfondo ), BorderFactory.createEmptyBorder( 5, 15, 5, 15 ) ) );
+				JButton button = new BasicArrowButton( orientation, coloreSfondo, coloreBottone, coloreFreccia, coloreBottone );
+				button.setBorder( BorderFactory.createCompoundBorder( BorderFactory.createLineBorder( coloreSfondo ),
+						BorderFactory.createEmptyBorder( 5, 15, 5, 15 ) ) );
 				return button;
 			}
 		} );

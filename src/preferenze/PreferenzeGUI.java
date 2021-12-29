@@ -3,7 +3,6 @@ package preferenze;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -14,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.util.Observable;
 
 import javax.swing.Icon;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import gui.Bottone;
@@ -400,6 +400,13 @@ public class PreferenzeGUI extends Observable {
 		return grid;
 	}
 
+	/**
+	 * Crea la classe <code>ScrollPane</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code>
+	 * 
+	 * @param view componente da mostrare nello <code>ScrollPane</code>
+	 * @return la classe <code>ScrollPane</code> creata
+	 */
 	public ScrollPane creaScrollPane( JPanel view ) {
 		return new ScrollPane( this, view );
 	}
@@ -486,6 +493,25 @@ public class PreferenzeGUI extends Observable {
 		return creaGridLayout( 2, 1, new Component[] { label, componente } );
 	}
 
+	/**
+	 * Crea una classe <code>Layout</code> contenete un <code>PasswordField</code>
+	 * di 10 colonne e un <code>Bottone</code> per mostrare e nascondere il testo
+	 * della password
+	 * 
+	 * @return la classe <code>Layout</code> creata
+	 */
+	public Layout creaPasswordFieldSH() {
+		return creaPasswordFieldSH( creaPasswordField( 10 ) );
+	}
+
+	/**
+	 * Crea una classe <code>Layout</code> contenete un <code>PasswordField</code> e
+	 * un <code>Bottone</code> per mostrare e nascondere il testo della password
+	 * 
+	 * @param pswField la classe <code>PasswordField</code> da aggiungere al
+	 *                 <code>Layout</code>
+	 * @return la classe <code>Layout</code> creata
+	 */
 	public Layout creaPasswordFieldSH( PasswordField pswField ) {
 		Bottone sh = new Bottone( this, "👁", new ActionListener() {
 			boolean mostra = false;
@@ -513,30 +539,46 @@ public class PreferenzeGUI extends Observable {
 		return grid;
 	}
 
-	public Dialog creaDialog( Frame finestra, String titolo, boolean modale, int larghezza, int altezza, JPanel child, JPanel panelBottoni,
+	/**
+	 * Crea una classe <code>Dialog</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code> e aggiungendo elementi al <code>Dialog</code>
+	 * 
+	 * @param finestra       <code>Frame</code> a cui appartiene
+	 * @param titolo         titolo del <code>Dialog</code>
+	 * @param modale         se il <code>Dialog</code> è modale
+	 * @param larghezza      larghezza della finestra del <code>Dialog</code>
+	 * @param altezza        altezza della finestra del <code>Dialog</code>
+	 * @param child          componente da mostrare nel <code>Dialog</code>
+	 * @param panelloBottoni pannello dei bottoni del <code>Dialog</code>
+	 * @param visibile       se mostrare dopo la creazione del <code>Dialog</code>
+	 * @return la classe <code>Dialog</code> creata
+	 */
+	public Dialog creaDialog( JFrame finestra, String titolo, boolean modale, int larghezza, int altezza, JPanel child, JPanel panelloBottoni,
 			boolean visibile ) {
 		Dialog dialog = new Dialog( finestra, titolo, modale, larghezza, altezza );
 		dialog.add( child, BorderLayout.CENTER );
-		dialog.add( panelBottoni, BorderLayout.SOUTH );
+		dialog.add( panelloBottoni, BorderLayout.SOUTH );
 		dialog.setDefaultCloseOperation( Dialog.DO_NOTHING_ON_CLOSE );
 		dialog.setVisible( visibile );
 		return dialog;
 	}
 
 	/**
+	 * Crea una classe <code>Layout</code> per disporre i bottoni orizzontalmente e
+	 * ancorati a destra
 	 * 
-	 * @param testoBottoni
-	 * @param listeners
-	 * @return
+	 * @param bottoni array di <code>Bottone</code> da aggiungere al
+	 *                <code>Layout</code>
+	 * @return la classe <code>Layout</code> creata
 	 */
-	public Layout creaPanelBottoni( String[] testoBottoni, ActionListener[] listeners ) {
+	public Layout creaPanelloBottoni( Bottone[] bottoni ) {
 
-		Layout grid = creaGridLayout( 1, testoBottoni.length );
+		Layout grid = creaGridLayout( 1, bottoni.length );
 		grid.setBackground( colori.suSfondo() );
 		( ( GridLayout ) grid.getLayout() ).setHgap( 5 );
 
-		for ( int i = 0; i < testoBottoni.length; i++ ) {
-			grid.add( creaBottone( testoBottoni[i], listeners[i] ) );
+		for ( int i = 0; i < bottoni.length; i++ ) {
+			grid.add( bottoni[i] );
 		}
 
 		Layout grid2 = creaGridBagLayout();
@@ -546,6 +588,19 @@ public class PreferenzeGUI extends Observable {
 		return grid2;
 	}
 
+	/**
+	 * Crea una classe <code>Layout</code> con layout manager
+	 * <code>GridLayout</code> per disporre dei bottoni in una griglia
+	 * 
+	 * @param righe   numero di righe del <code>GridLayout</code>
+	 * @param colonne numero di colonne del <code>GridLayout</code>
+	 * @param bottoni array di <code>Bottone</code> da aggiungere al
+	 *                <code>Layout</code>
+	 * @param Hgap    spazio orizzontale tra le componenti del
+	 *                <code>GridLayout</code>
+	 * @param Vgap    spazio verticale tra le componenti del <code>GridLayout</code>
+	 * @return la classe <code>Layout</code> creata
+	 */
 	public Layout creaGrigliaBottoni( int righe, int colonne, Bottone[] bottoni, int Hgap, int Vgap ) {
 		Layout gBottoni = creaGridLayout( righe, colonne );
 		( ( GridLayout ) gBottoni.getLayout() ).setHgap( Hgap );
@@ -558,10 +613,44 @@ public class PreferenzeGUI extends Observable {
 		return gBottoni;
 	}
 
+	/**
+	 * Crea una classe <code>Bottone</code> che permette di cambiare il tema
+	 * predefinito chiaro quello predefinito scuro
+	 * 
+	 * @return la classe <code>Bottone</code> creata
+	 */
+	public Bottone creaBottoneCambiaTemaChiaroScuro() {
+		return creaBottoneCambiaTemaChiaroScuro( "☀", "🌙", true, new PreferenzeGUI( TEMA_CHIARO ), new PreferenzeGUI( TEMA_SCURO ) );
+	}
+
+	/**
+	 * Crea una classe <code>Bottone</code> che permette di cambiare il tema
+	 * personalizzato chiaro quello personalizzato scuro, con testo predefinito
+	 * 
+	 * @param temaChiaro la classe <code>PreferenzeGUI</code> con i valori del tema
+	 *                   chiaro
+	 * @param temaScuro  la classe <code>PreferenzeGUI</code> con i valori del tema
+	 *                   scuro
+	 * @return la classe <code>Bottone</code> creata
+	 */
 	public Bottone creaBottoneCambiaTemaChiaroScuro( PreferenzeGUI temaChiaro, PreferenzeGUI temaScuro ) {
 		return creaBottoneCambiaTemaChiaroScuro( "☀", "🌙", true, temaChiaro, temaScuro );
 	}
 
+	/**
+	 * Crea una classe <code>Bottone</code> che permette di cambiare il tema
+	 * personalizzato chiaro e quello personalizzato scuro, con testo personalizzato
+	 * 
+	 * @param testoTemaChiaro testo del bottone quando è impostato il tema chiaro
+	 * @param testoTemaScuro  testo del bottone quando è impostato il tema scuro
+	 * @param testoEmoji      se il testo è un emoji, in tal caso utilizza il font
+	 *                        <b>Segoe UI Emoji</b>
+	 * @param temaChiaro      la classe <code>PreferenzeGUI</code> con i valori del
+	 *                        tema chiaro
+	 * @param temaScuro       la classe <code>PreferenzeGUI</code> con i valori del
+	 *                        tema scuro
+	 * @return la classe <code>Bottone</code> creata
+	 */
 	public Bottone creaBottoneCambiaTemaChiaroScuro( String testoTemaChiaro, String testoTemaScuro, boolean testoEmoji, PreferenzeGUI temaChiaro,
 			PreferenzeGUI temaScuro ) {
 

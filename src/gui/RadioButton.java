@@ -7,8 +7,6 @@ public class RadioButton extends JRadioButton {
 
 	private static final long serialVersionUID = 1L;
 
-	// TODO sistemare
-
 	public RadioButton( Label label, Icon icona, boolean selezionato ) {
 		super( label.getText(), selezionato );
 		setBackground( label.getBackground() );

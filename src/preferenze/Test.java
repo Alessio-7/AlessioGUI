@@ -8,8 +8,7 @@ public class Test {
 		Layout l = gui.creaGridBagLayout();
 
 		l.add( gui.creaDateChooser() );
-
-		l.add( gui.creaBottoneCambiaTemaChiaroScuro( new PreferenzeGUI( PreferenzeGUI.TEMA_CHIARO ), new PreferenzeGUI( PreferenzeGUI.TEMA_SCURO ) ) );
+		l.add( gui.creaPasswordFieldSH() );
 		gui.creaFinestra( "Ciao", 800, 800, l, true );
 	}
 }
