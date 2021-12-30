@@ -462,10 +462,31 @@ public class PreferenzeGUI extends Observable {
 		return new ScrollPane( this, view );
 	}
 
+	/**
+	 * Crea la classe <code>Finestra</code> estesa a schermo intero a cui aggiunge uno <code>ScrollPane</code> 
+	 * contenete un componente personalizzato. Si può scegliere se alla 
+	 * creazione la <code>Finestra</code> sia visibile
+	 * 
+	 * @param titolo titolo della <code>Finestra</code>
+	 * @param child componente personjalizzato contenuto nello <code>ScrollPane</code>
+	 * @param visibile se la finestra deve essere visibile alla fine della creazione
+	 * @return la classe <code>Finestra</code> creata
+	 */
 	public Finestra creaFinestra( String titolo, JPanel child, boolean visibile ) {
 		return creaFinestra( titolo, child, null, visibile );
 	}
 
+	/**
+	 * Crea la classe <code>Finestra</code> estesa a schermo intero a cui aggiunge uno <code>ScrollPane</code> 
+	 * contenete un componente personalizzato e una <code>MenuBar</code>.S i può scegliere se alla 
+	 * creazione la <code>Finestra</code> sia visibile
+	 *  
+	 * @param titolo titolo della <code>Finestra</code>
+	 * @param child componente personjalizzato contenuto nello <code>ScrollPane</code>
+	 * @param menuBar <code>MenuBar</code> da aggiungere alla <code>Finestra</code>
+	 * @param visibile se la finestra deve essere visibile alla fine della creazione
+	 * @return la classe <code>Finestra</code> creata
+	 */
 	public Finestra creaFinestra( String titolo, JPanel child, MenuBar menuBar, boolean visibile ) {
 		Finestra ritorno = new Finestra( titolo, Finestra.schermo.width / 2, Finestra.schermo.height / 2, Finestra.MAXIMIZED_BOTH );
 		ritorno.add( creaScrollPane( child ), BorderLayout.CENTER );
@@ -476,10 +497,35 @@ public class PreferenzeGUI extends Observable {
 		return ritorno;
 	}
 
+	/**
+	 * Crea la classe <code>Finestra</code> centrata nello schermo a cui aggiunge uno <code>ScrollPane</code> 
+	 * contenete un componente personalizzato. Si può scegliere se alla 
+	 * creazione la <code>Finestra</code> sia visibile
+	 * 
+	 * @param titolo titolo della <code>Finestra</code>
+	 * @param larghezza larghezza della <code>Finestra</code>
+	 * @param altezza altezza della <code>Finestra</code>
+	 * @param child componente personjalizzato contenuto nello <code>ScrollPane</code>
+	 * @param visibile se la finestra deve essere visibile alla fine della creazione
+	 * @return la classe <code>Finestra</code> creata
+	 */
 	public Finestra creaFinestra( String titolo, int larghezza, int altezza, JPanel child, boolean visibile ) {
 		return creaFinestra( titolo, larghezza, altezza, child, null, visibile );
 	}
 
+	/**
+	 * Crea la classe <code>Finestra</code> centrata nello schermo a cui aggiunge uno <code>ScrollPane</code> 
+	 * contenete un componente personalizzato e una <code>MenuBar</code>. Si può scegliere se alla 
+	 * creazione la <code>Finestra</code> sia visibile 
+	 * 
+	 *@param titolo titolo della <code>Finestra</code>
+	 * @param larghezza larghezza della <code>Finestra</code>
+	 * @param altezza altezza della <code>Finestra</code>
+	 * @param child componente personjalizzato contenuto nello <code>ScrollPane</code>
+	 * @param menuBar <code>MenuBar</code> da aggiungere alla <code>Finestra</code>
+	 * @param visibile se la finestra deve essere visibile alla fine della creazione
+	 * @return la classe <code>Finestra</code> creata
+	 */
 	public Finestra creaFinestra( String titolo, int larghezza, int altezza, JPanel child, MenuBar menuBar, boolean visibile ) {
 		Finestra ritorno = new Finestra( titolo, larghezza, altezza, Finestra.NORMAL );
 		ritorno.add( creaScrollPane( child ), BorderLayout.CENTER );
@@ -506,18 +552,46 @@ public class PreferenzeGUI extends Observable {
 		return new Menu( this, testo, componenti, icona, parteSubMenu );
 	}
 
+	/**
+	 * Crea la classe <code>Separatore</code> impiegando questa
+	 * classe <code>PreferenzeGUI</code>
+	 * 
+	 *@return la classe <code>Separatore</code> creata
+	 */
 	public Separatore creaSeparatore() {
 		return new Separatore( this );
 	}
 
+	/**
+	 * Crea la classe <code>MenuBar</code> impiegando questa
+	 * classe <code>PreferenzeGUI</code>
+	 * 
+	 *@param componenti componenti da aggiungere alla <code>MenuBar</code>
+	 * 
+	 *@return la classe <code>MenuBar</code> creata
+	 */
 	public MenuBar creaMenuBar( Component[] componenti ) {
 		return new MenuBar( this, componenti );
 	}
 
+	/**
+	 * Crea la classe <code>MenuBar</code> impiegando questa
+	 * classe <code>PreferenzeGUI</code>
+	 * 
+	 *@return la classe <code>MenuBar</code> creata
+	 */
 	public MenuBar creaMenuBar() {
 		return new MenuBar( this );
 	}
 
+	/**
+	 * Crea la classe <code>MenuBar</code> tramite la classe <code>ListaOggettiMenu</code> impiegando questa
+	 * classe <code>PreferenzeGUI</code>
+	 * 
+	 *@param menu <code>ListaOggettiMenu</code> da cui generare i componenti da aggiungere alla <code>MenuBar</code>
+	 * 
+	 *@return la classe <code>MenuBar</code> creata
+	 */
 	public MenuBar creaMenuBarDaListaOggettiMenu( ListaOggettiMenu menu ) {
 		MenuBar ritorno = null;
 		try {
@@ -528,10 +602,24 @@ public class PreferenzeGUI extends Observable {
 		return ritorno;
 	}
 
+	/**
+	 * Crea la classe <code>PopupMenu</code> impiegando questa
+	 * classe <code>PreferenzeGUI</code>
+	 * 
+	 *@return la classe <code>PopupMenu</code> creata
+	 */
 	public PopupMenu creaPopupMenu() {
 		return new PopupMenu( this );
 	}
 
+	/**
+	 * Crea la classe <code>PopupMenu</code> tramite la classe <code>ListaOggettiMenu</code> impiegando questa
+	 * classe <code>PreferenzeGUI</code>
+	 * 
+	 *@param menu <code>ListaOggettiMenu</code> da cui generare i componenti da aggiungere al <code>PopupMenu</code>
+	 * 
+	 *@return la classe <code>PopupMenu</code> creata
+	 */
 	public PopupMenu creaPopupMenuDaListaOggettiMenu( ListaOggettiMenu menu ) {
 		return new PopupMenu( this, menu );
 	}
@@ -613,12 +701,12 @@ public class PreferenzeGUI extends Observable {
 	 *                   <code>Layout</code>
 	 * @return la classe <code>Layout</code> creata
 	 */
-	public Layout creaGruppoLabelComponente( String[] testoLabel, Component[] componenti ) {
+	public Layout creaGruppoLabelComponenteOrizzontale( String[] testoLabel, Component[] componenti ) {
 		Label[] label = new Label[testoLabel.length];
 		for ( int i = 0; i < label.length; i++ ) {
 			label[i] = creaLabel( testoLabel[i] );
 		}
-		return creaGruppoLabelComponente( label, componenti );
+		return creaGruppoLabelComponenteOrizzontale( label, componenti );
 	}
 
 	/**
@@ -632,11 +720,49 @@ public class PreferenzeGUI extends Observable {
 	 *                   <code>Layout</code>
 	 * @return la classe <code>Layout</code> creata
 	 */
-	public Layout creaGruppoLabelComponente( Label[] label, Component[] componenti ) {
+	public Layout creaGruppoLabelComponenteOrizzontale( Label[] label, Component[] componenti ) {
 		Layout l = creaGridBagLayout();
 		for ( int i = 0; i < label.length; i++ ) {
 			l.add( label[i], creaGridBagConstraints( 0, i, 1, 1, 0.1, 1, GridBagConstraints.WEST, GridBagConstraints.BOTH, 5, 0, 5, 5, 0, 0 ) );
 			l.add( componenti[i], creaGridBagConstraints( 1, i, GridBagConstraints.CENTER, GridBagConstraints.NONE, 5, 5, 5, 0 ) );
+		}
+		l.setBorder( bordi.bordoGenerico( 0, new Insets( 10, 10, 10, 10 ) ) );
+		return l;
+	}
+	
+	/**
+	 * Crea una classe <code>Layout</code> con layout manager
+	 * <code>GridBagLayout</code> contenete delle <code>Label</code> e dei <code>Component</code> impilati
+	 * 
+	 * @param testoLabel array da cui generare le <code>Label</code> da aggiungere
+	 *                   al <code>Layout</code>
+	 * @param componenti array di <code>Component</code> da aggiungere al
+	 *                   <code>Layout</code>
+	 * @return la classe <code>Layout</code> creata
+	 */
+	public Layout creaGruppoLabelComponenteVerticale( String[] testoLabel, Component[] componenti ) {
+		Label[] label = new Label[testoLabel.length];
+		for ( int i = 0; i < label.length; i++ ) {
+			label[i] = creaLabel( testoLabel[i] );
+		}
+		return creaGruppoLabelComponenteVerticale( label, componenti );
+	}
+
+	/**
+	 * Crea una classe <code>Layout</code> con layout manager
+	 * <code>GridBagLayout</code> contenete delle <code>Label</code> e dei <code>Component</code> impilati
+	 * 
+	 * @param label      array di <code>Label</code> da aggiungere al
+	 *                   <code>Layout</code>
+	 * @param componenti array di <code>Component</code> da aggiungere al
+	 *                   <code>Layout</code>
+	 * @return la classe <code>Layout</code> creata
+	 */
+	public Layout creaGruppoLabelComponenteVerticale( Label[] label, Component[] componenti ) {
+		Layout l = creaGridBagLayout();
+		for ( int i = 0; i < label.length; i++ ) {
+			l.add( label[i], creaGridBagConstraints( 0, 2*i, 1, 1, 0.1, 1, GridBagConstraints.WEST, GridBagConstraints.BOTH, 5, 0, 5, 5, 0, 0 ) );
+			l.add( componenti[i], creaGridBagConstraints( 0, (2*i)+1, GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, 5, 5, 5, 0 ) );
 		}
 		l.setBorder( bordi.bordoGenerico( 0, new Insets( 10, 10, 10, 10 ) ) );
 		return l;

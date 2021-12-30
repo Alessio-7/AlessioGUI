@@ -36,6 +36,7 @@ public class PopupMenu extends JPopupMenu implements Observer {
 					add( ( MenuItem ) item );
 				}
 			} catch ( WrongValueException e ) {
+				e.printStackTrace();
 			}
 		}
 	}
@@ -51,7 +52,6 @@ public class PopupMenu extends JPopupMenu implements Observer {
 
 	public PopupMenu( Color coloreSfondo ) {
 		setBorderPainted( false );
-		// setBorder( BorderFactory.createEmptyBorder() );
 		setBackground( coloreSfondo );
 	}
 
