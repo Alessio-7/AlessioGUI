@@ -28,7 +28,7 @@ public class Dialog extends JDialog {
 	private int ritornoSiNo = -1;
 
 	public enum Messaggio {
-		INFO, AVVERTENZA, ERRORE
+		INFO, AVVERTIMENTO, ERRORE
 	}
 
 	public Dialog( JFrame finestra, String titolo, boolean modale, int larghezza, int altezza ) {
@@ -204,7 +204,7 @@ public class Dialog extends JDialog {
 		try {
 			UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
 			switch ( messaggio ) {
-				case AVVERTENZA: {
+				case AVVERTIMENTO: {
 					icona = UIManager.getIcon( "OptionPane.warningIcon" );
 					break;
 				}

@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 
+import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -33,6 +34,7 @@ import gui.ScrollPane;
 import gui.Separatore;
 import gui.TextArea;
 import gui.TextField;
+import gui.WrapLayout;
 import utility.Dialog;
 import utility.ListaOggettiMenu;
 import utility.WrongValueException;
@@ -396,8 +398,57 @@ public class PreferenzeGUI extends Observable {
 	 * @return la classe <code>Layout</code> creata
 	 */
 	public Layout creaGridBagLayout() {
-		Layout grid = new Layout( this, new GridBagLayout() );
-		return grid;
+		return new Layout( this, new GridBagLayout() );
+	}
+
+	public GridBagConstraints creaGridBagConstraints( int gridx, int gridy, int anchor, int fill, int topInsets, int leftInsets, int bottomInsets,
+			int rightInsets ) {
+		return creaGridBagConstraints( gridx, gridy, 1, 1, 1.0, 1.0, anchor, fill, topInsets, leftInsets, bottomInsets, rightInsets, 0, 0 );
+	}
+
+	public GridBagConstraints creaGridBagConstraints( int gridx, int gridy, int gridwidth, int gridheight, double weightx, double weighty, int anchor,
+			int fill, int topInsets, int leftInsets, int bottomInsets, int rightInsets, int ipadx, int ipady ) {
+		return new GridBagConstraints( gridx, gridy, gridwidth, gridheight, weightx, weighty, anchor, fill,
+				new Insets( topInsets, leftInsets, bottomInsets, rightInsets ), ipadx, ipady );
+	}
+
+	public GridBagConstraints creaGridBagConstraints( int gridx, int gridy, int gridwidth, int gridheight, double weightx, double weighty, int anchor,
+			int fill, Insets insets, int ipadx, int ipady ) {
+		return new GridBagConstraints( gridx, gridy, gridwidth, gridheight, weightx, weighty, anchor, fill, insets, ipadx, ipady );
+	}
+
+	/**
+	 * Crea la classe <code>Layout</code> con il layout manager
+	 * <code>WrapLayout</code>, impiegando questa classe <code>PreferenzeGUI</code>
+	 * 
+	 * @return la classe <code>Layout</code> creata
+	 */
+	public Layout creaWrapLayout() {
+		return new Layout( this, new WrapLayout() );
+	}
+
+	/**
+	 * Crea la classe <code>Layout</code> con il layout manager
+	 * <code>WrapLayout</code>, impiegando questa classe <code>PreferenzeGUI</code>
+	 * 
+	 * @param align l'alliniamento del layout
+	 * @return la classe <code>Layout</code> creata
+	 */
+	public Layout creaWrapLayout( int align ) {
+		return new Layout( this, new WrapLayout( align ) );
+	}
+
+	/**
+	 * Crea la classe <code>Layout</code> con il layout manager
+	 * <code>BoxLayout</code>, impiegando questa classe <code>PreferenzeGUI</code>
+	 * 
+	 * @param axis l'asse di alliniamento del layout
+	 * @return la classe <code>Layout</code> creata
+	 */
+	public Layout creaBoxLayout( int axis ) {
+		Layout l = new Layout( this, null );
+		l.setLayout( new BoxLayout( l, axis ) );
+		return l;
 	}
 
 	/**
@@ -485,12 +536,110 @@ public class PreferenzeGUI extends Observable {
 		return new PopupMenu( this, menu );
 	}
 
-	public Layout creaLabelComponenteVerticale( Label label, Component componente ) {
-		return creaGridLayout( 2, 1, new Component[] { label, componente } );
+	/**
+	 * Crea una classe <code>Layout</code> con layout manager
+	 * <code>GridBagLayout</code> contenete una <code>Label</code> con il font
+	 * generico e un <code>Component</code> ancorati a sinistra per disporli
+	 * verticalmente con un distanziamento tra i due di 5 pixel
+	 * 
+	 * @param testoLabel testo della <code>Label</code> da aggiungere al
+	 *                   <code>Layout</code>
+	 * @param componente <code>Component</code> da aggiungere al <code>Layout</code>
+	 * @return la classe <code>Layout</code> creata
+	 */
+	public Layout creaLabelComponenteVerticale( String testoLabel, Component componente ) {
+		return creaLabelComponenteVerticale( creaLabel( testoLabel ), componente );
 	}
 
+	/**
+	 * Crea una classe <code>Layout</code> con layout manager
+	 * <code>GridBagLayout</code> contenete una <code>Label</code> e un
+	 * <code>Component</code> ancorati a sinistra per disporli verticalmente con un
+	 * distanziamento tra i due di 5 pixel
+	 * 
+	 * @param label      <code>Label</code> da aggiungere al <code>Layout</code>
+	 * @param componente <code>Component</code> da aggiungere al <code>Layout</code>
+	 * @return la classe <code>Layout</code> creata
+	 */
+	public Layout creaLabelComponenteVerticale( Label label, Component componente ) {
+		Layout l = creaGridBagLayout();
+		l.add( label, creaGridBagConstraints( 0, 0, GridBagConstraints.WEST, GridBagConstraints.NONE, 0, 0, 5, 0 ) );
+		l.add( componente, creaGridBagConstraints( 0, 1, GridBagConstraints.WEST, GridBagConstraints.NONE, 0, 0, 0, 0 ) );
+		l.setBorder( bordi.bordoGenerico( 0, new Insets( 10, 10, 10, 10 ) ) );
+		return l;
+	}
+
+	/**
+	 * Crea una classe <code>Layout</code> con layout manager
+	 * <code>GridBagLayout</code> contenete una <code>Label</code> con il font
+	 * generico ancorata a destra e un <code>Component</code> ancorato a sinistra
+	 * per disporli orizzontalmente con un distanziamento tra i due di 10 pixel
+	 * 
+	 * @param testoLabel testo della <code>Label</code> da aggiungere al
+	 *                   <code>Layout</code>
+	 * @param componente <code>Component</code> da aggiungere al <code>Layout</code>
+	 * @return la classe <code>Layout</code> creata
+	 */
+	public Layout creaLabelComponenteOrizzontale( String testoLabel, Component componente ) {
+		return creaLabelComponenteOrizzontale( creaLabel( testoLabel ), componente );
+	}
+
+	/**
+	 * Crea una classe <code>Layout</code> con layout manager
+	 * <code>GridBagLayout</code> contenete una <code>Label</code> e un
+	 * <code>Component</code> ancorato a sinistra per disporli orizzontalmente con
+	 * un distanziamento tra i due di 10 pixel
+	 * 
+	 * @param label      <code>Label</code> da aggiungere al <code>Layout</code>
+	 * @param componente <code>Component</code> da aggiungere al <code>Layout</code>
+	 * @return la classe <code>Layout</code> creata
+	 */
 	public Layout creaLabelComponenteOrizzontale( Label label, Component componente ) {
-		return creaGridLayout( 2, 1, new Component[] { label, componente } );
+		Layout l = creaGridBagLayout();
+		l.add( label, creaGridBagConstraints( 0, 0, 1, 1, 0.1, 1, GridBagConstraints.WEST, GridBagConstraints.BOTH, 0, 0, 0, 10, 0, 0 ) );
+		l.add( componente, creaGridBagConstraints( 1, 0, GridBagConstraints.EAST, GridBagConstraints.HORIZONTAL, 0, 0, 0, 0 ) );
+		l.setBorder( bordi.bordoGenerico( 0, new Insets( 10, 10, 10, 10 ) ) );
+		return l;
+	}
+
+	/**
+	 * Crea una classe <code>Layout</code> con layout manager
+	 * <code>GridBagLayout</code> contenete delle <code>Label</code> ancorate a
+	 * sinistra e dei <code>Component</code> a destra
+	 * 
+	 * @param testoLabel array da cui generare le <code>Label</code> da aggiungere
+	 *                   al <code>Layout</code>
+	 * @param componenti array di <code>Component</code> da aggiungere al
+	 *                   <code>Layout</code>
+	 * @return la classe <code>Layout</code> creata
+	 */
+	public Layout creaGruppoLabelComponente( String[] testoLabel, Component[] componenti ) {
+		Label[] label = new Label[testoLabel.length];
+		for ( int i = 0; i < label.length; i++ ) {
+			label[i] = creaLabel( testoLabel[i] );
+		}
+		return creaGruppoLabelComponente( label, componenti );
+	}
+
+	/**
+	 * Crea una classe <code>Layout</code> con layout manager
+	 * <code>GridBagLayout</code> contenete delle <code>Label</code> ancorate a
+	 * sinistra e dei <code>Component</code> a destra
+	 * 
+	 * @param label      array di <code>Label</code> da aggiungere al
+	 *                   <code>Layout</code>
+	 * @param componenti array di <code>Component</code> da aggiungere al
+	 *                   <code>Layout</code>
+	 * @return la classe <code>Layout</code> creata
+	 */
+	public Layout creaGruppoLabelComponente( Label[] label, Component[] componenti ) {
+		Layout l = creaGridBagLayout();
+		for ( int i = 0; i < label.length; i++ ) {
+			l.add( label[i], creaGridBagConstraints( 0, i, 1, 1, 0.1, 1, GridBagConstraints.WEST, GridBagConstraints.BOTH, 5, 0, 5, 5, 0, 0 ) );
+			l.add( componenti[i], creaGridBagConstraints( 1, i, GridBagConstraints.CENTER, GridBagConstraints.NONE, 5, 5, 5, 0 ) );
+		}
+		l.setBorder( bordi.bordoGenerico( 0, new Insets( 10, 10, 10, 10 ) ) );
+		return l;
 	}
 
 	/**
