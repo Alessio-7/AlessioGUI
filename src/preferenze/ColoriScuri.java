@@ -2,16 +2,31 @@ package preferenze;
 
 import java.awt.Color;
 
+/**
+ * Classe che implementa l'interfaccia <code>Colori</code> che ritorna colori
+ * per generare una GUI con il tema scuro
+ */
 public class ColoriScuri implements Colori {
 
-	Color colorePrimario;
-	Color coloreSecondario;
+	private Color colorePrimario;
+	private Color coloreSecondario;
 
+	/**
+	 * Costruttore che imposta il colore primario come l'arancione
+	 * <code>Color( 247, 99, 12 )</code> e il secondario come il rosso
+	 * <code>Color( 195, 1, 1 )</code>
+	 */
 	public ColoriScuri() {
 		this.colorePrimario = new Color( 247, 99, 12 );
 		this.coloreSecondario = new Color( 195, 1, 1 );
 	}
 
+	/**
+	 * Costruttore con colore primario e colore secondario personalizzabili
+	 *
+	 * @param colorePrimario   il colore primario
+	 * @param coloreSecondario il colore primario
+	 */
 	public ColoriScuri( Color colorePrimario, Color coloreSecondario ) {
 		this.colorePrimario = colorePrimario;
 		this.coloreSecondario = coloreSecondario;

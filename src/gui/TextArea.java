@@ -24,7 +24,7 @@ public class TextArea extends JTextArea implements Observer {
 
 	/**
 	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
-	 * 
+	 *
 	 * @param gui       la classe <code>PreferenzeGUI</code> su cui si basa la GUI
 	 *                  del <code>TextArea</code>
 	 * @param testo     il testo scritto nel <code>TextArea</code>
@@ -40,7 +40,7 @@ public class TextArea extends JTextArea implements Observer {
 	/**
 	 * Costruttore che impiega le interfaccie <code>Colori</code>,
 	 * <code>Fonts</code>, <code>Bordi</code>
-	 * 
+	 *
 	 * @param colori    l'interfaccia <code>Colori</code> su cui si basano i colori
 	 *                  del <code>TextArea</code>
 	 * @param fonts     l'interfaccia <code>Fonts</code> su cui si basano i font del
@@ -58,7 +58,7 @@ public class TextArea extends JTextArea implements Observer {
 
 	/**
 	 * Costruttore con parametri specifici
-	 * 
+	 *
 	 * @param coloreSfondo il colore dello sfondo del <code>TextArea</code>
 	 * @param coloreTesto  il colore del testo del <code>TextArea</code>
 	 * @param font         il font del testo del <code>TextArea</code>

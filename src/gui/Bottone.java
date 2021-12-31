@@ -30,7 +30,7 @@ public class Bottone extends JButton implements Observer {
 
 	/**
 	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
-	 * 
+	 *
 	 * @param gui            la classe <code>PreferenzeGUI</code> su cui si basa la
 	 *                       GUI del <code>Bottone</code>
 	 * @param testo          il testo del <code>Bottone</code>
@@ -48,7 +48,7 @@ public class Bottone extends JButton implements Observer {
 	/**
 	 * Costruttore che impiega le interfaccie <code>Colori</code>,
 	 * <code>Fonts</code>, <code>Bordi</code>
-	 * 
+	 *
 	 * @param colori         l'interfaccia <code>Colori</code> su cui si basano i
 	 *                       colori del <code>Bottone</code>
 	 * @param fonts          l'interfaccia <code>Fonts</code> su cui si basano i
@@ -57,8 +57,7 @@ public class Bottone extends JButton implements Observer {
 	 *                       bordi del <code>Bottone</code>
 	 * @param testo          il testo del <code>Bottone</code>
 	 * @param actionListener la classe <code>ActionListener</code> che viene
-	 *                       aggiunta al <code>Bottone</code> colori del
-	 *                       bottone
+	 *                       aggiunta al <code>Bottone</code> colori del bottone
 	 * @param fonts          l'interfaccia <code>Fonts</code> su cui si basano i
 	 *                       font del bottone
 	 * @param bordi          l'interfaccia <code>Bordi</code> su cui si basano i
@@ -74,7 +73,7 @@ public class Bottone extends JButton implements Observer {
 
 	/**
 	 * Costruttore con parametri specifici
-	 * 
+	 *
 	 * @param testo               il testo del <code>Bottone</code>
 	 * @param coloreSfondo        il colore dello sfondo del <code>Bottone</code>
 	 * @param coloreSfondoPremuto il colore dello sfondo del <code>Bottone</code>
@@ -85,7 +84,7 @@ public class Bottone extends JButton implements Observer {
 	 * @param bordoFocus          il bordo del <code>Bottone</code> quando il mouse
 	 *                            passa sopra
 	 * @param actionListener      la classe <code>ActionListener</code> che viene
-	 *                            aggiunta al <code>Bottone</code> 
+	 *                            aggiunta al <code>Bottone</code>
 	 * @param testo               il testo del bottone
 	 * @param coloreSfondo        il colore dello sfondo del bottone
 	 * @param coloreSfondoPremuto il colore dello sfondo del bottone quando è

@@ -21,7 +21,7 @@ public class Layout extends JPanel implements Observer {
 
 	/**
 	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
-	 * 
+	 *
 	 * @param gui     la classe <code>PreferenzeGUI</code> su cui si basa la GUI del
 	 *                <code>Layout</code>
 	 * @param manager la classe <code>LayoutManager</code> che viene aggiunta al
@@ -33,7 +33,7 @@ public class Layout extends JPanel implements Observer {
 
 	/**
 	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
-	 * 
+	 *
 	 * @param gui         la classe <code>PreferenzeGUI</code> su cui si basa la GUI
 	 *                    del <code>Layout</code>
 	 * @param manager     la classe <code>LayoutManager</code> che viene aggiunta al

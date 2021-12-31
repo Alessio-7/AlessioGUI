@@ -26,27 +26,73 @@ public class MenuBar extends JMenuBar implements Observer {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
+	 *
+	 * @param gui la classe <code>PreferenzeGUI</code> su cui si basa la GUI della
+	 *            <code>MenuBar</code>
+	 */
 	public MenuBar( PreferenzeGUI gui ) {
 		this( gui, null );
 	}
 
+	/**
+	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
+	 *
+	 * @param gui        la classe <code>PreferenzeGUI</code> su cui si basa la GUI
+	 *                   della <code>MenuBar</code>
+	 * @param componenti array di componenti da aggiungere alla <code>MenuBar</code>
+	 */
 	public MenuBar( PreferenzeGUI gui, Component[] componenti ) {
 		this( gui.colori, gui.bordi, componenti );
 		gui.addObserver( this );
 	}
 
+	/**
+	 * Costruttore che impiega le interfaccie <code>Colori</code>,
+	 * <code>Bordi</code>
+	 *
+	 * @param colori l'interfaccia <code>Colori</code> su cui si basano i colori
+	 *               della <code>MenuBar</code>
+	 * @param bordi  l'interfaccia <code>Bordi</code> su cui si basano i bordi della
+	 *               <code>MenuBar</code>
+	 */
 	public MenuBar( Colori colori, Bordi bordi ) {
 		this( colori.sfondo(), bordi.bordoMenuBar(), null );
 	}
 
+	/**
+	 * Costruttore che impiega le interfaccie <code>Colori</code>,
+	 * <code>Bordi</code>
+	 *
+	 * @param colori     l'interfaccia <code>Colori</code> su cui si basano i colori
+	 *                   della <code>MenuBar</code>
+	 * @param bordi      l'interfaccia <code>Bordi</code> su cui si basano i bordi
+	 *                   della
+	 * @param componenti array di componenti da aggiungere alla <code>MenuBar</code>
+	 */
 	public MenuBar( Colori colori, Bordi bordi, Component[] componenti ) {
 		this( colori.sfondo(), bordi.bordoMenuBar(), componenti );
 	}
 
+	/**
+	 * Costruttore con parametri specifici
+	 *
+	 * @param coloreSfondo colore dello sfondo della <code>MenuBar</code>
+	 * @param bordo        bordo della <code>MenuBar</code>
+	 */
 	public MenuBar( Color coloreSfondo, Border bordo ) {
 		this( coloreSfondo, bordo, null );
 	}
 
+	/**
+	 * Costruttore con parametri specifici
+	 *
+	 * @param coloreSfondo colore dello sfondo della <code>MenuBar</code>
+	 * @param bordo        bordo della <code>MenuBar</code>
+	 * @param componenti   array di componenti da aggiungere alla
+	 *                     <code>MenuBar</code>
+	 */
 	public MenuBar( Color coloreSfondo, Border bordo, Component[] componenti ) {
 		super();
 		setBackground( coloreSfondo );
@@ -58,6 +104,17 @@ public class MenuBar extends JMenuBar implements Observer {
 		}
 	}
 
+	/**
+	 * Permette la creazione agevolata di una <code>MenuBar</code> tramite la
+	 * <code>ListaOggettiMenu</code>
+	 *
+	 * @param gui  la classe <code>PreferenzeGUI</code> su cui si basa la GUI della
+	 *             <code>MenuBar</code> e degli altri componenti
+	 * @param menu la <code>ListaOggettiMenu</code> da cui generare la
+	 *             <code>MenuBar</code>
+	 * @return la classe <code>MenuBar</code>
+	 * @throws WrongValueException
+	 */
 	public static MenuBar creaMenuBarDaListaOggettiMenu( PreferenzeGUI gui, ListaOggettiMenu menu ) throws WrongValueException {
 		MenuBar ritorno = new MenuBar( gui );
 
@@ -82,7 +139,7 @@ public class MenuBar extends JMenuBar implements Observer {
 			MenuItem item = new MenuItem( gui, key, ( ActionListener ) value, parteSubMenu );
 			ritorno = item;
 		} else if ( value instanceof ListaOggettiMenu ) {
-			ArrayList<Component> componenti = new ArrayList<Component>();
+			ArrayList<Component> componenti = new ArrayList<>();
 			ListaOggettiMenu listaMenu = ( ListaOggettiMenu ) value;
 			for ( int j = 0; j < listaMenu.getSize(); j++ ) {
 				Map.Entry<String, Object> entry = listaMenu.getOggetto( j );

@@ -28,7 +28,7 @@ public class PasswordField extends JPasswordField implements Observer {
 
 	/**
 	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
-	 * 
+	 *
 	 * @param gui     la classe <code>PreferenzeGUI</code> su cui si basa la GUI del
 	 *                <code>PasswordField</code>
 	 * @param colonne il numero di colonne del <code>PasswordField</code>
@@ -40,7 +40,7 @@ public class PasswordField extends JPasswordField implements Observer {
 
 	/**
 	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
-	 * 
+	 *
 	 * @param gui          la classe <code>PreferenzeGUI</code> su cui si basa la
 	 *                     GUI del <code>PasswordField</code>
 	 * @param colonne      il numero di colonne del <code>PasswordField</code>
@@ -54,7 +54,7 @@ public class PasswordField extends JPasswordField implements Observer {
 	/**
 	 * Costruttore che impiega le interfaccie <code>Colori</code>,
 	 * <code>Fonts</code>, <code>Bordi</code>
-	 * 
+	 *
 	 * @param colori  l'interfaccia <code>Colori</code> su cui si basano i colori
 	 *                del <code>PasswordField</code>
 	 * @param fonts   l'interfaccia <code>Fonts</code> su cui si basano i font del
@@ -71,7 +71,7 @@ public class PasswordField extends JPasswordField implements Observer {
 	/**
 	 * Costruttore che impiega le interfaccie <code>Colori</code>,
 	 * <code>Fonts</code>, <code>Bordi</code>
-	 * 
+	 *
 	 * @param colori       l'interfaccia <code>Colori</code> su cui si basano i
 	 *                     colori del <code>PasswordField</code>
 	 * @param fonts        l'interfaccia <code>Fonts</code> su cui si basano i font
@@ -88,7 +88,7 @@ public class PasswordField extends JPasswordField implements Observer {
 
 	/**
 	 * Costruttore con parametri specifici
-	 * 
+	 *
 	 * @param coloreSfondo il colore dello sfondo del <code>PasswordField</code>
 	 * @param coloreTesto  il colore del testo del <code>PasswordField</code>
 	 * @param font         il font del testo del <code>PasswordField</code>
@@ -103,7 +103,7 @@ public class PasswordField extends JPasswordField implements Observer {
 
 	/**
 	 * Costruttore con parametri specifici
-	 * 
+	 *
 	 * @param coloreSfondo il colore dello sfondo del <code>PasswordField</code>
 	 * @param coloreTesto  il colore del testo del <code>PasswordField</code>
 	 * @param font         il font del testo del <code>PasswordField</code>

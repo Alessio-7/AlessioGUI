@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JList;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.plaf.basic.BasicComboBoxUI;
@@ -36,7 +37,7 @@ public class ComboBox extends JComboBox<Object> implements Observer {
 
 	/**
 	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
-	 * 
+	 *
 	 * @param gui   la classe <code>PreferenzeGUI</code> su cui si basa la GUI della
 	 *              <code>ComboBox</code>
 	 * @param lista la lista di <code>Object</code> che deve contenere la
@@ -50,7 +51,7 @@ public class ComboBox extends JComboBox<Object> implements Observer {
 	/**
 	 * Costruttore che impiega le interfaccie <code>Colori</code>,
 	 * <code>Fonts</code>, <code>Bordi</code>
-	 * 
+	 *
 	 * @param colori l'interfaccia <code>Colori</code> su cui si basano i colori
 	 *               della <code>ComboBox</code>
 	 * @param fonts  l'interfaccia <code>Fonts</code> su cui si basano i font della
@@ -67,7 +68,7 @@ public class ComboBox extends JComboBox<Object> implements Observer {
 
 	/**
 	 * Costruttore con parametri specifici
-	 * 
+	 *
 	 * @param coloreSfondo    il colore dello sfondo dela <code>ComboBox</code>
 	 * @param coloreTesto     il colore del testo della <code>ComboBox</code>
 	 * @param coloreSelezione il colore dell'oggetto selezionato
@@ -126,7 +127,7 @@ public class ComboBox extends JComboBox<Object> implements Observer {
 
 		@Override
 		protected JButton createArrowButton() {
-			final JButton button = new BasicArrowButton( BasicArrowButton.SOUTH, coloreBottone, coloreBottone, coloreFreccia, coloreBottone );
+			final JButton button = new BasicArrowButton( SwingConstants.SOUTH, coloreBottone, coloreBottone, coloreFreccia, coloreBottone );
 			button.setName( "ComboBox.arrowButton" );
 			button.setBorder( BorderFactory.createLineBorder( coloreBottone ) );
 			return button;

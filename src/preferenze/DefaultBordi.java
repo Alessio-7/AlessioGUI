@@ -6,26 +6,53 @@ import java.awt.Insets;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
+/**
+ * Classe che implementa l'interfaccia <code>Bordi</code>
+ */
 public class DefaultBordi implements Bordi {
 
 	private Colori colori;
 	private int grandezzaDefault;
 	private Insets spazioDefault;
 
+	/**
+	 * Costruttore con la classe personalizzata per i colori dei bordi
+	 *
+	 * @param colori la classe personalizzata che implementa l'interfaccia
+	 *               <code>Colori</code>
+	 */
 	public DefaultBordi( Colori colori ) {
 		this( colori, 2, new Insets( 5, 5, 5, 5 ) );
 	}
 
+	/**
+	 * Costruttore con valori personalizzati
+	 *
+	 * @param colori           la classe personalizzata che implementa l'interfaccia
+	 *                         <code>Colori</code>
+	 * @param grandezzaDefault la grandezza default dei bordi
+	 * @param spazioDefault    lo spazio default dei bordi
+	 */
 	public DefaultBordi( Colori colori, int grandezzaDefault, Insets spazioDefault ) {
 		this.colori = colori;
 		this.grandezzaDefault = grandezzaDefault;
 		this.spazioDefault = spazioDefault;
 	}
 
+	/**
+	 * Ritorna la grandezza default
+	 *
+	 * @return la grandezza default
+	 */
 	public int getGrandezzaDefault() {
 		return grandezzaDefault;
 	}
 
+	/**
+	 * Ritorna lo spazio default
+	 *
+	 * @return lo spazio default
+	 */
 	public Insets getSpazioDefault() {
 		return spazioDefault;
 	}

@@ -22,6 +22,14 @@ import utility.WrongValueException;
  */
 public class PopupMenu extends JPopupMenu implements Observer {
 
+	/**
+	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
+	 *
+	 * @param gui  la classe <code>PreferenzeGUI</code> su cui si basa la GUI del
+	 *             <code>PopupMenu</code>
+	 * @param menu <code>ListaOggettiMenu</code> da cui generare i componenti da
+	 *             aggiungere al <code>PopupMenu</code>
+	 */
 	public PopupMenu( PreferenzeGUI gui, ListaOggettiMenu menu ) {
 		this( gui );
 
@@ -41,15 +49,34 @@ public class PopupMenu extends JPopupMenu implements Observer {
 		}
 	}
 
+	/**
+	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
+	 *
+	 * @param gui  la classe <code>PreferenzeGUI</code> su cui si basa la GUI del
+	 *             <code>PopupMenu</code>
+	 * @param menu <code>ListaOggettiMenu</code> da cui generare i componenti da
+	 *             aggiungere al <code>PopupMenu</code>
+	 */
 	public PopupMenu( PreferenzeGUI gui ) {
 		this( gui.colori );
 		gui.addObserver( this );
 	}
 
+	/**
+	 * Costruttore che impiega l' interfaccia <code>Colori</code>
+	 *
+	 * @param colori l'interfaccia <code>Colori</code> su cui si basano i colori del
+	 *               <code>PopupMenu</code>
+	 */
 	public PopupMenu( Colori colori ) {
 		this( colori.subMenu() );
 	}
 
+	/**
+	 * Costruttore con parametri specifici
+	 *
+	 * @param coloreSfondo colore dello sfondo del <code>PopupMenu</code>
+	 */
 	public PopupMenu( Color coloreSfondo ) {
 		setBorderPainted( false );
 		setBackground( coloreSfondo );
@@ -63,7 +90,7 @@ public class PopupMenu extends JPopupMenu implements Observer {
 			item.setBorderPainted( false );
 			ritorno = item;
 		} else if ( value instanceof ListaOggettiMenu ) {
-			ArrayList<Component> componenti = new ArrayList<Component>();
+			ArrayList<Component> componenti = new ArrayList<>();
 			ListaOggettiMenu listaMenu = ( ListaOggettiMenu ) value;
 			for ( int j = 0; j < listaMenu.getSize(); j++ ) {
 				Map.Entry<String, Object> entry = listaMenu.getOggetto( j );

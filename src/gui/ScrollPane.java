@@ -24,7 +24,7 @@ public class ScrollPane extends JScrollPane implements Observer {
 
 	/**
 	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
-	 * 
+	 *
 	 * @param gui  la classe <code>PreferenzeGUI</code> su cui si basa la GUI dello
 	 *             <code>ScrollPane</code>
 	 * @param view componente da mostrare nello <code>ScrollPane</code>
@@ -36,7 +36,7 @@ public class ScrollPane extends JScrollPane implements Observer {
 
 	/**
 	 * Costruttore con parametri specifici
-	 * 
+	 *
 	 * @param view          componente da mostrare nello <code>ScrollPane</code>
 	 * @param sfondo        colore sfondo dello <code>ScrollPane</code>
 	 * @param bottone       colore dei bottoni delle <code>JScrollBar</code> dello

@@ -42,7 +42,7 @@ public class Label extends JLabel implements Observer {
 
 	/**
 	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
-	 * 
+	 *
 	 * @param gui   la classe <code>PreferenzeGUI</code> su cui si basa la GUI della
 	 *              <code>Label</code>
 	 * @param testo il testo della <code>Label</code>
@@ -55,7 +55,7 @@ public class Label extends JLabel implements Observer {
 
 	/**
 	 * Costruttore con parametri specifici
-	 * 
+	 *
 	 * @param testo       il testo della <code>Label</code>
 	 * @param sfondo      il colore dello sfondo della <code>Label</code>
 	 * @param coloreTesto il colore del testo della <code>Label</code>

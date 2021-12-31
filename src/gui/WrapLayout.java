@@ -31,7 +31,7 @@ public class WrapLayout extends FlowLayout {
 	 * default 5-unit horizontal and vertical gap. The value of the alignment
 	 * argument must be one of <code>WrapLayout</code>, <code>WrapLayout</code>, or
 	 * <code>WrapLayout</code>.
-	 * 
+	 *
 	 * @param align the alignment value
 	 */
 	public WrapLayout( int align ) {
@@ -44,7 +44,7 @@ public class WrapLayout extends FlowLayout {
 	 * <p>
 	 * The value of the alignment argument must be one of <code>WrapLayout</code>,
 	 * <code>WrapLayout</code>, or <code>WrapLayout</code>.
-	 * 
+	 *
 	 * @param align the alignment value
 	 * @param hgap  the horizontal gap between components
 	 * @param vgap  the vertical gap between components
@@ -56,7 +56,7 @@ public class WrapLayout extends FlowLayout {
 	/**
 	 * Returns the preferred dimensions for this layout given the <i>visible</i>
 	 * components in the specified target container.
-	 * 
+	 *
 	 * @param target the component which needs to be laid out
 	 * @return the preferred dimensions to lay out the subcomponents of the
 	 *         specified container
@@ -69,7 +69,7 @@ public class WrapLayout extends FlowLayout {
 	/**
 	 * Returns the minimum dimensions needed to layout the <i>visible</i> components
 	 * contained in the specified target container.
-	 * 
+	 *
 	 * @param target the component which needs to be laid out
 	 * @return the minimum dimensions to lay out the subcomponents of the specified
 	 *         container
@@ -77,7 +77,7 @@ public class WrapLayout extends FlowLayout {
 	@Override
 	public Dimension minimumLayoutSize( Container target ) {
 		Dimension minimum = layoutSize( target, false );
-		minimum.width -= (getHgap() + 1);
+		minimum.width -= ( getHgap() + 1 );
 		return minimum;
 	}
 
@@ -110,7 +110,7 @@ public class WrapLayout extends FlowLayout {
 			int hgap = getHgap();
 			int vgap = getVgap();
 			Insets insets = target.getInsets();
-			int horizontalInsetsAndGap = insets.left + insets.right + (hgap * 2);
+			int horizontalInsetsAndGap = insets.left + insets.right + ( hgap * 2 );
 			int maxWidth = targetWidth - horizontalInsetsAndGap;
 
 			// Fit components into the allowed width
@@ -159,7 +159,7 @@ public class WrapLayout extends FlowLayout {
 			Container scrollPane = SwingUtilities.getAncestorOfClass( JScrollPane.class, target );
 
 			if ( scrollPane != null && target.isValid() ) {
-				dim.width -= (hgap + 1);
+				dim.width -= ( hgap + 1 );
 			}
 
 			return dim;
@@ -171,9 +171,9 @@ public class WrapLayout extends FlowLayout {
 	 * preferred size for the container.
 	 *
 	 * @param dim update the width and height when appropriate
-	 * 
+	 *
 	 * @param rowWidth the width of the row to add
-	 * 
+	 *
 	 * @param rowHeight the height of the row to add
 	 */
 	private void addRow( Dimension dim, int rowWidth, int rowHeight ) {

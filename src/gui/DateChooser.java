@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -14,6 +13,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JPopupMenu;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
 import preferenze.PreferenzeGUI;
 
@@ -49,7 +50,7 @@ public class DateChooser extends Layout implements Observer {
 
 	/**
 	 * Ritorna il giorno selezionato
-	 * 
+	 *
 	 * @return il giorno selezionato
 	 */
 	public int getGiorno() {
@@ -58,7 +59,7 @@ public class DateChooser extends Layout implements Observer {
 
 	/**
 	 * Ritorna il mese selezionato
-	 * 
+	 *
 	 * @return il mese selezionato
 	 */
 	public int getMese() {
@@ -67,7 +68,7 @@ public class DateChooser extends Layout implements Observer {
 
 	/**
 	 * Ritorna l'anno selezionato
-	 * 
+	 *
 	 * @return l'anno selezionato
 	 */
 	public int getAnno() {
@@ -76,7 +77,7 @@ public class DateChooser extends Layout implements Observer {
 
 	/**
 	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
-	 * 
+	 *
 	 * @param gui la classe <code>PreferenzeGUI</code> su cui si basa la GUI del
 	 *            <code>DateChooser</code>
 	 */
@@ -111,6 +112,7 @@ public class DateChooser extends Layout implements Observer {
 
 		popup = gui.creaPopupMenu();
 		popup.setBorderPainted( true );
+		popup.setLightWeightPopupEnabled( false );
 		popup.setBorder( gui.bordi.bordoInteragibile() );
 		generaCalendario();
 		popup.setBackground( calendario.getBackground() );
@@ -152,7 +154,7 @@ public class DateChooser extends Layout implements Observer {
 		} );
 
 		lSceltaMese.add( indietroMese, BorderLayout.WEST );
-		testoMese.setHorizontalAlignment( Label.CENTER );
+		testoMese.setHorizontalAlignment( SwingConstants.CENTER );
 		lSceltaMese.add( testoMese, BorderLayout.CENTER );
 		lSceltaMese.add( avantiMese, BorderLayout.EAST );
 
@@ -218,11 +220,11 @@ public class DateChooser extends Layout implements Observer {
 
 		}
 		if ( popup.isShowing() ) {
-			popup.setVisible( false );
-			popup.validate();
-			popup.show( scegliData, 0, scegliData.getHeight() + 3 );
 
-			meseLayout.repaint();
+			java.awt.Window w = SwingUtilities.getWindowAncestor( popup );
+			w.pack();
+			w.validate();
+			popup.repaint();
 		}
 
 	}
