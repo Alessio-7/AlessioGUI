@@ -947,7 +947,7 @@ public class PreferenzeGUI extends Observable {
 					pswField.setEchoChar( ( char ) 0 );
 					( ( Bottone ) arg0.getSource() ).setText( "<html>&#10060;</html>" );
 				} else {
-					pswField.setEchoChar( '.' );
+					pswField.setEchoChar( '•' );
 					( ( Bottone ) arg0.getSource() ).setText( "<html>&#128065;</html>" );
 				}
 			}
