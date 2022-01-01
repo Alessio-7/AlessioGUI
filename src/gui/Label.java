@@ -12,7 +12,7 @@ import javax.swing.border.Border;
 import preferenze.PreferenzeGUI;
 
 /**
- * Sottoclasse di <code>JLabel</code> che può impiegare la classe
+ * Sottoclasse di <code>JLabel</code> che pu&ograve; impiegare la classe
  * <code>PreferenzeGUI</code>
  *
  */
@@ -56,11 +56,11 @@ public class Label extends JLabel implements Observer {
 	/**
 	 * Costruttore con parametri specifici
 	 *
-	 * @param testo       il testo della <code>Label</code>
-	 * @param sfondo      il colore dello sfondo della <code>Label</code>
-	 * @param coloreTesto il colore del testo della <code>Label</code>
-	 * @param font        il font del testo della <code>Label</code>
-	 * @param bordo       il bordo della <code>Label</code>
+	 * @param testo        il testo della <code>Label</code>
+	 * @param coloreSfondo il colore dello sfondo della <code>Label</code>
+	 * @param coloreTesto  il colore del testo della <code>Label</code>
+	 * @param font         il font del testo della <code>Label</code>
+	 * @param bordo        il bordo della <code>Label</code>
 	 */
 	public Label( String testo, Color coloreSfondo, Color coloreTesto, Font font, Border bordo ) {
 		super( testo );

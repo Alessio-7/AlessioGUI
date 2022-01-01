@@ -44,7 +44,7 @@ public class ListaOggettiMenu {
 	 * Ritorna un <code>Map.Entry</code> contenete il testo e l'oggetto immesso
 	 *
 	 * @param index l'indice del <code>Map.Entry</code>
-	 * @return <code>Map.Entry&ltString, Object&gt </code>
+	 * @return <code>Map.Entry&lt;String, Object&gt; </code>
 	 */
 	public Map.Entry<String, Object> getOggetto( int index ) {
 		return new java.util.AbstractMap.SimpleEntry<>( ordineOggetti.get( index ), oggetti.get( ordineOggetti.get( index ) ) );

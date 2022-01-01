@@ -16,11 +16,13 @@ import utility.ListaOggettiMenu;
 import utility.WrongValueException;
 
 /**
- * Sottoclasse di <code>JPopupMenu</code> che può impiegare la classe
+ * Sottoclasse di <code>JPopupMenu</code> che pu&ograve; impiegare la classe
  * <code>PreferenzeGUI</code>
  *
  */
 public class PopupMenu extends JPopupMenu implements Observer {
+
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
@@ -52,10 +54,8 @@ public class PopupMenu extends JPopupMenu implements Observer {
 	/**
 	 * Costruttore che impiega la classe <code>PreferenzeGUI</code>
 	 *
-	 * @param gui  la classe <code>PreferenzeGUI</code> su cui si basa la GUI del
-	 *             <code>PopupMenu</code>
-	 * @param menu <code>ListaOggettiMenu</code> da cui generare i componenti da
-	 *             aggiungere al <code>PopupMenu</code>
+	 * @param gui la classe <code>PreferenzeGUI</code> su cui si basa la GUI del
+	 *            <code>PopupMenu</code>
 	 */
 	public PopupMenu( PreferenzeGUI gui ) {
 		this( gui.colori );

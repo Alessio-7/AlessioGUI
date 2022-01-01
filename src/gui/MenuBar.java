@@ -18,7 +18,7 @@ import utility.ListaOggettiMenu;
 import utility.WrongValueException;
 
 /**
- * Sottoclasse di <code>JMenuBar</code> che può impiegare la classe
+ * Sottoclasse di <code>JMenuBar</code> che pu&ograve; impiegare la classe
  * <code>PreferenzeGUI</code>
  *
  */
@@ -113,7 +113,19 @@ public class MenuBar extends JMenuBar implements Observer {
 	 * @param menu la <code>ListaOggettiMenu</code> da cui generare la
 	 *             <code>MenuBar</code>
 	 * @return la classe <code>MenuBar</code>
-	 * @throws WrongValueException
+	 * @throws WrongValueException lancia l'eccezione se il valore nella
+	 *                             <code>ListaOggettiMenu</code> non è valido
+	 *                             <p>
+	 *                             valori accettabili:
+	 *                             <ul>
+	 *                             <li><code>ActionListener</code> per generare un
+	 *                             <code>MenuItem</code></li>
+	 *                             <li><code>ListaOggettiMenu</code> per generare un
+	 *                             <i>sub menu</i> <code>Menu</code></li>
+	 *                             <li><code>Separatore</code> per genereare un
+	 *                             <code>Separatore</code>, non necessita di nessun
+	 *                             parametro <code>testo</code></li>
+	 *                             </ul>
 	 */
 	public static MenuBar creaMenuBarDaListaOggettiMenu( PreferenzeGUI gui, ListaOggettiMenu menu ) throws WrongValueException {
 		MenuBar ritorno = new MenuBar( gui );

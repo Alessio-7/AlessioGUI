@@ -10,7 +10,7 @@ import preferenze.Colori;
 import preferenze.PreferenzeGUI;
 
 /**
- * Sottoclasse di <code>JSeparator</code> che può impiegare la classe
+ * Sottoclasse di <code>JSeparator</code> che pu&ograve; impiegare la classe
  * <code>PreferenzeGUI</code>
  *
  */

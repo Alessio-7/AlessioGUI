@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 /**
- * Sottoclasse di <code>JFrame</code>
+ * Sottoclasse della classe <code>JFrame</code>
  */
 public class Finestra extends JFrame {
 
@@ -23,7 +23,7 @@ public class Finestra extends JFrame {
 	 * Costruttore sintetico che imposta le grandezze massime della finestra con le
 	 * grandezze dello schermo e le grandezze minime a 0, posiziona la
 	 * <code>Finestra</code> al centro dello schermo e imposta l'operazione di
-	 * chiusura con <code>Finestra.EXIT_ON_CLOSE</code>
+	 * chiusura con <b>Finestra.EXIT_ON_CLOSE</b>
 	 *
 	 * @param titolo        titolo della <code>Finestra</code>
 	 * @param larghezza     larghezza della <code>Finestra</code>

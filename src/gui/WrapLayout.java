@@ -16,6 +16,9 @@ public class WrapLayout extends FlowLayout {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * dimensione preferita per il layout
+	 */
 	private Dimension preferredLayoutSize;
 
 	/**
@@ -186,10 +189,20 @@ public class WrapLayout extends FlowLayout {
 		dim.height += rowHeight;
 	}
 
+	/**
+	 * get the prefferred layout size
+	 * 
+	 * @return the prefferred layout size
+	 */
 	public Dimension getPreferredLayoutSize() {
 		return preferredLayoutSize;
 	}
 
+	/**
+	 * set the prefferred layout size
+	 * 
+	 * @param preferredLayoutSize prefferred layout size
+	 */
 	public void setPreferredLayoutSize( Dimension preferredLayoutSize ) {
 		this.preferredLayoutSize = preferredLayoutSize;
 	}

@@ -36,7 +36,7 @@ public class FileChooser extends JFileChooser {
 	/**
 	 * Costruttore della classe <code>FileChooser</code>
 	 *
-	 * @param percorso
+	 * @param percorso percorso file da cui parte la scelta
 	 */
 	public FileChooser( String percorso ) {
 		super( percorso );
@@ -82,7 +82,7 @@ public class FileChooser extends JFileChooser {
 	/**
 	 * Crea una finestra di dialogo per la scelta di un file
 	 *
-	 * @param file view classe <code>FileSystemView</code> da cui parte la scelta
+	 * @param view classe <code>FileSystemView</code> da cui parte la scelta
 	 * @return la classe <code>FileChooser</code> creata
 	 */
 	public static FileChooser creaFileChooser( FileSystemView view ) {
@@ -129,7 +129,7 @@ public class FileChooser extends JFileChooser {
 	/**
 	 * Mostra una finestra di dialogo per la scelta di un file
 	 *
-	 * @param file view classe <code>File</code> da cui parte la scelta
+	 * @param file classe <code>File</code> da cui parte la scelta
 	 * @return il file scelto
 	 */
 	public static File dialogoSceltaFile( File file ) {
@@ -144,7 +144,7 @@ public class FileChooser extends JFileChooser {
 	/**
 	 * Mostra una finestra di dialogo per la scelta di un file
 	 *
-	 * @param percorso percorso file da cui parte la scelta
+	 * @param view percorso file da cui parte la scelta
 	 * @return il file scelto
 	 */
 	public static File dialogoSceltaFile( FileSystemView view ) {

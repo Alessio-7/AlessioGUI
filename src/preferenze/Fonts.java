@@ -7,8 +7,17 @@ import java.awt.Font;
  */
 public interface Fonts {
 
+	/**
+	 * font normale
+	 */
 	public static int PLAIN = Font.PLAIN;
+	/**
+	 * font corsivo
+	 */
 	public static int ITALIC = Font.ITALIC;
+	/**
+	 * font in grassetto
+	 */
 	public static int BOLD = Font.BOLD;
 
 	/**

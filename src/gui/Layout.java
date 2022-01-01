@@ -11,7 +11,7 @@ import preferenze.PreferenzeGUI;
 
 /**
  * Sottoclasse di <code>JPanel</code> instanziabile con un
- * <code>LayoutManager</code> che può impiegare la classe
+ * <code>LayoutManager</code> che pu&ograve; impiegare la classe
  * <code>PreferenzeGUI</code>
  *
  */
@@ -39,8 +39,8 @@ public class Layout extends JPanel implements Observer {
 	 * @param manager     la classe <code>LayoutManager</code> che viene aggiunta al
 	 *                    <code>Layout</code>
 	 * @param trasparente se lo sfondo del <code>Layout</code> deve essere
-	 *                    trasparente, il colore trasparente è il seguente:
-	 *                    <code>new Color( 0f, 0f, 0f, 1f )</code>
+	 *                    trasparente, il colore trasparente &egrave; il seguente:
+	 *                    <code>Color( 0f, 0f, 0f, 1f )</code>
 	 */
 	public Layout( PreferenzeGUI gui, LayoutManager manager, boolean trasparente ) {
 		super( manager );

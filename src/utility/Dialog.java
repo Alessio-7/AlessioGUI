@@ -28,14 +28,31 @@ public class Dialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * se è stata effettuata una scelta
+	 */
 	private boolean scelta = false;
+	/**
+	 * il valore di ritorno
+	 */
 	private int ritornoSiNo = -1;
 
 	/**
 	 * Enum per il tipo di messaggio del <code>Dialog</code>
 	 */
 	public enum Messaggio {
-		INFO, AVVERTIMENTO, ERRORE
+		/**
+		 * se il messaggio è un'informazione
+		 */
+		INFO,
+		/**
+		 * se il messaggio è un avvertimento
+		 */
+		AVVERTIMENTO,
+		/**
+		 * se il messaggio è un errore
+		 */
+		ERRORE
 	}
 
 	/**
@@ -43,7 +60,7 @@ public class Dialog extends JDialog {
 	 *
 	 * @param finestra  finestra da cui viene generato il <code>Dialog</code>
 	 * @param titolo    titolo del <code>Dialog</code>
-	 * @param modale    se il <code>Dialog</code> è modale
+	 * @param modale    se il <code>Dialog</code> &egrave; modale
 	 * @param larghezza larghezza del <code>Dialog</code>
 	 * @param altezza   altezza del <code>Dialog</code>
 	 */
@@ -56,7 +73,7 @@ public class Dialog extends JDialog {
 	 *
 	 * @param finestra  finestra da cui viene generato il <code>Dialog</code>
 	 * @param titolo    titolo del <code>Dialog</code>
-	 * @param modale    se il <code>Dialog</code> è modale
+	 * @param modale    se il <code>Dialog</code> &egrave; modale
 	 * @param larghezza larghezza del <code>Dialog</code>
 	 * @param altezza   altezza del <code>Dialog</code>
 	 * @param x         coordinata x del <code>Dialog</code>
@@ -222,7 +239,7 @@ public class Dialog extends JDialog {
 	 * @param titolo    titolo del <code>Dialog</code>
 	 * @param messaggio tipo di messaggio
 	 * @param testo     testo della scelta
-	 * @return
+	 * @return 1 se sì, 0 se no, -1 se l'operazione è stata annullata
 	 */
 	public static int mostraDialogSiNo( PreferenzeGUI gui, Frame finestra, String titolo, Messaggio messaggio, String testo ) {
 

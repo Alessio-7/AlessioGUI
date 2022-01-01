@@ -23,7 +23,7 @@ import preferenze.Fonts;
 import preferenze.PreferenzeGUI;
 
 /**
- * Sottoclasse di <code>JComboBox</code> che può impiegare la classe
+ * Sottoclasse di <code>JComboBox</code> che pu&ograve; impiegare la classe
  * <code>PreferenzeGUI</code>
  *
  */
@@ -31,8 +31,18 @@ public class ComboBox extends JComboBox<Object> implements Observer {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * mouse listener per cambiare bordo
+	 */
 	private MouseListener cambiaBordo;
+	/**
+	 * colore del bottone
+	 */
 	private Color coloreBottone;
+
+	/**
+	 * colore della freccia
+	 */
 	private Color coloreFreccia;
 
 	/**

@@ -16,8 +16,7 @@ public class RadioButton extends JRadioButton {
 	 * @param label       <code>Label</code> che accompagna il
 	 *                    <code>RadioButton</code>
 	 * @param icona       icona del <code>RadioButton</code>
-	 * @param selezionato se il <code>RadioButton</code> è selezionato
-	 * @return la classe <code>RadioButton</code> creata
+	 * @param selezionato se il <code>RadioButton</code> &egrave; selezionato
 	 */
 	public RadioButton( Label label, Icon icona, boolean selezionato ) {
 		super( label.getText(), selezionato );

@@ -137,27 +137,27 @@ public class PreferenzeGUI extends Observable {
 	}
 
 	/**
-	 * Ritorna l'interfaccia <code>Colori</code> predefinita
+	 * Ritorna la classe <code>ColoriChiari</code>
 	 *
-	 * @return interfaccia <code>Colori</code> predefinita
+	 * @return la classe <code>ColoriChiari</code>
 	 */
-	public static Colori coloriPredefiniti() {
-		return TEMA_CHIARO;
+	public static ColoriChiari coloriPredefiniti() {
+		return new ColoriChiari();
 	}
 
 	/**
-	 * Ritorna l'interfaccia <code>DefaultFonts</code>
+	 * Ritorna la classe <code>DefaultFonts</code>
 	 *
-	 * @return interfaccia <code>DefaultFonts</code>
+	 * @return la classe <code>DefaultFonts</code>
 	 */
 	public static DefaultFonts fontsPredefiniti() {
 		return new DefaultFonts();
 	}
 
 	/**
-	 * Ritorna l'interfaccia <code>DefaultBordi</code>
+	 * Ritorna la classe <code>DefaultBordi</code>
 	 *
-	 * @return interfaccia <code>DefaultBordi</code>
+	 * @return la classe <code>DefaultBordi</code>
 	 */
 	public static DefaultBordi bordiPredefiniti() {
 		return new DefaultBordi( coloriPredefiniti() );
@@ -181,7 +181,7 @@ public class PreferenzeGUI extends Observable {
 	 *
 	 * @param label       <code>Label</code> che accompagna il <code>CheckBox</code>
 	 * @param icona       icona del <code>CheckBox</code>
-	 * @param selezionato se il <code>CheckBox</code> è selezionato
+	 * @param selezionato se il <code>CheckBox</code> &egrave; selezionato
 	 * @return la classe <code>CheckBox</code> creata
 	 */
 	public CheckBox creaCheckBox( Label label, Icon icona, boolean selezionato ) {
@@ -192,7 +192,7 @@ public class PreferenzeGUI extends Observable {
 	 * Crea una classe <code>CheckBox</code>
 	 *
 	 * @param label       <code>Label</code> che accompagna il <code>CheckBox</code>
-	 * @param selezionato se il <code>CheckBox</code> è selezionato
+	 * @param selezionato se il <code>CheckBox</code> &egrave; selezionato
 	 * @return la classe <code>CheckBox</code> creata
 	 */
 	public CheckBox creaCheckBox( Label label, boolean selezionato ) {
@@ -205,7 +205,7 @@ public class PreferenzeGUI extends Observable {
 	 * @param label       <code>Label</code> che accompagna il
 	 *                    <code>RadioButton</code>
 	 * @param icona       icona del <code>RadioButton</code>
-	 * @param selezionato se il <code>RadioButton</code> è selezionato
+	 * @param selezionato se il <code>RadioButton</code> &egrave; selezionato
 	 * @return la classe <code>RadioButton</code> creata
 	 */
 	public RadioButton creaRadioButton( Label label, Icon icona, boolean selezionato ) {
@@ -217,7 +217,7 @@ public class PreferenzeGUI extends Observable {
 	 *
 	 * @param label       <code>Label</code> che accompagna il
 	 *                    <code>RadioButton</code>
-	 * @param selezionato se il <code>RadioButton</code> è selezionato
+	 * @param selezionato se il <code>RadioButton</code> &egrave; selezionato
 	 * @return la classe <code>RadioButton</code> creata
 	 */
 	public RadioButton creaRadioButton( Label label, boolean selezionato ) {
@@ -313,7 +313,7 @@ public class PreferenzeGUI extends Observable {
 	 * @param testo     il testo scritto nel <code>TextArea</code>
 	 * @param righe     il numero di righe del <code>TextArea</code>
 	 * @param colonne   il numero di colonne del <code>TextArea</code>
-	 * @param editabile se il <code>TextArea</code> è editabile
+	 * @param editabile se il <code>TextArea</code> &egrave; editabile
 	 * @return la classe <code>TextArea</code> creata
 	 */
 	public TextArea creaTextArea( String testo, int righe, int colonne, boolean editabile ) {
@@ -326,7 +326,7 @@ public class PreferenzeGUI extends Observable {
 	 * testo come numero di colonne
 	 *
 	 * @param testo     il testo scritto nel <code>TextArea</code>
-	 * @param editabile se il <code>TextArea</code> è editabile
+	 * @param editabile se il <code>TextArea</code> &egrave; editabile
 	 * @return la classe <code>TextArea</code> creata
 	 */
 	public TextArea creaTextArea( String testo, boolean editabile ) {
@@ -435,17 +435,75 @@ public class PreferenzeGUI extends Observable {
 		return new Layout( this, new GridBagLayout() );
 	}
 
+	/**
+	 * Costruttore sintetico di un <code>GridBagConstraints</code>
+	 * <p>
+	 * Imposta:
+	 * <ul>
+	 * <li>gridwidth a 1</li>
+	 * <li>gridheight a 1</li>
+	 * <li>weightx a 1.0</li>
+	 * <li>weighty a 1.0</li>
+	 * <li>ipadx a 0</li>
+	 * <li>ipady a 0</li>
+	 * </ul>
+	 * 
+	 * @param gridx        posizione x
+	 * @param gridy        posizione y
+	 * @param anchor       ancoramento
+	 * @param fill         riempimento
+	 * @param topInsets    spazio sopra
+	 * @param leftInsets   spazio a sinistra
+	 * @param bottomInsets spazio sotto
+	 * @param rightInsets  spazio a destra
+	 * @return la classe <code>GridBagConstraints</code> creata
+	 */
 	public GridBagConstraints creaGridBagConstraints( int gridx, int gridy, int anchor, int fill, int topInsets, int leftInsets, int bottomInsets,
 			int rightInsets ) {
 		return creaGridBagConstraints( gridx, gridy, 1, 1, 1.0, 1.0, anchor, fill, topInsets, leftInsets, bottomInsets, rightInsets, 0, 0 );
 	}
 
+	/**
+	 * Costruttore completo della classe <code>GridBagConstraints</code>
+	 * 
+	 * @param gridx        posizione x
+	 * @param gridy        posizione y
+	 * @param gridwidth    celle occupate sulla larghezza
+	 * @param gridheight   celle occupate sull'altezza
+	 * @param weightx      peso sulla y
+	 * @param weighty      peso sulla x
+	 * @param anchor       ancoramento
+	 * @param fill         riempimento
+	 * @param topInsets    spazio sopra
+	 * @param leftInsets   spazio a sinistra
+	 * @param bottomInsets spazio sotto
+	 * @param rightInsets  spazio a destra
+	 * @param ipadx        spaziatura x
+	 * @param ipady        spaziatura y
+	 * @return la classe <code>GridBagConstraints</code> creata
+	 */
 	public GridBagConstraints creaGridBagConstraints( int gridx, int gridy, int gridwidth, int gridheight, double weightx, double weighty, int anchor,
 			int fill, int topInsets, int leftInsets, int bottomInsets, int rightInsets, int ipadx, int ipady ) {
 		return new GridBagConstraints( gridx, gridy, gridwidth, gridheight, weightx, weighty, anchor, fill,
 				new Insets( topInsets, leftInsets, bottomInsets, rightInsets ), ipadx, ipady );
 	}
 
+	/**
+	 * Costruttore completo della classe <code>GridBagConstraints</code>
+	 * 
+	 * @param gridx      posizione x
+	 * @param gridy      posizione y
+	 * @param gridwidth  celle occupate sulla larghezza
+	 * @param gridheight celle occupate sull'altezza
+	 * @param weightx    peso sulla y
+	 * @param weighty    peso sulla x
+	 * @param anchor     ancoramento
+	 * @param fill       riempimento
+	 * @param insets     spazio
+	 * @param ipadx      spaziatura x
+	 * @param ipady      spaziatura y
+	 * @return la classe <code>GridBagConstraints</code> creata
+	 */
 	public GridBagConstraints creaGridBagConstraints( int gridx, int gridy, int gridwidth, int gridheight, double weightx, double weighty, int anchor,
 			int fill, Insets insets, int ipadx, int ipady ) {
 		return new GridBagConstraints( gridx, gridy, gridwidth, gridheight, weightx, weighty, anchor, fill, insets, ipadx, ipady );
@@ -498,8 +556,8 @@ public class PreferenzeGUI extends Observable {
 
 	/**
 	 * Crea la classe <code>Finestra</code> estesa a schermo intero a cui aggiunge
-	 * uno <code>ScrollPane</code> contenete un componente personalizzato. Si può
-	 * scegliere se alla creazione la <code>Finestra</code> sia visibile
+	 * uno <code>ScrollPane</code> contenete un componente personalizzato. Si
+	 * pu&ograve; scegliere se alla creazione la <code>Finestra</code> sia visibile
 	 *
 	 * @param titolo   titolo della <code>Finestra</code>
 	 * @param child    componente personjalizzato contenuto nello
@@ -514,7 +572,7 @@ public class PreferenzeGUI extends Observable {
 	/**
 	 * Crea la classe <code>Finestra</code> estesa a schermo intero a cui aggiunge
 	 * uno <code>ScrollPane</code> contenete un componente personalizzato e una
-	 * <code>MenuBar</code>.S i può scegliere se alla creazione la
+	 * <code>MenuBar</code>. Si pu&ograve; scegliere se alla creazione la
 	 * <code>Finestra</code> sia visibile
 	 *
 	 * @param titolo   titolo della <code>Finestra</code>
@@ -536,8 +594,8 @@ public class PreferenzeGUI extends Observable {
 
 	/**
 	 * Crea la classe <code>Finestra</code> centrata nello schermo a cui aggiunge
-	 * uno <code>ScrollPane</code> contenete un componente personalizzato. Si può
-	 * scegliere se alla creazione la <code>Finestra</code> sia visibile
+	 * uno <code>ScrollPane</code> contenete un componente personalizzato. Si
+	 * pu&ograve; scegliere se alla creazione la <code>Finestra</code> sia visibile
 	 *
 	 * @param titolo    titolo della <code>Finestra</code>
 	 * @param larghezza larghezza della <code>Finestra</code>
@@ -555,7 +613,7 @@ public class PreferenzeGUI extends Observable {
 	/**
 	 * Crea la classe <code>Finestra</code> centrata nello schermo a cui aggiunge
 	 * uno <code>ScrollPane</code> contenete un componente personalizzato e una
-	 * <code>MenuBar</code>. Si può scegliere se alla creazione la
+	 * <code>MenuBar</code>. Si pu&ograve; scegliere se alla creazione la
 	 * <code>Finestra</code> sia visibile
 	 *
 	 * @param titolo    titolo della <code>Finestra</code>
@@ -586,8 +644,8 @@ public class PreferenzeGUI extends Observable {
 	 * @param testo        testo del <code>MenuItem</code>
 	 * @param listener     <code>ActionListener</code> da aggiungere al
 	 *                     <code>MenuItem</code>
-	 * @param parteSubMenu se fa parte di un <i>sub menu<i>, in tal caso avrà uno
-	 *                     sfondo diverso
+	 * @param parteSubMenu se fa parte di un <i>sub menu</i>, in tal caso
+	 *                     avr&agrave; uno sfondo diverso
 	 * @return ritorna la classe <code>MenuItem</code> creata
 	 */
 	public MenuItem creaMenuItem( String testo, ActionListener listener, boolean parteSubMenu ) {
@@ -602,8 +660,8 @@ public class PreferenzeGUI extends Observable {
 	 * @param listener     <code>ActionListener</code> da aggiungere al
 	 *                     <code>MenuItem</code>
 	 * @param icona        icona da aggiungere al <code>MenuItem</code>
-	 * @param parteSubMenu se fa parte di un <i>sub menu<i>, in tal caso avrà uno
-	 *                     sfondo diverso
+	 * @param parteSubMenu se fa parte di un <i>sub menu</i>, in tal caso
+	 *                     avr&agrave; uno sfondo diverso
 	 * @return ritorna la classe <code>MenuItem</code> creata
 	 */
 	public MenuItem creaMenuItem( String testo, ActionListener listener, Icon icona, boolean parteSubMenu ) {
@@ -616,8 +674,8 @@ public class PreferenzeGUI extends Observable {
 	 *
 	 * @param testo        testo del <code>Menu</code>
 	 * @param componenti   array di componenti da aggiungere al <code>Menu</code>
-	 * @param parteSubMenu se fa parte di un <i>sub menu<i>, in tal caso avrà uno
-	 *                     sfondo diverso
+	 * @param parteSubMenu se fa parte di un <i>sub menu</i>, in tal caso
+	 *                     avr&agrave; uno sfondo diverso
 	 * @return ritorna la classe <code>Menu</code> creata
 	 */
 	public Menu creaMenu( String testo, Component[] componenti, boolean parteSubMenu ) {
@@ -631,8 +689,8 @@ public class PreferenzeGUI extends Observable {
 	 * @param testo        testo del <code>Menu</code>
 	 * @param componenti   array di componenti da aggiungere al <code>Menu</code>
 	 * @param icona        icona da aggiungere al <code>Menu</code>
-	 * @param parteSubMenu se fa parte di un <i>sub menu<i>, in tal caso avrà uno
-	 *                     sfondo diverso
+	 * @param parteSubMenu se fa parte di un <i>sub menu</i>, in tal caso
+	 *                     avr&agrave; uno sfondo diverso
 	 * @return ritorna la classe <code>Menu</code> creata
 	 */
 	public Menu creaMenu( String testo, Component[] componenti, Icon icona, boolean parteSubMenu ) {
@@ -719,7 +777,7 @@ public class PreferenzeGUI extends Observable {
 	 * Crea una classe <code>Layout</code> con layout manager
 	 * <code>GridBagLayout</code> contenete una <code>Label</code> con il font
 	 * generico e un <code>Component</code> ancorati a sinistra per disporli
-	 * verticalmente con un distanziamento tra i due di 5 pixel
+	 * verticalmente
 	 *
 	 * @param testoLabel testo della <code>Label</code> da aggiungere al
 	 *                   <code>Layout</code>
@@ -733,8 +791,7 @@ public class PreferenzeGUI extends Observable {
 	/**
 	 * Crea una classe <code>Layout</code> con layout manager
 	 * <code>GridBagLayout</code> contenete una <code>Label</code> e un
-	 * <code>Component</code> ancorati a sinistra per disporli verticalmente con un
-	 * distanziamento tra i due di 5 pixel
+	 * <code>Component</code> ancorati a sinistra per disporli verticalmente
 	 *
 	 * @param label      <code>Label</code> da aggiungere al <code>Layout</code>
 	 * @param componente <code>Component</code> da aggiungere al <code>Layout</code>
@@ -752,7 +809,7 @@ public class PreferenzeGUI extends Observable {
 	 * Crea una classe <code>Layout</code> con layout manager
 	 * <code>GridBagLayout</code> contenete una <code>Label</code> con il font
 	 * generico ancorata a destra e un <code>Component</code> ancorato a sinistra
-	 * per disporli orizzontalmente con un distanziamento tra i due di 10 pixel
+	 * per disporli orizzontalmente
 	 *
 	 * @param testoLabel testo della <code>Label</code> da aggiungere al
 	 *                   <code>Layout</code>
@@ -766,8 +823,7 @@ public class PreferenzeGUI extends Observable {
 	/**
 	 * Crea una classe <code>Layout</code> con layout manager
 	 * <code>GridBagLayout</code> contenete una <code>Label</code> e un
-	 * <code>Component</code> ancorato a sinistra per disporli orizzontalmente con
-	 * un distanziamento tra i due di 10 pixel
+	 * <code>Component</code> ancorato a sinistra per disporli orizzontalmente
 	 *
 	 * @param label      <code>Label</code> da aggiungere al <code>Layout</code>
 	 * @param componente <code>Component</code> da aggiungere al <code>Layout</code>
@@ -775,8 +831,8 @@ public class PreferenzeGUI extends Observable {
 	 */
 	public Layout creaLabelComponenteOrizzontale( Label label, Component componente ) {
 		Layout l = creaGridBagLayout();
-		l.add( label, creaGridBagConstraints( 0, 0, 1, 1, 0.1, 1, GridBagConstraints.WEST, GridBagConstraints.BOTH, 0, 0, 0, 10, 0, 0 ) );
-		l.add( componente, creaGridBagConstraints( 1, 0, GridBagConstraints.EAST, GridBagConstraints.HORIZONTAL, 0, 0, 0, 0 ) );
+		l.add( label, creaGridBagConstraints( 0, 0, 1, 1, 0.1, 1, GridBagConstraints.WEST, GridBagConstraints.BOTH, 5, 0, 5, 10, 0, 0 ) );
+		l.add( componente, creaGridBagConstraints( 1, 0, GridBagConstraints.EAST, GridBagConstraints.HORIZONTAL, 0, 5, 5, 0 ) );
 		l.setBorder( bordi.bordoGenerico( 0, new Insets( 10, 10, 10, 10 ) ) );
 		return l;
 	}
@@ -814,8 +870,8 @@ public class PreferenzeGUI extends Observable {
 	public Layout creaGruppoLabelComponenteOrizzontale( Label[] label, Component[] componenti ) {
 		Layout l = creaGridBagLayout();
 		for ( int i = 0; i < label.length; i++ ) {
-			l.add( label[i], creaGridBagConstraints( 0, i, 1, 1, 0.1, 1, GridBagConstraints.WEST, GridBagConstraints.BOTH, 5, 0, 5, 5, 0, 0 ) );
-			l.add( componenti[i], creaGridBagConstraints( 1, i, GridBagConstraints.CENTER, GridBagConstraints.NONE, 5, 5, 5, 0 ) );
+			l.add( label[i], creaGridBagConstraints( 0, i, 1, 1, 0.1, 1, GridBagConstraints.WEST, GridBagConstraints.BOTH, 5, 0, 5, 10, 0, 0 ) );
+			l.add( componenti[i], creaGridBagConstraints( 1, i, GridBagConstraints.CENTER, GridBagConstraints.NONE, 0, 5, 5, 0 ) );
 		}
 		l.setBorder( bordi.bordoGenerico( 0, new Insets( 10, 10, 10, 10 ) ) );
 		return l;
@@ -891,7 +947,7 @@ public class PreferenzeGUI extends Observable {
 					pswField.setEchoChar( ( char ) 0 );
 					( ( Bottone ) arg0.getSource() ).setText( "<html>&#10060;</html>" );
 				} else {
-					pswField.setEchoChar( '•' );
+					pswField.setEchoChar( '.' );
 					( ( Bottone ) arg0.getSource() ).setText( "<html>&#128065;</html>" );
 				}
 			}
@@ -913,7 +969,7 @@ public class PreferenzeGUI extends Observable {
 	 *
 	 * @param finestra       <code>Frame</code> a cui appartiene
 	 * @param titolo         titolo del <code>Dialog</code>
-	 * @param modale         se il <code>Dialog</code> è modale
+	 * @param modale         se il <code>Dialog</code> &egrave; modale
 	 * @param larghezza      larghezza della finestra del <code>Dialog</code>
 	 * @param altezza        altezza della finestra del <code>Dialog</code>
 	 * @param child          componente da mostrare nel <code>Dialog</code>
@@ -1027,10 +1083,12 @@ public class PreferenzeGUI extends Observable {
 	 * Crea una classe <code>Bottone</code> che permette di cambiare il tema
 	 * personalizzato chiaro e quello personalizzato scuro, con testo personalizzato
 	 *
-	 * @param testoTemaChiaro testo del bottone quando è impostato il tema chiaro
-	 * @param testoTemaScuro  testo del bottone quando è impostato il tema scuro
-	 * @param testoEmoji      se il testo è un emoji, in tal caso utilizza il font
-	 *                        <b>Segoe UI Emoji</b>
+	 * @param testoTemaChiaro testo del bottone quando &egrave; impostato il tema
+	 *                        chiaro
+	 * @param testoTemaScuro  testo del bottone quando &egrave; impostato il tema
+	 *                        scuro
+	 * @param testoEmoji      se il testo &egrave; un emoji, in tal caso utilizza il
+	 *                        font <b>Segoe UI Emoji</b>
 	 * @param temaChiaro      la classe <code>PreferenzeGUI</code> con i valori del
 	 *                        tema chiaro
 	 * @param temaScuro       la classe <code>PreferenzeGUI</code> con i valori del

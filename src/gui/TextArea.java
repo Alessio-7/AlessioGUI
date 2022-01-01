@@ -14,7 +14,7 @@ import preferenze.Fonts;
 import preferenze.PreferenzeGUI;
 
 /**
- * Sottoclasse di <code>JTextArea</code> che può impiegare la classe
+ * Sottoclasse di <code>JTextArea</code> che pu&ograve; impiegare la classe
  * <code>PreferenzeGUI</code>
  *
  */
@@ -30,7 +30,7 @@ public class TextArea extends JTextArea implements Observer {
 	 * @param testo     il testo scritto nel <code>TextArea</code>
 	 * @param righe     il numero di righe del <code>TextArea</code>
 	 * @param colonne   il numero di colonne del <code>TextArea</code>
-	 * @param editabile se il <code>TextArea</code> è editabile
+	 * @param editabile se il <code>TextArea</code> &egrave; editabile
 	 */
 	public TextArea( PreferenzeGUI gui, String testo, int righe, int colonne, boolean editabile ) {
 		this( gui.colori, gui.fonts, gui.bordi, testo, righe, colonne, editabile );
@@ -50,7 +50,7 @@ public class TextArea extends JTextArea implements Observer {
 	 * @param testo     il testo scritto nel <code>TextArea</code>
 	 * @param righe     il numero di righe del <code>TextArea</code>
 	 * @param colonne   il numero di colonne del <code>TextArea</code>
-	 * @param editabile se il <code>TextArea</code> è editabile
+	 * @param editabile se il <code>TextArea</code> &egrave; editabile
 	 */
 	public TextArea( Colori colori, Fonts fonts, Bordi bordi, String testo, int righe, int colonne, boolean editabile ) {
 		this( colori.sfondo(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), bordi.bordoSecondario(), testo, righe, colonne, editabile );
@@ -66,7 +66,7 @@ public class TextArea extends JTextArea implements Observer {
 	 * @param testo        il testo scritto nel <code>TextArea</code>
 	 * @param righe        il numero di righe del <code>TextArea</code>
 	 * @param colonne      il numero di colonne del <code>TextArea</code>
-	 * @param editabile    se il <code>TextArea</code> è editabile
+	 * @param editabile    se il <code>TextArea</code> &egrave; editabile
 	 */
 	public TextArea( Color coloreSfondo, Color coloreTesto, Font font, Border bordo, String testo, int righe, int colonne, boolean editabile ) {
 		super( testo, righe, colonne );

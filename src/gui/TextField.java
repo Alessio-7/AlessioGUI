@@ -16,7 +16,7 @@ import preferenze.Fonts;
 import preferenze.PreferenzeGUI;
 
 /**
- * Sottoclasse di <code>JTextField</code> che può impiegare la classe
+ * Sottoclasse di <code>JTextField</code> che pu&ograve; impiegare la classe
  * <code>PreferenzeGUI</code>
  *
  */
@@ -24,6 +24,9 @@ public class TextField extends JTextField implements Observer {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * il mouse listener per cambiare il bordo
+	 */
 	private MouseListener cambiaBordo;
 
 	/**

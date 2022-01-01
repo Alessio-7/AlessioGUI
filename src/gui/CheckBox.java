@@ -15,7 +15,7 @@ public class CheckBox extends JCheckBox {
 	 *
 	 * @param label       <code>Label</code> che accompagna la <code>CheckBox</code>
 	 * @param icona       icona del <code>CheckBox</code>
-	 * @param selezionato se la <code>CheckBox</code> è selezionato
+	 * @param selezionato se la <code>CheckBox</code> &egrave; selezionata
 	 */
 	public CheckBox( Label label, Icon icona, boolean selezionato ) {
 		super( label.getText(), icona, selezionato );

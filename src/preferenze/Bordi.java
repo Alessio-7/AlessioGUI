@@ -84,6 +84,7 @@ public interface Bordi {
 	 *
 	 * @param grandezza la grandezza del bordo
 	 * @param spazio    lo spazio del bordo
+	 * @param colore    colore del bordo
 	 * @return bordo per quando il mouse passa sopra un componente per uso generico
 	 */
 	public Border bordoGenericoFocus( int grandezza, Insets spazio, Color colore );
@@ -98,11 +99,12 @@ public interface Bordi {
 	public Border bordoInteragibile( int grandezza, Insets spazio );
 
 	/**
-	 * Ritorna un bordo secondario per uso generico
+	 * Ritorna un bordo per quando il mouse passa sopra un componente interagibile
 	 *
 	 * @param grandezza la grandezza del bordo
 	 * @param spazio    lo spazio del bordo
-	 * @return bordo secondario per uso generico
+	 * @param colore    colore del bordo
+	 * @return bordo per quando il mouse passa sopra un componente per uso generico
 	 */
 	public Border bordoInteragibileFocus( int grandezza, Insets spazio, Color colore );
 
@@ -121,6 +123,7 @@ public interface Bordi {
 	 *
 	 * @param grandezza la grandezza del bordo
 	 * @param spazio    lo spazio del bordo
+	 * @param colore    colore del bordo
 	 * @return bordo secondario per quando il mouse passa sopra un componente per
 	 *         uso generico
 	 */

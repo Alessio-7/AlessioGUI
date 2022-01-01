@@ -14,7 +14,7 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import preferenze.PreferenzeGUI;
 
 /**
- * Sottoclasse di <code>JScrollPane</code> che può impiegare la classe
+ * Sottoclasse di <code>JScrollPane</code> che pu&ograve; impiegare la classe
  * <code>PreferenzeGUI</code>
  *
  */
@@ -38,10 +38,10 @@ public class ScrollPane extends JScrollPane implements Observer {
 	 * Costruttore con parametri specifici
 	 *
 	 * @param view          componente da mostrare nello <code>ScrollPane</code>
-	 * @param sfondo        colore sfondo dello <code>ScrollPane</code>
-	 * @param bottone       colore dei bottoni delle <code>JScrollBar</code> dello
+	 * @param coloreSfondo  colore sfondo dello <code>ScrollPane</code>
+	 * @param coloreBottone colore dei bottoni delle <code>JScrollBar</code> dello
 	 *                      <code>ScrollPane</code>
-	 * @param thumb         colore del thumb delle <code>JScrollBar</code> dello
+	 * @param coloreThumb   colore del thumb delle <code>JScrollBar</code> dello
 	 *                      <code>ScrollPane</code>
 	 * @param coloreFreccia colore freccia dei bottoni
 	 */

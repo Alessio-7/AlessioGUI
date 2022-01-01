@@ -17,7 +17,7 @@ import preferenze.Fonts;
 import preferenze.PreferenzeGUI;
 
 /**
- * Sottoclasse di <code>JButton</code> che può impiegare la classe
+ * Sottoclasse di <code>JButton</code> che pu&ograve; impiegare la classe
  * <code>PreferenzeGUI</code>
  *
  */
@@ -26,6 +26,9 @@ public class Bottone extends JButton implements Observer {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * mouse listener per cambiare bordo
+	 */
 	private MouseListener cambiaBordo;
 
 	/**
@@ -36,9 +39,6 @@ public class Bottone extends JButton implements Observer {
 	 * @param testo          il testo del <code>Bottone</code>
 	 * @param actionListener la classe <code>ActionListener</code> che viene
 	 *                       aggiunta al <code>Bottone</code> GUI del bottone
-	 * @param testo          il testo del bottone
-	 * @param actionListener la classe <code>ActionListener</code> che viene
-	 *                       aggiunta al bottone
 	 */
 	public Bottone( PreferenzeGUI gui, String testo, ActionListener actionListener ) {
 		this( gui.colori, gui.fonts, gui.bordi, testo, actionListener );
@@ -57,13 +57,6 @@ public class Bottone extends JButton implements Observer {
 	 *                       bordi del <code>Bottone</code>
 	 * @param testo          il testo del <code>Bottone</code>
 	 * @param actionListener la classe <code>ActionListener</code> che viene
-	 *                       aggiunta al <code>Bottone</code> colori del bottone
-	 * @param fonts          l'interfaccia <code>Fonts</code> su cui si basano i
-	 *                       font del bottone
-	 * @param bordi          l'interfaccia <code>Bordi</code> su cui si basano i
-	 *                       bordi del bottone
-	 * @param testo          il testo del bottone
-	 * @param actionListener la classe <code>ActionListener</code> che viene
 	 *                       aggiunta al bottone
 	 */
 	public Bottone( Colori colori, Fonts fonts, Bordi bordi, String testo, ActionListener actionListener ) {
@@ -77,7 +70,7 @@ public class Bottone extends JButton implements Observer {
 	 * @param testo               il testo del <code>Bottone</code>
 	 * @param coloreSfondo        il colore dello sfondo del <code>Bottone</code>
 	 * @param coloreSfondoPremuto il colore dello sfondo del <code>Bottone</code>
-	 *                            quando è premuto
+	 *                            quando &egrave; premuto
 	 * @param coloreTesto         il colore del testo del <code>Bottone</code>
 	 * @param font                il font del testo del <code>Bottone</code>
 	 * @param bordo               il bordo del <code>Bottone</code>
@@ -85,16 +78,6 @@ public class Bottone extends JButton implements Observer {
 	 *                            passa sopra
 	 * @param actionListener      la classe <code>ActionListener</code> che viene
 	 *                            aggiunta al <code>Bottone</code>
-	 * @param testo               il testo del bottone
-	 * @param coloreSfondo        il colore dello sfondo del bottone
-	 * @param coloreSfondoPremuto il colore dello sfondo del bottone quando è
-	 *                            premuto
-	 * @param coloreTesto         il colore del testo del bottone
-	 * @param font                il font del testo del bottone
-	 * @param bordo               il bordo del bottone
-	 * @param bordoFocus          il bordo del bottone quando il mouse passa sopra
-	 * @param actionListener      la classe <code>ActionListener</code> che viene
-	 *                            aggiunta al bottone
 	 */
 	public Bottone( String testo, Color coloreSfondo, Color coloreSfondoPremuto, Color coloreTesto, Font font, Border bordo, Border bordoFocus,
 			ActionListener actionListener ) {

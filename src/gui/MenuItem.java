@@ -14,7 +14,7 @@ import preferenze.Fonts;
 import preferenze.PreferenzeGUI;
 
 /**
- * Sottoclasse di <code>JMenuItem</code> che può impiegare la classe
+ * Sottoclasse di <code>JMenuItem</code> che pu&ograve; impiegare la classe
  * <code>PreferenzeGUI</code>
  *
  */
@@ -22,6 +22,9 @@ public class MenuItem extends JMenuItem implements Observer {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * se fa parte di un sub menu
+	 */
 	private boolean parteSubMenu;
 
 	/**
@@ -32,8 +35,8 @@ public class MenuItem extends JMenuItem implements Observer {
 	 * @param testo        testo del <code>MenuItem</code>
 	 * @param listener     <code>ActionListener</code> da aggiungere al
 	 *                     <code>MenuItem</code>
-	 * @param parteSubMenu se fa parte di un <i>sub menu<i>, in tal caso avrà uno
-	 *                     sfondo diverso
+	 * @param parteSubMenu se fa parte di un <i>sub menu</i>, in tal caso
+	 *                     avr&agrave; uno sfondo diverso
 	 */
 	public MenuItem( PreferenzeGUI gui, String testo, ActionListener listener, boolean parteSubMenu ) {
 		this( gui.colori, gui.fonts, testo, listener, null, parteSubMenu );
@@ -49,8 +52,8 @@ public class MenuItem extends JMenuItem implements Observer {
 	 * @param listener     <code>ActionListener</code> da aggiungere al
 	 *                     <code>MenuItem</code>
 	 * @param icona        icona da aggiungere al <code>MenuItem</code>
-	 * @param parteSubMenu se fa parte di un <i>sub menu<i>, in tal caso avrà uno
-	 *                     sfondo diverso
+	 * @param parteSubMenu se fa parte di un <i>sub menu</i>, in tal caso
+	 *                     avr&agrave; uno sfondo diverso
 	 */
 	public MenuItem( PreferenzeGUI gui, String testo, ActionListener listener, Icon icona, boolean parteSubMenu ) {
 		this( gui.colori, gui.fonts, testo, listener, icona, parteSubMenu );
@@ -69,8 +72,8 @@ public class MenuItem extends JMenuItem implements Observer {
 	 * @param listener     <code>ActionListener</code> da aggiungere al
 	 *                     <code>MenuItem</code>
 	 * @param icona        icona da aggiungere al <code>MenuItem</code>
-	 * @param parteSubMenu se fa parte di un <i>sub menu<i>, in tal caso avrà uno
-	 *                     sfondo diverso
+	 * @param parteSubMenu se fa parte di un <i>sub menu</i>, in tal caso
+	 *                     avr&agrave; uno sfondo diverso
 	 */
 	public MenuItem( Colori colori, Fonts fonts, String testo, ActionListener listener, Icon icona, boolean parteSubMenu ) {
 		this( parteSubMenu ? colori.subMenu() : colori.sfondo(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), testo, listener, icona );
@@ -82,7 +85,7 @@ public class MenuItem extends JMenuItem implements Observer {
 	 *
 	 * @param coloreSfondo colore dello sfondo del <code>MenuItem</code>
 	 * @param coloreTesto  colore del testo del <code>MenuItem</code>
-	 * @param font         font del <code>Menu</code>
+	 * @param font         font del <code>MenuItem</code>
 	 * @param testo        testo del <code>MenuItem</code>
 	 * @param listener     <code>ActionListener</code> da aggiungere al
 	 *                     <code>MenuItem</code>
@@ -96,7 +99,7 @@ public class MenuItem extends JMenuItem implements Observer {
 	 *
 	 * @param coloreSfondo colore dello sfondo del <code>MenuItem</code>
 	 * @param coloreTesto  colore del testo del <code>MenuItem</code>
-	 * @param font         font del <code>Menu</code>
+	 * @param font         font del <code>MenuItem</code>
 	 * @param testo        testo del <code>MenuItem</code>
 	 * @param listener     <code>ActionListener</code> da aggiungere al
 	 *                     <code>MenuItem</code>

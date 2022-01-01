@@ -15,7 +15,7 @@ import preferenze.Fonts;
 import preferenze.PreferenzeGUI;
 
 /**
- * Sottoclasse di <code>JMenu</code> che può impiegare la classe
+ * Sottoclasse di <code>JMenu</code> che pu&ograve; impiegare la classe
  * <code>PreferenzeGUI</code>
  *
  */
@@ -23,6 +23,9 @@ public class Menu extends JMenu implements Observer {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * se fa parte di un sub menu
+	 */
 	private boolean parteSubMenu;
 
 	/**
@@ -32,8 +35,8 @@ public class Menu extends JMenu implements Observer {
 	 *                     GUI del <code>Menu</code>
 	 * @param testo        testo del <code>Menu</code>
 	 * @param componenti   array di componenti da aggiungere al <code>Menu</code>
-	 * @param parteSubMenu se fa parte di un <i>sub menu<i>, in tal caso avrà uno
-	 *                     sfondo diverso
+	 * @param parteSubMenu se fa parte di un <i>sub menu</i>, in tal caso
+	 *                     avr&agrave; uno sfondo diverso
 	 */
 	public Menu( PreferenzeGUI gui, String testo, Component[] componenti, boolean parteSubMenu ) {
 		this( gui.colori, gui.fonts, testo, componenti, null, parteSubMenu );
@@ -48,8 +51,8 @@ public class Menu extends JMenu implements Observer {
 	 * @param testo        testo del <code>Menu</code>
 	 * @param componenti   array di componenti da aggiungere al <code>Menu</code>
 	 * @param icona        icona da aggiungere al <code>Menu</code>
-	 * @param parteSubMenu se fa parte di un <i>sub menu<i>, in tal caso avrà uno
-	 *                     sfondo diverso
+	 * @param parteSubMenu se fa parte di un <i>sub menu</i>, in tal caso
+	 *                     avr&agrave; uno sfondo diverso
 	 */
 	public Menu( PreferenzeGUI gui, String testo, Component[] componenti, Icon icona, boolean parteSubMenu ) {
 		this( gui.colori, gui.fonts, testo, componenti, icona, parteSubMenu );
@@ -67,8 +70,8 @@ public class Menu extends JMenu implements Observer {
 	 * @param testo        testo del <code>Menu</code>
 	 * @param componenti   array di componenti da aggiungere al <code>Menu</code>
 	 * @param icona        icona da aggiungere al <code>Menu</code>
-	 * @param parteSubMenu se fa parte di un <i>sub menu<i>, in tal caso avrà uno
-	 *                     sfondo diverso
+	 * @param parteSubMenu se fa parte di un <i>sub menu</i>, in tal caso
+	 *                     avr&agrave; uno sfondo diverso
 	 */
 	public Menu( Colori colori, Fonts fonts, String testo, Component[] componenti, Icon icona, boolean parteSubMenu ) {
 		this( parteSubMenu ? colori.subMenu() : colori.sfondo(), colori.bordoSecondario(), colori.testo(), fonts.fontGenerico( Fonts.PLAIN ), testo,

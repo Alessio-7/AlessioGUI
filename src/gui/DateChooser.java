@@ -26,26 +26,70 @@ public class DateChooser extends Layout implements Observer {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * gui
+	 */
 	private PreferenzeGUI gui;
 
+	/**
+	 * calendario
+	 */
 	private Calendar cal;
 
+	/**
+	 * giorno scelto
+	 */
 	private int giorno;
+	/**
+	 * mese scelto
+	 */
 	private int mese;
+	/**
+	 * anno scelto
+	 */
 	private int anno;
 
+	/**
+	 * giorno corrente
+	 */
 	private int giornoCorrente;
+	/**
+	 * mese corrente
+	 */
 	private int meseCorrente;
+	/**
+	 * anno corrente
+	 */
 	private int annoCorrente;
 
+	/**
+	 * label per la data scelta
+	 */
 	private Label dataLabel;
+	/**
+	 * bottone per la scelta della data
+	 */
 	private Bottone scegliData;
 
+	/**
+	 * popup per mostrare il calendario
+	 */
 	private JPopupMenu popup;
+	/**
+	 * layout di tutto il calendario
+	 */
 	private Layout calendario;
+	/**
+	 * testo del mese
+	 */
 	private Label testoMese;
+	/**
+	 * layout dei bottoni del mese
+	 */
 	private Layout meseLayout;
-
+	/**
+	 * bottone della giornata corrente
+	 */
 	private Bottone bottoneGiornoCorrente;
 
 	/**
