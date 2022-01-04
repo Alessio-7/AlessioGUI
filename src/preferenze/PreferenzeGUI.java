@@ -871,7 +871,7 @@ public class PreferenzeGUI extends Observable {
 		Layout l = creaGridBagLayout();
 		for ( int i = 0; i < label.length; i++ ) {
 			l.add( label[i], creaGridBagConstraints( 0, i, 1, 1, 0.1, 1, GridBagConstraints.WEST, GridBagConstraints.BOTH, 5, 0, 5, 10, 0, 0 ) );
-			l.add( componenti[i], creaGridBagConstraints( 1, i, GridBagConstraints.CENTER, GridBagConstraints.NONE, 0, 5, 5, 0 ) );
+			l.add( componenti[i], creaGridBagConstraints( 1, i, GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, 0, 5, 5, 0 ) );
 		}
 		l.setBorder( bordi.bordoGenerico( 0, new Insets( 10, 10, 10, 10 ) ) );
 		return l;
