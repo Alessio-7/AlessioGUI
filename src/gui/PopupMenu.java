@@ -44,6 +44,8 @@ public class PopupMenu extends JPopupMenu implements Observer {
 					add( ( Menu ) item );
 				} else if ( item instanceof MenuItem ) {
 					add( ( MenuItem ) item );
+				} else if ( item instanceof Separatore ) {
+					add( ( Separatore ) item );
 				}
 			} catch ( WrongValueException e ) {
 				e.printStackTrace();
