@@ -11,6 +11,7 @@ import java.awt.Insets;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.Observable;
 
 import javax.swing.BoxLayout;
@@ -38,6 +39,7 @@ import gui.TextArea;
 import gui.TextField;
 import gui.WrapLayout;
 import utility.Dialog;
+import utility.Form;
 import utility.ListaOggettiMenu;
 import utility.WrongValueException;
 
@@ -180,36 +182,22 @@ public class PreferenzeGUI extends Observable {
 	 * Crea una classe <code>CheckBox</code>
 	 *
 	 * @param label       <code>Label</code> che accompagna il <code>CheckBox</code>
-	 * @param icona       icona del <code>CheckBox</code>
-	 * @param selezionato se il <code>CheckBox</code> &egrave; selezionato
-	 * @return la classe <code>CheckBox</code> creata
-	 */
-	public CheckBox creaCheckBox( Label label, Icon icona, boolean selezionato ) {
-		return new CheckBox( label, icona, selezionato );
-	}
-
-	/**
-	 * Crea una classe <code>CheckBox</code>
-	 *
-	 * @param label       <code>Label</code> che accompagna il <code>CheckBox</code>
 	 * @param selezionato se il <code>CheckBox</code> &egrave; selezionato
 	 * @return la classe <code>CheckBox</code> creata
 	 */
 	public CheckBox creaCheckBox( Label label, boolean selezionato ) {
-		return new CheckBox( label, null, selezionato );
+		return new CheckBox( label, selezionato );
 	}
 
 	/**
-	 * Crea una classe <code>RadioButton</code>
+	 * Crea una classe <code>CheckBox</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code>
 	 *
-	 * @param label       <code>Label</code> che accompagna il
-	 *                    <code>RadioButton</code>
-	 * @param icona       icona del <code>RadioButton</code>
-	 * @param selezionato se il <code>RadioButton</code> &egrave; selezionato
-	 * @return la classe <code>RadioButton</code> creata
+	 * @param selezionato se il <code>CheckBox</code> &egrave; selezionato
+	 * @return la classe <code>CheckBox</code> creata
 	 */
-	public RadioButton creaRadioButton( Label label, Icon icona, boolean selezionato ) {
-		return new RadioButton( label, icona, selezionato );
+	public CheckBox creaCheckBox( boolean selezionato ) {
+		return new CheckBox( this, selezionato );
 	}
 
 	/**
@@ -221,7 +209,18 @@ public class PreferenzeGUI extends Observable {
 	 * @return la classe <code>RadioButton</code> creata
 	 */
 	public RadioButton creaRadioButton( Label label, boolean selezionato ) {
-		return new RadioButton( label, null, selezionato );
+		return new RadioButton( label, selezionato );
+	}
+
+	/**
+	 * Crea una classe <code>RadioButton</code> impiegando questa classe
+	 * <code>PreferenzeGUI</code>
+	 *
+	 * @param selezionato se il <code>RadioButton</code> &egrave; selezionato
+	 * @return la classe <code>RadioButton</code> creata
+	 */
+	public RadioButton creaRadioButton( boolean selezionato ) {
+		return new RadioButton( this, selezionato );
 	}
 
 	/**
@@ -1120,5 +1119,17 @@ public class PreferenzeGUI extends Observable {
 		}
 
 		return ritorno;
+	}
+
+	public Form creaForm() {
+		return new Form( this );
+	}
+
+	public Form creaForm( HashMap<String, Component> parametri ) {
+		return new Form( this, parametri );
+	}
+
+	public Form creaForm( String[] parametri, Component[] campiParametri ) {
+		return new Form( this, parametri, campiParametri );
 	}
 }
