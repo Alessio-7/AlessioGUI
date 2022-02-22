@@ -24,10 +24,10 @@ public class RadioButton extends JRadioButton {
 	 */
 	public RadioButton( Label label, boolean selezionato ) {
 		super( label.getText(), selezionato );
-		setIcon( new ImageIcon( "resources/RadioButton/icon.png" ) );
-		setSelectedIcon( new ImageIcon( "resources/RadioButton/selectedIcon.png" ) );
-		setRolloverIcon( new ImageIcon( "resources/RadioButton/rolloverIcon.png" ) );
-		setRolloverSelectedIcon( new ImageIcon( "resources/RadioButton/rolloverSelectedIcon.png" ) );
+		setIcon( new ImageIcon( "res/RadioButton/icon.png" ) );
+		setSelectedIcon( new ImageIcon( "res/RadioButton/selectedIcon.png" ) );
+		setRolloverIcon( new ImageIcon( "res/RadioButton/rolloverIcon.png" ) );
+		setRolloverSelectedIcon( new ImageIcon( "res/RadioButton/rolloverSelectedIcon.png" ) );
 		setBackground( label.getBackground() );
 		setForeground( label.getForeground() );
 		setFont( label.getFont() );
@@ -46,10 +46,10 @@ public class RadioButton extends JRadioButton {
 	public RadioButton( PreferenzeGUI gui, boolean selezionato ) {
 		super();
 		setSelected( selezionato );
-		setIcon( new ImageIcon( "resources/RadioButton/icon.png" ) );
-		setSelectedIcon( new ImageIcon( "resources/RadioButton/selectedIcon.png" ) );
-		setRolloverIcon( new ImageIcon( "resources/RadioButton/rolloverIcon.png" ) );
-		setRolloverSelectedIcon( new ImageIcon( "resources/RadioButton/rolloverSelectedIcon.png" ) );
+		setIcon( new ImageIcon( "res/RadioButton/icon.png" ) );
+		setSelectedIcon( new ImageIcon( "res/RadioButton/selectedIcon.png" ) );
+		setRolloverIcon( new ImageIcon( "res/RadioButton/rolloverIcon.png" ) );
+		setRolloverSelectedIcon( new ImageIcon( "res/RadioButton/rolloverSelectedIcon.png" ) );
 		setBackground( gui.colori.sfondo() );
 		setForeground( gui.colori.testo() );
 		setFont( gui.fonts.fontGenerico( Fonts.PLAIN ) );

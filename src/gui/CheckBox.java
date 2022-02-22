@@ -23,17 +23,16 @@ public class CheckBox extends JCheckBox {
 	 */
 	public CheckBox( Label label, boolean selezionato ) {
 		super( label.getText(), selezionato );
-		setIcon( new ImageIcon( "resources/CheckBox/icon.png" ) );
-		setSelectedIcon( new ImageIcon( "resources/CheckBox/selectedIcon.png" ) );
-		setRolloverIcon( new ImageIcon( "resources/CheckBox/rolloverIcon.png" ) );
-		setRolloverSelectedIcon( new ImageIcon( "resources/CheckBox/rolloverSelectedIcon.png" ) );
+		setIcon( new ImageIcon( "res/CheckBox/icon.png" ) );
+		setRolloverIcon( new ImageIcon( "res/CheckBox/rolloverIcon.png" ) );
+		setRolloverSelectedIcon( new ImageIcon( "res/CheckBox/rolloverSelectedIcon.png" ) );
+		setSelectedIcon( new ImageIcon( "res/selectedIcon.png" ) );
 		setBackground( label.getBackground() );
 		setForeground( label.getForeground() );
 		setFont( label.getFont() );
 		setBorder( label.getBorder() );
 		setFocusPainted( false );
 		setOpaque( true );
-		setSelectedIcon( new ImageIcon( "resources/selectedIcon.png" ) );
 	}
 
 	/**
@@ -45,10 +44,10 @@ public class CheckBox extends JCheckBox {
 	 */
 	public CheckBox( PreferenzeGUI gui, boolean selezionato ) {
 		super();
-		setIcon( new ImageIcon( "resources/CheckBox/icon.png" ) );
-		setSelectedIcon( new ImageIcon( "resources/CheckBox/selectedIcon.png" ) );
-		setRolloverIcon( new ImageIcon( "resources/CheckBox/rolloverIcon.png" ) );
-		setRolloverSelectedIcon( new ImageIcon( "resources/CheckBox/rolloverSelectedIcon.png" ) );
+		setIcon( new ImageIcon( "res/CheckBox/icon.png" ) );
+		setSelectedIcon( new ImageIcon( "res/CheckBox/selectedIcon.png" ) );
+		setRolloverIcon( new ImageIcon( "res/CheckBox/rolloverIcon.png" ) );
+		setRolloverSelectedIcon( new ImageIcon( "res/CheckBox/rolloverSelectedIcon.png" ) );
 		setSelected( selezionato );
 		setBackground( gui.colori.sfondo() );
 		setForeground( gui.colori.testo() );
