@@ -128,4 +128,5 @@ public class DefaultBordi implements Bordi {
 	public Border bordoSecondarioFocus( int grandezza, Insets spazio, Color colore ) {
 		return bordoGenericoFocus( grandezza, spazio, colore );
 	}
+
 }

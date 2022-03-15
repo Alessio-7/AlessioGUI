@@ -19,7 +19,7 @@ public class Login {
 		form.aggiungiParametro( "User name:", gui.creaTextField( 10 ) );
 		form.aggiungiParametro( "Password:", gui.creaPasswordField( 10 ) );
 		form.aggiungiParametro( "Data di nascita:", gui.creaDateChooser() );
-		form.aggiungiParametro( "Mantieni accesso:", gui.creaRadioButton( false ) );
+		form.aggiungiParametro( "", gui.creaRadioButton( gui.creaLabel( "Mantieni accesso" ), false ) );
 		form.aggiungiParametro( "Tema:", gui.creaBottoneCambiaTemaChiaroScuro() );
 
 		Layout l = gui.creaWrapLayout();
