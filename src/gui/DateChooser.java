@@ -137,7 +137,12 @@ public class DateChooser extends Layout implements Observer {
 		meseCorrente = cal.get( Calendar.MONTH );
 		annoCorrente = cal.get( Calendar.YEAR );
 
-		dataLabel = gui.creaLabel( giornoCorrente + "/" + meseCorrente + "/" + annoCorrente + " " );
+		dataLabel = gui.creaLabel( giornoCorrente
+				+ "/"
+				+ ( meseCorrente + 1 )
+				+ "/"
+				+ annoCorrente
+				+ " " );
 
 		cal.set( cal.get( Calendar.YEAR ), cal.get( Calendar.MONTH ), 1 );
 
@@ -176,7 +181,9 @@ public class DateChooser extends Layout implements Observer {
 	private void generaCalendario() {
 		Layout lSceltaMese = gui.creaLayout( new BorderLayout() );
 
-		String s = cal.getDisplayName( Calendar.MONTH, Calendar.LONG, Locale.getDefault() ) + " " + cal.get( Calendar.YEAR );
+		String s = cal.getDisplayName( Calendar.MONTH, Calendar.LONG, Locale.getDefault() )
+				+ " "
+				+ cal.get( Calendar.YEAR );
 		s = s.substring( 0, 1 ).toUpperCase() + s.substring( 1 );
 		testoMese = gui.creaLabel( s );
 
@@ -221,7 +228,9 @@ public class DateChooser extends Layout implements Observer {
 
 	private void aggiornaMese() {
 
-		String s = cal.getDisplayName( Calendar.MONTH, Calendar.LONG, Locale.getDefault() ) + " " + cal.get( Calendar.YEAR );
+		String s = cal.getDisplayName( Calendar.MONTH, Calendar.LONG, Locale.getDefault() )
+				+ " "
+				+ cal.get( Calendar.YEAR );
 		s = s.substring( 0, 1 ).toUpperCase() + s.substring( 1 );
 
 		testoMese.setText( s );
@@ -276,19 +285,25 @@ public class DateChooser extends Layout implements Observer {
 	private class BottoneCalendario extends Bottone {
 
 		public BottoneCalendario( int g, int m, int a, boolean giornataCorrente ) {
-			super( gui, g + "", new ActionListener() {
+			super( gui, g
+					+ "", new ActionListener() {
 
-				@Override
-				public void actionPerformed( ActionEvent e ) {
-					giorno = g;
-					mese = m + 1;
-					anno = a;
-					dataLabel.setText( giorno + "/" + mese + "/" + anno + " " );
-					( ( Bottone ) e.getSource() ).setBorder( gui.bordi.bordoInteragibile() );
-					popup.setVisible( false );
-				}
+						@Override
+						public void actionPerformed( ActionEvent e ) {
+							giorno = g;
+							mese = m + 1;
+							anno = a;
+							dataLabel.setText( giorno
+									+ "/"
+									+ mese
+									+ "/"
+									+ anno
+									+ " " );
+							( ( Bottone ) e.getSource() ).setBorder( gui.bordi.bordoInteragibile() );
+							popup.setVisible( false );
+						}
 
-			} );
+					} );
 
 			if ( giornataCorrente ) {
 				bottoneGiornoCorrente = this;
